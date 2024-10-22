@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- This analog clock program was created by Ehllen Quezada a.k.a ELLIE... made with ❤ -->
+
+
+<style>
+
+ body {
+           overflow-x: hidden; /* prevent horizontal scrolling */
+    }
+</style>
+
+
+
+
+<style>
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between header, content, and footer */
+}
+
+
+  #video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1; /* Send the video to the background */
+  min-width: 100%;
+  min-height: 100%;
+}
+    </style>
+
+    <video autoplay muted loop id="video-background">
+  <source src="BackgroundVideo.mp4" type="video/mp4">
+    </video>
+
+
+<style>
+
+  h1 {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: 'Orbitron';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
+    padding: 2px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    white-space: nowrap;
+    margin-top: 0.15rem;
+  }
+
+
+
+
+header {
+  background-color: #000; /* Black background */
+  padding: 10px; /* Adjust padding to fit the new height */
+  text-align: center; /* Center the h3 element */
+  box-sizing: border-box; /* Include padding in full width */
+  height: 50px; /* Default height for smaller screens or mobiles */
+  /* Add these styles to make the header responsive */
+  width: 100vw; /* Take up the full width of the viewport */
+  margin-left: 0; /* Remove any left margin */
+  margin-right: 0; /* Remove any right margin */
+  padding-left: 7px; /* Add some padding on the left */
+  padding-right: 7px; /* Add some padding on the right */
+  position: relative; /* Fix the header to the top of the page */
+  top: 0; /* Position the header at the top of the page */
+  left: 0; /* Position the header at the left edge of the page */
+  right: 0; /* Position the header at the right edge of the page */
+  z-index: 1; /* Bring the header to the front, on top of other elements */
+}
+
+/* Media query for larger screens to medium */
+@media only screen and (min-width: 768px) {
+  header {
+    height: 7.19rem; /* Increase height for larger screens to medium */
+  }
+}
+
+/* Media query for smaller screens or mobiles */
+@media only screen and (max-width: 767px) {
+  header {
+    height: 4.69rem; /* Decrease height for smaller screens or mobiles */
+  }
+}
+
+
+
+
+
+
+h3 span {
+        transition: 4s linear;
+        animation: color-change 18s infinite;
+      }
+      @keyframes color-change {
+        0% {
+          color: #fff;
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+        }
+        33.33% {
+          color: #fff;
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+        }
+        33.34% {
+          color: orange;
+          text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
+        }
+        66.67% {
+          color: orange;
+          text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
+        }
+       66.68% {
+    color: #17eeb6; 
+    text-shadow: 0 0 9px #00BFFF, 0 0 20px lightgreen, 0 0 35px #00BFFF;
+  }
+  100% {
+    color:  #17eeb6;
+    text-shadow: 0 0 9px #00BFFF, 0 0 20px lightgreen, 0 0 35px #00BFFF;
+  }
+}
+
+
+/* Media query for large to medium screens */
+@media only screen and (min-width: 768px) {
+  h3 {
+    font-size: 2.19rem; /* Increase font size for large to medium screens */
+  }
+}
+
+/* Media query for smaller screens or mobiles */
+@media only screen and (max-width: 767px) {
+  h3 {
+    font-size: 1.13rem; /* Decrease font size for smaller screens or mobiles */
+  }
+}
+
+</style>
+
+
+<script>
+
+const h1Element = document.querySelector('h1');
+
+function changeFontSize() {
+  const screenWidth = window.innerWidth;
+  if (screenWidth >= 992) { // larger screens
+    h1Element.style.fontSize = '80px';
+  } else if (screenWidth >= 768) { // medium screens
+    h1Element.style.fontSize = '50px';
+  } else { // smaller screens
+    h1Element.style.fontSize = '20px'; // adjust this value as needed
+  }
+}
+
+window.addEventListener('resize', changeFontSize);
+changeFontSize(); // Call the function initially
+
+</script>
+
+
+<body>
+ <header>
+  <h3><span>JB PALADIN PATRIOTS CLOCK</span></h3>
+ </header>
+</body>
+
+
+<style>
+/* Style for the background color select */
+.background-select {
+  width: 60px; /* Set width of the dropdown */
+  height: 40px; /* Set height of the dropdown */
+  margin: 20px; /* Margin to provide space around the dropdown */
+  font-size: 16px; /* Font size for the dropdown */
+  background-color: blue; /* Set background color to blue */
+  border: 2px solid black; /* Set border color to black with a width of 2px */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  color: white; /* Set text color to white for better contrast */
+}
+
+/* Optional: Add hover effect for better UX */
+.background-select:hover {
+  background-color: darkblue; /* Change background color on hover */
+}
+
+#background-color {
+  position: relative; /* Position the select element relative to its parent */
+  z-index: 1000; /* Increase the z-index to a higher value */
+  display: block; /* Make the select element a block element */
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
+ margin-bottom: 1px; /* Move up a little bit */
+}
+
+.back-link {
+  font-family: 'Orbitron';
+ src: url('Orbitron-Medium.ttf') format('ttf'),
+  font-size: 12px;
+  color: orange;
+ text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; /* Black stroke effect */
+}
+
+  transition: all 0.3s ease; {
+}
+
+.back-link:hover {
+  color: red; /* Light blue color on hover */
+  text-decoration: underline;
+}
+
+
+
+/* Media query for larger screens */
+@media only screen and (min-width: 768px) {
+  .back-link {
+    font-size: 18px; /* Increase font size for larger screens */
+  }
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 480px) {
+  .back-link {
+    font-size: 12px; /* Decrease font size for smaller screens */
+  }
+}
+
+  </style>
+
+
+ <select id="background-color" class="background-select">
+  <option value="">Click to change background</option>
+  <option value="blue">Blue</option>
+  <option value="green">Green</option>
+  <option value="purple">Purple</option>
+  <option value="gray">Gray</option>
+  <option value="black">Black</option>
+  <option value="maroon">Maroon</option>
+  <option value="turquoise">Turquoise</option>
+  <option value="orange">Orange</option>
+  <option value="brown">Brown</option>
+  <option value="gold">Gold</option>
+  <option value="fuchsia">Fuchsia</option>
+  <option value="image">Choose Image</option>
+</select>
+
+
+<div class="container">
+        <div class="back-link" onclick="window.location.href='index.html'">CLICK TO GO BACK</div>
+    </div>
+
+<input type="file" id="image-input" accept="image/*" style="display: none;">
+
+<script>
+const backgroundColorSelect = document.getElementById('background-color');
+const imageInput = document.getElementById('image-input');
+
+backgroundColorSelect.addEventListener('change', (e) => {
+  const selectedColor = e.target.value;
+
+  if (selectedColor === 'image') {
+    // If "Choose Image" is selected, trigger the file input
+    imageInput.click();
+  } else if (selectedColor) {
+    // If a color is selected, set the background color and reset the background image
+    document.body.style.backgroundColor = selectedColor;
+    document.body.style.backgroundImage = 'none'; // Reset background image
+    document.getElementById('video-background').style.display = 'none';
+  } else {
+    // If no selection, reset to default background and show the video
+    document.body.style.backgroundColor = ''; // Reset to default
+    document.body.style.backgroundImage = 'none'; // Reset background image
+    document.getElementById('video-background').style.display = 'block'; // Show the video
+  }
+});
+
+imageInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = (event) => {
+    // Set the background image and its properties
+    document.body.style.backgroundImage = `url(${event.target.result})`;
+    document.body.style.backgroundSize = '100vw 100vh'; // Set background size to full width and height
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed'; // Prevent scrolling issues
+    document.body.style.backgroundOrigin = 'content-box'; // Ensure the image covers the entire page
+    document.getElementById('video-background').style.display = 'none'; // Hide video background
+  };
+
+  reader.readAsDataURL(file); // Read the selected image file
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.logo {
+  display: block; /* Make the logo a block element */
+  margin: 0 auto; /* Center the logo horizontally */
+  position: relative; /* Set position to relative */
+  transform: scale(1.5); /* Zoom in the logo by 50% */
+ }
+
+/* Media query for smaller to medium screens */
+@media (max-width: 360px) {
+  .logo {
+    margin-top: -20px; /* Move the logo up by 20 pixels */
+    margin-bottom: 30px;
+  }
+}
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  .logo {
+    width: 115px; 
+    height: 75px; 
+    transform: scale(2); /* Zoom in the logo by 100% on larger screens */
+    margin-top: -20px; /* Move the logo up by 60 pixels */
+    margin-bottom: 10px; /* Add a 10px margin at the bottom */
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+  .logo {
+    width: 110px; 
+    height: 70px;
+    transform: scale(1.2); /* Zoom in the logo by 20% on smaller screens */
+    margin-top: -50px; /* Move the logo up by 30 pixels */
+    margin-bottom: 20px; /* Add a 10px margin at the bottom */
+  }
+}
+
+</style>
+
+<div id="logo-section">
+<img src="logo.jpg" alt="Description" class="logo" style="top: 70px;">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* Add this to make the footer stick to the bottom */
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0; /* Add this to remove default margin */
+}
+
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  footer {
+    font-size: 18px;
+    height: 50%;
+  }
+}
+
+/* Media query for smaller screens/mobile */
+@media (max-width: 767px) {
+  footer {
+    font-size: 12px;
+    height: 20%;
+  }
+}
+
+</style>
+  
+  <style>
+
+.patriot-clock-description {
+  text-align: center;
+  font-family: Lucida Grande;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  margin-top: -30px; /* Set top margin to 15px */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px; /* Keep bottom margin as 30px */
+}
+.patriot-clock-description p {
+  margin-bottom: 8px;
+  text-align: justify;
+}
+
+.description {
+  text-align: center;
+  font-family: Lucida Grande;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  margin: -45px auto; /* Use a positive margin to create space */
+}
+
+.description p {
+  margin-bottom: 14px;
+  text-align: justify;
+}
+
+
+
+.about-the-clock {
+            text-align: center;
+            font-family: 'Orbitron';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
+            font-size: 25px;
+ text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; /* Black stroke effect */
+
+               }
+
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+   .about-the-clock {
+    font-size: 32px;
+     margin-top: 65px; /* Adjust this value to move the text up */
+
+     }
+}
+
+/* Media query for smaller screens/mobiles */
+@media (max-width: 767px) {
+   .about-the-clock {
+    font-size: 25px;
+    margin-top: 65px; /* Adjust this value to move the text up */
+
+     }
+}
+
+        .red { color: red; }
+        .white { color: #FFF9F8; }
+        .blue { color: #1BEAFF; }
+
+p {
+  text-align: center;
+  padding: 0 20px; /* add padding instead of margin */
+  margin-bottom: 70px;
+  z-index: 10;
+}
+
+
+
+
+
+
+</style>
+
+<style>
+
+        .how-the-clock-works {
+            text-align: center;
+           font-family: 'Orbitron';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
+           }
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  .how-the-clock-works {
+    font-size: 32px;
+    margin-top: -32rem; /* No change needed, already set to -32rem */
+    white-space: nowrap;
+  }
+}
+
+/* Media query for smaller screens/mobiles */
+@media (max-width: 767px) {
+  .how-the-clock-works {
+    font-size: 21px;
+    margin-top: -35rem; /* Adjusted margin-top for smaller screens/mobiles */
+    white-space: nowrap;
+  }
+}
+
+
+        .red { color: red; }
+        .white { color: #FFF9F8; }
+        .blue { color: #1BEAFF; }
+
+
+
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+<style>
+
+        .about-the-clock {
+            text-align: center;
+         font-family: 'Orbitron';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
+            font-size: 25px;
+               }
+
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+   .about-the-clock {
+    font-size: 32px;
+     margin-top: 130px; /* Adjust this value to move the text up */
+
+     }
+}
+
+/* Media query for smaller screens/mobiles */
+@media (max-width: 767px) {
+   .about-the-clock {
+    font-size: 25px;
+    margin-top: 70px; /* Adjust this value to move the text up */
+
+     }
+}
+
+        .red { color: red; }
+        .white { color: #FFF9F8; }
+        .blue { color: #1BEAFF; }
+
+p {
+  text-align: center;
+  padding: 0 20px; /* add padding instead of margin */
+  margin-bottom: 70px;
+  z-index: 10;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- About the clock section -->
+<div id="about-the-clock-section">
+<p class="about-the-clock">
+    <span class="red">ABOUT</span>
+    <span class="white">THE</span>
+    <span class="blue">CLOCK</span>
+</p>
+</div>
+
+
+<style>
+
+.patriot-clock-description {
+  text-align: center;
+  font-family: Lucida Grande;
+  font-size: 14px;
+  font-weight: bold;
+
+  color: white;
+  margin-top: -55px; /* Set top margin to 15px */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px; /* Keep bottom margin as 30px */
+}
+.patriot-clock-description p {
+  margin-bottom: 8px;
+  text-align: justify;
+}
+
+
+ .how-the-clock-works {
+            text-align: center;
+              font-family: 'Orbitron';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
+           }
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  .how-the-clock-works {
+    font-size: 32px;
+    margin-top: -32rem; /* No change needed, already set to -32rem */
+    white-space: nowrap;
+  }
+}
+
+/* Media query for smaller screens/mobiles */
+@media (max-width: 767px) {
+  .how-the-clock-works {
+    font-size: 21px;
+    margin-top: -35rem; /* Adjusted margin-top for smaller screens/mobiles */
+    white-space: nowrap;
+  }
+}
+
+
+        .red { color: red; }
+        .white { color: #FFF9F8; }
+        .blue { color: #1BEAFF; }
+
+
+
+
+</style>
+
+
+<div class="patriot-clock-description">
+
+
+<p> The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telling time. Our clock’s innovative design will amaze the world in the exciting way that people will perceive and tell time. This is not just a typical or traditional clock; our groundbreaking clock uses colorful lights to indicate the time instead of the traditional hands or digital numbers found on ordinary clocks. This makes our clock extraordinary, ensuring it stands out as unique and special among the myriad of clocks in the world today. <br> </p>
+
+<p>
+The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring love for America, celebrating the courageous men and women who have selflessly dedicated themselves to serving our nation, both past and present. At "JB Paladin," we take immense pride in designing clocks that reflect not just the passage of time but also capture the spirit of patriotism that binds us as a nation in a way that no other clock can. The name "Patriots Clock" embodies our commitment to honoring the values and freedoms that define our great country, the United States of America. By integrating our brand name, "JB Paladin," we add a personal touch that emphasizes our identity and dedication to craftsmanship.<br></p>
+
+<p>
+In celebration of the Semiquincentennial (250<sup>th</sup>) birthday of the United States of America on July 4, 2026, we proudly introduce the "JB PALADIN PATRIOTS CLOCK." This stunning clock draws inspiration from the bold colors and iconic design of the American flag, capturing the spirit of America's Declaration of Independence in 1776. In addition to the 12 stars located at the hour positions, a radiant gold-colored 13<sup>th</sup> star at the very center of the clock symbolizes the original 13 colonies of the United States of America and honors the brave individuals who have paid the ultimate price for defending our country. The star that denotes the correct hour of time is dark blue, which stands for those who are currently serving on active duty, while the light blue five-minute star pays tribute to all who have served in the past. We chose a color inspired by the iconic Statue of Liberty for the clock's face, adding a meaningful touch that reinforces our connection to freedom and hope.
+<br></p>
+
+
+<p>
+The creative genius behind this remarkable clock is none other than Mr. Jeff Birge, whose vision shines through in every intricate detail. After years of anticipation, we are thrilled to see his dream come to life, with the help of his programmer, Ehllen Quezada, who collaborated with Jeff on this project. Ehllen’s skill in programming languages such as HTML5, CSS, and JavaScript brought this clock to fruition. Additionally, Ehllen’s extensive knowledge in Information Technology played a crucial role in transforming Jeff’s ideas and concepts into a vibrant, fully functional app, which will now be available for all electronic devices.
+
+<p>There is no doubt that the "JB PALADIN PATRIOTS CLOCK" is bound to inspire admiration with its exclusive design and unique functions. The moment has finally arrived; we know every American will love this magnificent clock as it pays homage to the greatest country that the world has ever seen: the United States of America!
+<br></p>
+
+
+
+ </div>
+
+
+
+
+
+
+
+<style>
+
+/* Add this to your existing stylesheet */
+
+
+
+#logo-section {
+  margin-top: 0px;
+}
+
+
+
+
+</style>
+
+
+</div>
+
+
+<style>
+
+        .how-the-clock-works {
+            text-align: center;
+                font-family: 'Orbitron';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
+ text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; /* Black stroke effect */
+
+           }
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  .how-the-clock-works {
+    font-size: 32px;
+    margin-top: 1rem; /* No change needed, already set to -32rem */
+    white-space: nowrap;
+  }
+}
+
+/* Media query for smaller screens/mobiles */
+@media (max-width: 767px) {
+  .how-the-clock-works {
+    font-size: 21px;
+    margin-top: 1rem; /* Adjusted margin-top for smaller screens/mobiles */
+    white-space: nowrap;
+  }
+}
+
+
+        .red { color: red; }
+        .white { color: #FFF9F8; }
+        .blue { color: #1BEAFF; }
+
+
+
+    </style>
+</head>
+
+
+
+
+<body>
+
+<p class="how-the-clock-works">
+    <span class="red">HOW THE</span>
+    <span class="white">CLOCK</span>
+    <span class="blue">WORKS</span>
+</p>
+
+
+
+<body>
+
+
+<div class="description">
+<p>Our clock features a unique hour marker system with 12 white stars in place of traditional numbers. Each white star represents an hour and lights up in dark blue to show the current hour. At 3:00, for instance, the 3<sup>rd</sup> star illuminates in dark blue, and the 12<sup>th</sup> star changes to light blue. To represent minutes, we’ve included the red stripes of the American flag between the hour stars, with each stripe marking one minute of time. So, at 3:01, the 3<sup>rd</sup> star remains dark blue, the 12<sup>th</sup> star continues to be light blue, and one red stripe lights up next to it. By 3:05, the 3<sup>rd</sup> star continues to stay dark blue, the appropriate number of red stripes are lit up, and the 1<sup>st</sup> star lights up in light blue, indicating five minutes past the hour. Next to the hour stars, the red stripes will continue to light up until all are lit at 59 minutes past the hour; then, at the strike of a new hour, all red stripes will disappear, and the cycle repeats again.<br><p>
+
+<p>In the center of the clock, we feature a beautiful ring-shaped circle representative of the original circle of stars on the very first American flag. This circle serves as the seconds counter and it gradually fills with a blue-colored light. We chose the color blue as that was the background color of the circle of 13 stars, just as it is still for the current 50 stars. A choice can be made between a smooth sweeping motion or a Swiss movement for the seconds indicator, and as it completes a 60-second cycle, it then resets itself and repeats the action for the next 60 seconds.</p>
+</div>
+
+
+
+
+
+<style>
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  }
+
+
+
+
+html, body {
+  height: 100%;
+}
+
+
+</style>
+
+
+<style>
+.credits {
+  text-align: center;
+  margin-top: 30px; /* Add a 10px margin top to move the text down */
+}
+
+/* Media query for larger and medium screens */
+@media only screen and (min-width: 480px) {
+  .credits {
+    font-size: 15px;
+    text-align: left;
+  }
+  .credits p {
+    font-size: 15px;
+    font-weight: bold;
+    color: gold; /* Set font color to gold */
+    font-family: Lucida Grande;
+    text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; /* Black stroke effect */
+  }
+  .credits p:first-child {
+    float: left; /* Position "Designed by" on the left */
+  }
+  .credits p:last-child {
+    float: right; /* Position "Developer" on the right */
+  }
+}
+
+/* Media query for smaller screens or mobiles */
+@media only screen and (max-width: 479px) {
+  .credits {
+    font-size: 11px; /* Adjust font size for smaller screens */
+    text-align: left;
+  }
+  .credits p {
+    font-size: 11px;
+    font-weight: bold;
+    color: gold; /* Set font color to gold */
+    font-family: Lucida Grande;
+    text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; /* Black stroke effect */
+  }
+  .credits p:first-child {
+    float: left; /* Remove float for smaller screens */
+  }
+  .credits p:last-child {
+    float: right; /* Remove float for smaller screens */
+  }
+}
+</style>
+
+<div class="credits">
+  <p> Designed by: Jeff Birge</p>
+  <p> Developer: Ehllen Quezada</p>
+</div>
+
+
+
+<style>
+
+
+
+table {
+  background-color: gray;
+  background-image: url("wall.jpg");
+  background-size: cover;
+  border-collapse: collapse;
+  position: relative; 
+  top: -1rem; 
+  margin: 1rem auto; /* Adjust margin */
+  padding: 3px;
+  width: 80%; /* Optional: to ensure it doesn't take the full width */
+}
+
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  table {
+    top: -1rem; 
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    font-style: bold;
+    border: 6px solid orange;
+  }
+  th, td {
+    font-size: 11px;
+    font-family: Lucida Grande;
+    font-weight: bolder; /* increased font weight to bolder */
+    border: 4px inset gold; /* added border to each cell */
+    text-align: center; 
+  }
+}
+
+/* Media query for smaller screens/mobile */
+@media (max-width: 767px) {
+  table {
+    top: -1rem; 
+    width: 20%;
+    height: auto;
+    border: 4px solid orange;
+  }
+  th, td {
+    font-size: 6px;
+    font-family: Lucida Grande;
+    font-weight: bolder; /* increased font weight to bolder */
+    border: 3px inset gold; /* added border to each cell */
+    text-align: center; 
+
+  }
+}
+
+
+
+th {
+  padding: 5px; /* adjust header padding for mobile view */
+}
+
+
+th {
+  background-color: black;
+  color: gold;
+}
+
+td {
+  background-color: none;
+  color: black;
+}
+
+.star {
+  font-size: 30px;
+  color: #333;
+  vertical-align: middle;
+}
+
+.dark-blue {
+  color: darkblue;
+  vertical-align: middle;
+}
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  .dark-blue {
+    font-size: 35px;
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+  .dark-blue {
+    font-size: 30px;
+  }
+}
+
+.light-blue {
+  font-size: 30px;
+  color: #87CEEB;
+  vertical-align: middle;
+}
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  .light-blue {
+    font-size: 35px;
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+  .light-blue {
+    font-size: 30px;
+  }
+}
+
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: blue;
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+}
+
+
+
+.inner-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #f5fffa;
+  border: 2px solid #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inner-star {
+  font-size: 14px;
+  color: #C9AE21;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.horizontal-line {
+  width: 30px;
+  height: 5px;
+  background-color: red;
+  margin: 10px auto;
+}
+
+#clock-th1 {
+  padding: 5px; /* adjusted padding for headers */
+}
+
+#clock-th {
+  padding: 10px; /* adjusted padding for headers */
+}
+
+</style>
+
+
+<body>
+
+<div id= "content">
+  <div id="container">
+    <table>
+<th id="clock-th1">CLOCK SYMBOLS & FUNCTIONS</th>
+<th id="clock-th"> NORMAL SPEED </th>
+<th> X2 SPEED CONVERSION </th>
+<th> X5 SPEED CONVERSION </th>
+<th> X10 SPEED CONVERSION </th>
+      <tr>
+        <td style=" text-shadow: none;"><span class="star dark-blue">&#9733;</span></td>
+        <td>1 HOUR MARKER</td>
+        <td>30 MINUTES MARKER</td>
+        <td>12 MINUTES MARKER</td>
+        <td>6 MINUTES MARKER</td>
+      </tr>
+      <tr>
+        <td style=" text-shadow: none;"><span class="star light-blue">&#9733;</span></td>
+        <td>5 MINUTES MARKER</td>
+        <td>2.5 MINUTES MARKER</td>
+        <td>1 MINUTE MARKER</td>
+        <td>30 SECONDS MARKER</td>
+
+      </tr>
+      <tr>
+        <td style=" text-shadow: none;"><div class="horizontal-line"></div></td>
+        <td>1 MINUTE MARKER <br> when clock face is full of stripes  = 59 minutes 
+       at exact 1 hour all stripes are cleared
+      </td>
+      <td> 30 SECONDS MARKER <br>  when clock face is full of stripes = 29 minutes
+       at exact 30 minutes all stripes are cleared
+      </td>
+      <td> 12 SECONDS MARKER <br> when clock face is full of stripes = 11 minutes
+       at exact 12 minutes all stripes are cleared
+      </td>
+      <td> 6 SECONDS MARKER <br> when clock face is full of stripes = 5 minutes
+       at exact 6 minutes all stripes are cleared
+      </td>
+
+
+      </tr>
+      <tr>
+         <td style=" text-shadow: none;">
+          <div class="circle">
+            <div class="inner-circle"></div>
+            <span class="inner-star">&#9733;</span>
+          </div>
+        </td>
+        <td>1 FULL ROTATION  <br> = 60 SECONDS</td>
+        <td>1 FULL ROTATION  <br> = 30 SECONDS</td>
+        <td>1 FULL ROTATION  <br> = 12 SECONDS</td>
+        <td>1 FULL ROTATION  <br> = 6 SECONDS</td>
+
+      </tr>
+
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<style>
+/* Add this CSS code to your existing stylesheet */
+
+
+footer {
+       font-family: 'Orbitron';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  background-color: #000;
+  width: 100%;
+  position: relative; /* Keep it relative for normal flow */
+  margin-top: 40px; /* Move it up by adjusting the margin */
+  padding: 5px 0 5px 0; /* Increase the top padding to move the text down */
+  height: 20px; /* Set the height to 50px */
+  margin-bottom: 0;
+}
+
+/* Media query for larger to medium screens */
+@media (min-width: 768px) {
+  footer {
+    font-size: 18px;
+    height: 20px; /* Increase height for larger screens to medium */
+  }
+}
+
+/* Media query for smaller screens/mobile */
+@media (max-width: 767px) {
+  footer {
+    font-size: 12px;
+    height: 18px; /* Decrease height for smaller screens or mobiles */
+    padding: 5px 0 5px 0;
+  }
+}
+
+</style>
+
+
+  <footer>
+    Copyright &copy; 2024 - JB PALADIN PATRIOTS CLOCK.
+  </footer>
+
+</body>
+</html>
