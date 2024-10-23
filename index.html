@@ -50,7 +50,8 @@ body {
     color: #FFFFFF;
     text-transform: uppercase;
     font-size: 25px;
-     font-family: tahoma;
+     font-family: 'Orbitron-Medium';
+     src: url('Orbitron-Medium.ttf') format('ttf'),
     padding: 2px;
     text-align: center;
     margin: 0 auto;
@@ -81,7 +82,6 @@ header {
   left: 0; /* Position the header at the left edge of the page */
   right: 0; /* Position the header at the right edge of the page */
   z-index: 1; /* Bring the header to the front, on top of other elements */
-
 }
 
 /* Media query for larger screens to medium */
@@ -156,18 +156,14 @@ const h1Element = document.querySelector('h1');
 
 function changeFontSize() {
   const screenWidth = window.innerWidth;
-
   if (screenWidth >= 992) { // larger screens
     h1Element.style.fontSize = '80px';
   } else if (screenWidth >= 768) { // medium screens
     h1Element.style.fontSize = '50px';
-  } else if (screenWidth >= 480) { // small mobile screens
-    h1Element.style.fontSize = '30px'; // adjust this value as needed
-  } else { // very small mobile screens
-    h1Element.style.fontSize = '16px'; // adjust this value as needed
+  } else { // smaller screens
+    h1Element.style.fontSize = '20px'; // adjust this value as needed
   }
 }
-
 
 window.addEventListener('resize', changeFontSize);
 changeFontSize(); // Call the function initially
@@ -332,7 +328,7 @@ imageInput.addEventListener('change', (e) => {
 
 .canvas-select {
   width: 150px; /* Set width for the canvas options dropdown */
-  height: 40px; /* Set height of the dropdown */
+  height: 50px; /* Set height of the dropdown */
   margin: 20px; /* Margin to provide space around the dropdown */
   font-size: 12px; /* Font size for the dropdown */
 }
@@ -351,7 +347,7 @@ imageInput.addEventListener('change', (e) => {
   }
 }
 #dropdown {
-    padding: 5px;
+    padding: 1px;
     cursor: pointer;
     background-color: Beige;
     color: black;
@@ -375,8 +371,8 @@ imageInput.addEventListener('change', (e) => {
 #dropdown option {
   font-size: 12px;
   font-weight: bold;
-  font-family: Lucida Grande;
-  padding: 5px; /* Add padding for options */
+  font-family: tahoma;
+  padding: 6px; /* Add padding for options */
 }
 /* Media query for small screens (e.g., smartphones) */
 @media only screen and (max-width: 375px) {
@@ -418,7 +414,7 @@ imageInput.addEventListener('change', (e) => {
 @media only screen and (max-width: 420px) {
   #dropdown {
     padding: 5px;
-    font-size: 8px;
+    font-size: 6px;
   }
   #dropdown option {
     font-size: 4px;
@@ -431,10 +427,10 @@ imageInput.addEventListener('change', (e) => {
 @media only screen and (max-width: 768px) {
   #dropdown {
     padding: 7px;
-    font-size: 10px;
+    font-size: 8px;
   }
   #dropdown option {
-    font-size: 10px;
+    font-size: 8px;
     width: 110px; /* Adjust the width to 150px */
 
   }
@@ -1091,7 +1087,7 @@ setInterval(drawClock6, 1000);
 <style>
 footer {
   font-family: 'Orbitron-Medium';
-  src: url('Orbitron-Medium.ttf') format('ttf'),
+     src: url('Orbitron-Medium.ttf') format('ttf'),
   font-size: 12px;
   text-align: center;
   color: white;
@@ -1151,11 +1147,11 @@ div {
   padding: 0;
   }
 
-canvas {
+canvas, canvas5, canvas6 {
   display: block;
 }
 
-#canvas, #canvas2, #canvas3, #canvas4, #canvas5, #canvas6 {
+#canvas, #canvas5, #canvas6 {
   position: relative;
   top: 0; /* Change this to 0 */
   display: block;
@@ -1168,7 +1164,7 @@ html, body {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin-top: 0;
 }
@@ -1209,6 +1205,7 @@ footer {
   color: gold; 
   font-size: 14px;
   font-weight: 500;
+  font-family: tahoma;
   text-decoration: none;
   transition: all 0.3s ease;
 }
