@@ -181,16 +181,44 @@ changeFontSize(); // Call the function initially
 
 
 <style>
-/* Your existing styles */
+
+/* Style for the background color select */
 .background-select {
-  /* Styles here */
+  width: 60px; /* Set width of the dropdown */
+  height: 40px; /* Set height of the dropdown */
+  margin: 20px; /* Margin to provide space around the dropdown */
+  font-size: 16px; /* Font size for the dropdown */
+  background-color: blue; /* Set background color to blue */
+  border: 2px solid black; /* Set border color to black with a width of 2px */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  color: white; /* Set text color to white for better contrast */
 }
 
-#image-input {
-  position: absolute;
-  left: -9999px; /* Move it off-screen */
+/* Optional: Add hover effect for better UX */
+.background-select:hover {
+  background-color: darkblue; /* Change background color on hover */
 }
-</style>
+
+#background-color {
+  position: relative; /* Position the select element relative to its parent */
+  z-index: 1000; /* Increase the z-index to a higher value */
+  display: block; /* Make the select element a block element */
+}
+
+.containercolors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
+ margin-bottom: 1px; /* Move up a little bit */
+}
+
+
+
+  </style>
+
+
 
 <select id="background-color" class="background-select">
   <option value="">Click to change background</option>
