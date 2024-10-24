@@ -302,19 +302,16 @@ imageInput.addEventListener('change', (e) => {
 /* Your existing CSS styles here */
 
 #dropdown-container {
- display: flex; /* Use flexbox for alignment */
- justify-content: center; /* Center both dropdowns */
- margin: 0px; /* Margin to provide space around the dropdown */
- position: relative; /* Ensure it is positioned correctly */
- z-index: 10; /* Higher than video */
+    margin: -25px;
+    position: relative; /* Ensure it is positioned correctly */
+    z-index: 10; /* Higher than video */
 }
 
 .canvas-select {
- display: flex; /* Use flexbox for alignment */
   width: 145px; /* Set width for the canvas options dropdown */
   height: 50px; /* Set height of the dropdown */
-  margin: -30px; /* Margin to provide space around the dropdown */
   font-size: 12px; /* Font size for the dropdown */
+  margin: 0;
 }
 
 /* Media query for smaller screens (max-width: 768px) */
