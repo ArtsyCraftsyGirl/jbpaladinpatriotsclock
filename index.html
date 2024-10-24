@@ -219,8 +219,7 @@ changeFontSize(); // Call the function initially
   </style>
 
 
-
-<select id="background-color" class="background-select">
+ <select id="background-color" class="background-select">
   <option value="">Click to change background</option>
   <option value="blue">Blue</option>
   <option value="green">Green</option>
@@ -236,7 +235,8 @@ changeFontSize(); // Call the function initially
   <option value="image">Choose Image</option>
 </select>
 
-<input type="file" id="image-input" accept="image/*">
+
+<input type="file" id="image-input" accept="image/*" style="display: none;">
 
 <script>
 const backgroundColorSelect = document.getElementById('background-color');
@@ -246,15 +246,18 @@ backgroundColorSelect.addEventListener('change', (e) => {
   const selectedColor = e.target.value;
 
   if (selectedColor === 'image') {
-    setTimeout(() => {
-      imageInput.click();
-    }, 0);
+    // If "Choose Image" is selected, trigger the file input
+    imageInput.click();
   } else if (selectedColor) {
+    // If a color is selected, set the background color and reset the background image
     document.body.style.backgroundColor = selectedColor;
-    document.body.style.backgroundImage = 'none';
+    document.body.style.backgroundImage = 'none'; // Reset background image
+    document.getElementById('video-background').style.display = 'none';
   } else {
-    document.body.style.backgroundColor = '';
-    document.body.style.backgroundImage = 'none';
+    // If no selection, reset to default background and show the video
+    document.body.style.backgroundColor = ''; // Reset to default
+    document.body.style.backgroundImage = 'none'; // Reset background image
+    document.getElementById('video-background').style.display = 'block'; // Show the video
   }
 });
 
@@ -263,31 +266,19 @@ imageInput.addEventListener('change', (e) => {
   const reader = new FileReader();
 
   reader.onload = (event) => {
+    // Set the background image and its properties
     document.body.style.backgroundImage = `url(${event.target.result})`;
-    document.body.style.backgroundSize = '100vw 100vh';
+    document.body.style.backgroundSize = '100vw 100vh'; // Set background size to full width and height
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
-    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundAttachment = 'fixed'; // Prevent scrolling issues
+    document.body.style.backgroundOrigin = 'content-box'; // Ensure the image covers the entire page
+    document.getElementById('video-background').style.display = 'none'; // Hide video background
   };
 
-  reader.readAsDataURL(file);
+  reader.readAsDataURL(file); // Read the selected image file
 });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -317,8 +308,8 @@ imageInput.addEventListener('change', (e) => {
 }
 
 .canvas-select {
-  width: 150px; /* Set width for the canvas options dropdown */
-  height: 58px; /* Set height of the dropdown */
+  width: 145px; /* Set width for the canvas options dropdown */
+  height: 50px; /* Set height of the dropdown */
   margin: 20px; /* Margin to provide space around the dropdown */
   font-size: 12px; /* Font size for the dropdown */
 }
