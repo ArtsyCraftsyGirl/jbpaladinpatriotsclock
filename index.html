@@ -301,32 +301,14 @@ imageInput.addEventListener('change', (e) => {
 <style>
 /* Your existing CSS styles here */
 
-#dropdown-container {
-    margin: -55px auto;
-    position: relative; /* Ensure it is positioned correctly */
-    z-index: 10; /* Higher than video */
-}
 
 .canvas-select {
   width: 145px; /* Set width for the canvas options dropdown */
   height: 50px; /* Set height of the dropdown */
-  margin: 20px; /* Margin to provide space around the dropdown */
+ transform: translateY(-45px); /* Adjust this value to control how much to move up */
   font-size: 12px; /* Font size for the dropdown */
 }
 
-/* Media query for smaller screens (max-width: 768px) */
-@media only screen and (max-width: 768px) {
-  .canvas-select {
-  margin: 30px; /* Margin to provide space around the dropdown */
-  }
-}
-
-/* Media query for very small screens (max-width: 480px) */
-@media only screen and (max-width: 480px) {
-  .canvas-select {
-   margin: 30px; /* Margin to provide space around the dropdown */
-  }
-}
 #dropdown {
     padding: 1px;
     cursor: pointer;
@@ -345,9 +327,7 @@ imageInput.addEventListener('change', (e) => {
 #dropdown:hover {
   background-color: red; /* Change background on hover */
   color: white; /* Change text color on hover */
-  transform: translateY(-5px); /* Slight lift effect */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-}
+  }
 
 #dropdown option {
   font-size: 12px;
@@ -505,7 +485,7 @@ function hideAllCanvases() {
 
 #canvas {
   position: relative;
-  top: -1rem; 
+ transform: translateY(-65px); /* Adjust this value to control how much to move up */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -731,7 +711,7 @@ drawClock();
  
   #canvas5 {
  position: relative;
-  top: -1rem; 
+ transform: translateY(-65px); /* Adjust this value to control how much to move up */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -906,7 +886,7 @@ setInterval(drawClock5, 1000);
  
   #canvas6 {
  position: relative;
-  top: -1rem; 
+ transform: translateY(-65px); /* Adjust this value to control how much to move up */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
