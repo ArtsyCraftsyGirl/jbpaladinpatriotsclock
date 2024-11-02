@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <!-- This analog clock program was created by Ehllen Quezada a.k.a ELLIE... made with ❤ -->
 <style>
 
@@ -467,6 +467,16 @@ function hideAllCanvases() {
   }
 }
 
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
+  }
+}
+
+
+
 
 /* Media query for small screens (e.g., older Android phones or iOS devices) */
 @media only screen and (max-width: 360px) {
@@ -476,6 +486,15 @@ function hideAllCanvases() {
   }
 }
 
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas5 {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
+  }
+}
+
+
 /* Media query for small screens (e.g., older Android phones or iOS devices) */
 @media only screen and (max-width: 360px) {
   #canvas6 {
@@ -483,6 +502,16 @@ function hideAllCanvases() {
     height: 320px;
   }
 }
+
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas6 {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
+  }
+}
+
+
 /* Media query for small screens (e.g., older Android phones or iOS devices) */
 @media only screen and (max-width: 360px) {
   #canvas7 {
@@ -490,6 +519,14 @@ function hideAllCanvases() {
     height: 320px;
   }
 }
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas7 {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
+  }
+}
+
 </style>
 
 <style>
@@ -500,7 +537,7 @@ function hideAllCanvases() {
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
-  margin-bottom: 0; 
+  margin-bottom: 20px; 
   vertical-align: bottom;
 
 }
@@ -725,7 +762,7 @@ drawClock();
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
-  margin-bottom: 0; 
+  margin-bottom: 20px; 
   vertical-align: bottom;
 }
 </style>
@@ -896,7 +933,7 @@ drawClock5();
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
-  margin-bottom: 0; 
+  margin-bottom: 10px; 
  vertical-align: bottom;
 }
  overflow-x: hidden; /* prevent horizontal scrolling */
@@ -1053,7 +1090,7 @@ setInterval(drawClock6, 1000);
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
-  margin-bottom: 0; 
+  margin-bottom: 10px; 
   vertical-align: bottom;
 }
 </style>
