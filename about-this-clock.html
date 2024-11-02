@@ -184,8 +184,8 @@ changeFontSize(); // Call the function initially
 /* Style for the background color select */
 .background-select {
   width: 60px; /* Set width of the dropdown */
-  height: 40px; /* Set height of the dropdown */
-  margin: 20px; /* Margin to provide space around the dropdown */
+  height: 60px; /* Set height of the dropdown */
+  margin: 30px; /* Margin to provide space around the dropdown */
   font-size: 16px; /* Font size for the dropdown */
   background-color: blue; /* Set background color to blue */
   border: 2px solid black; /* Set border color to black with a width of 2px */
@@ -212,6 +212,10 @@ changeFontSize(); // Call the function initially
   height: 100vh; /* Adjust as needed */
   width: 100%; /* Adjust as needed */
  margin-bottom: 1px; /* Move up a little bit */
+}
+
+.back-button {
+ border: 2px solid black;
 }
 
 .back-link {
@@ -271,8 +275,8 @@ changeFontSize(); // Call the function initially
 
 
 <div class="container">
-        <div class="back-link" onclick="window.location.href='index.html'">CLICK TO GO BACK</div>
-    </div>
+    <button class="back-button" onclick="window.location.href='index.html'">BACK TO MAIN PAGE</button>
+</div>
 
 <input type="file" id="image-input" accept="image/*" style="display: none;">
 
