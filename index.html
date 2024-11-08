@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=3.0">
   <!-- This analog clock program was created by Ehllen Quezada a.k.a ELLIE... made with ❤ -->
 <style>
 
@@ -10,9 +10,51 @@
            overflow-x: hidden; /* prevent horizontal scrolling */
     }
 
-
+#video-background {
+      transition: opacity 0.5s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1; /* Send the video to the background */
+        min-width: 100%;
+        min-height: 100%;
+   opacity: 0; /* Initially hidden */
+        display: none; /* Initially hidden */
+          }
 </style>
 
+<video autoplay muted loop id="video-background">
+    <source src="BackgroundVideo.mp4" type="video/mp4">
+</video>
+
+<script>
+
+  // Ensure the video is properly loaded and ready
+    document.addEventListener("DOMContentLoaded", function () {
+        // Add event listener for when the video is ready to play
+        video.addEventListener('canplaythrough', function () {
+            if (currentBackground === 'video') {
+                video.style.display = 'block'; // Show the video
+                video.style.opacity = 1; // Fade in the video
+            }
+        });
+
+
+  // Add event listener for error handling
+        video.addEventListener('error', function () {
+            console.error("Error loading video.");
+            // If the video fails to load, default to a white background
+            document.body.style.backgroundColor = "white";
+        });
+
+        // Start loading the video
+        video.load();
+    });
+
+</script>
 
 
 
@@ -24,23 +66,8 @@ body {
   justify-content: space-between; /* Space between header, content, and footer */
 }
 
+</style>
 
-  #video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1; /* Send the video to the background */
-  min-width: 100%;
-  min-height: 100%;
-}
-    </style>
-
-<video autoplay muted loop id="video-background">
-  <source src="BackgroundVideo.mp4" type="video/mp4">
-    </video>
 
 
 <style>
@@ -49,8 +76,7 @@ body {
     color: #FFFFFF;
     text-transform: uppercase;
     font-size: 25px;
-     font-family: 'Orbitron-Medium';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
+     font-family: tahoma;
     padding: 2px;
     text-align: center;
     margin: 0 auto;
@@ -58,15 +84,15 @@ body {
     max-width: 100%;
     width: 100%;
     white-space: nowrap;
-    margin-top: 0.15rem;
+    margin-top: 0.5rem;
   }
 
 
 
 
 header {
-  background-color: #000; /* Black background */
-  padding: 10px; /* Adjust padding to fit the new height */
+  background-color: black; 
+  padding: 5px; /* Adjust padding to fit the new height */
   text-align: center; /* Center the h3 element */
   box-sizing: border-box; /* Include padding in full width */
   height: 50px; /* Default height for smaller screens or mobiles */
@@ -86,14 +112,14 @@ header {
 /* Media query for larger screens to medium */
 @media only screen and (min-width: 768px) {
   header {
-    height: 7.19rem; /* Increase height for larger screens to medium */
+    height: 6.19rem; /* Increase height for larger screens to medium */
   }
 }
 
 /* Media query for smaller screens or mobiles */
 @media only screen and (max-width: 767px) {
   header {
-    height: 4.69rem; /* Decrease height for smaller screens or mobiles */
+    height: 3.40rem; /* Decrease height for smaller screens or mobiles */
   }
 }
 
@@ -170,6 +196,7 @@ changeFontSize(); // Call the function initially
 </script>
 
 
+
 <body>
  <header>
   <h3><span>JB PALADIN PATRIOTS CLOCK</span></h3>
@@ -178,106 +205,158 @@ changeFontSize(); // Call the function initially
 
 
 
+<div class="menu-container">
+    <div class="hamburger" id="hamburger-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="color-menu" id="color-menu">
+        <div class="color-option" data-color="darkblue"> Change the background to Blue</div>
+        <div class="color-option" data-color="darkgreen">Change the background to Green</div>
+        <div class="color-option" data-color="purple">Change the background to Purple</div>
+        <div class="color-option" data-color="gray">Change the background to Gray</div>
+        <div class="color-option" data-color="black">Change the background to Black</div>
+        <div class="color-option" data-color="maroon">Change the background to Maroon</div>
+        <div class="color-option" data-color="turquoise">Change the background to Turquoise</div>
+        <div class="color-option" data-color="orange">Change the background to Orange</div>
+        <div class="color-option" data-color="brown">Change the background to Brown</div>
+        <div class="color-option" data-color="gold">Change the background to Gold</div>
+        <div class="color-option" data-color="fuchsia">Change the background to Fuchsia</div>
+        <div class="color-option" data-color="image">Change to Background Image</div>
+        <div class="color-option" data-color="default">Change back to Default Video</div> <!-- New option -->
+    </div>
+</div>
+
+    <input type="file" id="image-input" accept="image/*" style="display: none;">
+    <div id="video-background" style="display: block;"></div> <!-- Placeholder for your video background -->
 
 <style>
 
-/* Style for the background color select */
-.background-select {
-  width: 60px; /* Set width of the dropdown */
-  height: 40px; /* Set height of the dropdown */
-  margin: 30px; /* Margin to provide space around the dropdown */
-  font-size: 16px; /* Font size for the dropdown */
-  background-color: blue; /* Set background color to blue */
-  border: 2px solid black; /* Set border color to black with a width of 2px */
-  border-radius: 5px; /* Add border radius for rounded corners */
-  color: white; /* Set text color to white for better contrast */
+.menu-container {
+    position: relative; /* Position relative for the dropdown */
+    display: inline-block; /* Inline block for the container */
 }
 
-/* Optional: Add hover effect for better UX */
-.background-select:hover {
-  background-color: darkblue; /* Change background color on hover */
+.hamburger {
+    cursor: pointer; /* Pointer cursor for the hamburger icon */
+    width: 30px; /* Width of the hamburger icon */
+    height: 20px; /* Height of the hamburger icon */
+    display: flex;
+    flex-direction: column; /* Stack bars vertically */
+    justify-content: space-between; /* Space between bars */
+    margin: 30px; /* Margin around the hamburger */
+ 
 }
 
-#background-color {
-  position: relative; /* Position the select element relative to its parent */
-  z-index: 1000; /* Increase the z-index to a higher value */
-  display: block; /* Make the select element a block element */
+.bar {
+    height: 4px; /* Height of each bar */
+    background-color: red; /* Color of the bars */
+    transition: 0.3s; /* Transition for smooth effect */
+   border: 1px solid black;
 }
 
-.containercolors {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px; /* Set width of the dropdown */
-  height: 40px; /* Set height of the dropdown */
- margin-bottom: 1px; /* Move up a little bit */
+.color-menu {
+    display: none; /* Initially hidden */
+    position: absolute; /* Position absolutely */
+    background-color: beige; /* Background color for the menu */
+    border: 1px solid black; /* Border for the menu */
+    z-index: 1000; /* Ensure it appears above other elements */
+    margin-top: 5px; /* Space between hamburger and menu */
+    border-radius: 5px; /* Rounded corners */
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
 }
 
+.color-option {
+    padding: 10px; /* Padding for each color option */
+    cursor: pointer; /* Pointer cursor for options */
+    color: black; /* Text color */
+}
 
+.color-option:hover {
+    background-color: beige; /* Background change on hover */
+}
 
-  </style>
-
-
- <select id="background-color" class="background-select">
-  <option value="">Click to change background</option>
-  <option value="blue">Blue</option>
-  <option value="green">Green</option>
-  <option value="purple">Purple</option>
-  <option value="gray">Gray</option>
-  <option value="black">Black</option>
-  <option value="maroon">Maroon</option>
-  <option value="turquoise">Turquoise</option>
-  <option value="orange">Orange</option>
-  <option value="brown">Brown</option>
-  <option value="gold">Gold</option>
-  <option value="fuchsia">Fuchsia</option>
-  <option value="image">Choose Image</option>
-</select>
-
-
-<input type="file" id="image-input" accept="image/*" style="display: none;">
+</style>
 
 <script>
-const backgroundColorSelect = document.getElementById('background-color');
+const hamburgerIcon = document.getElementById('hamburger-icon');
+const colorMenu = document.getElementById('color-menu');
 const imageInput = document.getElementById('image-input');
+const video = document.getElementById('video-background');
+let currentBackground = 'video'; // Set default background to video
 
-backgroundColorSelect.addEventListener('change', (e) => {
-  const selectedColor = e.target.value;
+// Function to initialize the default background on page load
+function initializeDefaultBackground() {
+    resetToVideoBackground();
+}
 
-  if (selectedColor === 'image') {
-    // If "Choose Image" is selected, trigger the file input
-    imageInput.click();
-  } else if (selectedColor) {
-    // If a color is selected, set the background color and reset the background image
-    document.body.style.backgroundColor = selectedColor;
-    document.body.style.backgroundImage = 'none'; // Reset background image
-    document.getElementById('video-background').style.display = 'none';
-  } else {
-    // If no selection, reset to default background and show the video
-    document.body.style.backgroundColor = ''; // Reset to default
-    document.body.style.backgroundImage = 'none'; // Reset background image
-    document.getElementById('video-background').style.display = 'block'; // Show the video
-  }
+// Toggle the color menu visibility
+hamburgerIcon.addEventListener('click', () => {
+    colorMenu.style.display = colorMenu.style.display === 'block' ? 'none' : 'block';
 });
 
+// Handle background color changes
+colorMenu.addEventListener('click', (e) => {
+    const selectedColor = e.target.getAttribute('data-color');
+
+    if (selectedColor === 'image') {
+        // If "Choose Image" is selected, trigger the file input
+        imageInput.click();
+    } else if (selectedColor === 'default') {
+        // Reset to the default video background
+        resetToVideoBackground();
+    } else if (selectedColor) {
+        // Set the background color and hide the video
+        document.body.style.backgroundColor = selectedColor;
+        document.body.style.backgroundImage = 'none'; // Reset background image
+        video.style.display = 'none'; // Hide video background
+        currentBackground = selectedColor; // Update current background state
+    } else {
+        // If no selection, reset to default background and show the video
+        resetToVideoBackground();
+    }
+});
+
+// Handle image file selection
 imageInput.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  const reader = new FileReader();
+    const file = e.target.files[0];
+    const reader = new FileReader();
 
-  reader.onload = (event) => {
-    // Set the background image and its properties
-    document.body.style.backgroundImage = `url(${event.target.result})`;
-    document.body.style.backgroundSize = '100vw 100vh'; // Set background size to full width and height
-    document.body.style.backgroundPosition = 'center';
-    document.body.style.backgroundRepeat = 'no-repeat';
-    document.body.style.backgroundAttachment = 'fixed'; // Prevent scrolling issues
-    document.body.style.backgroundOrigin = 'content-box'; // Ensure the image covers the entire page
-    document.getElementById('video-background').style.display = 'none'; // Hide video background
-  };
+    reader.onload = (event) => {
+        // Set the background image and its properties
+        document.body.style.backgroundImage = `url(${event.target.result})`;
+        document.body.style.backgroundSize = '100vw 100vh'; // Set background size to full width and height
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed'; // Prevent scrolling issues
+        video.style.display = 'none'; // Hide video background
+        currentBackground = event.target.result; // Update current background state
+    };
 
-  reader.readAsDataURL(file); // Read the selected image file
+    if (file) {
+        reader.readAsDataURL(file); // Read the selected image file
+    }
 });
+
+// Reset to video background
+function resetToVideoBackground() {
+    document.body.style.backgroundColor = 'transparent'; // Reset background color
+    document.body.style.backgroundImage = 'none'; // Reset background image
+    video.style.display = 'block'; // Show video
+    currentBackground = 'video'; // Track video background as active
+}
+
+// Initialize the default background when the page loads
+document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 </script>
+
+
+
+
+
+
 
 
 
@@ -1274,9 +1353,6 @@ footer {
 
 
 
-  <div class="info-link-container">
-    <a href="about-this-clock.html" class="info-link">Click here for more info about this clock</a>
-  </div>
 
 
 
@@ -1325,30 +1401,39 @@ footer {
 
 
 <style>
-  
-       #next-page-button {
-          position: fixed; /* Fixed position */
-          bottom: 40px; /* Adjust this value to position it above the footer */
-          right: 20px; 
-          background-color: gold; /* Button color */
-          border: 3px solid black; /* Black border */
-          color: black; /* Text color */
-          padding: 3px 3px; /* Padding for the button */
-          font-size: 14px; /* Font size */
-          font-family: tahoma;
-          cursor: pointer; /* Pointer cursor on hover */
-          z-index: 1000; /* Ensure it is above other elements */
-          border-radius: 5px; /* Rounded corners */
-          text-decoration: none; /* Remove underline */
-        }
+    #next-page-button {
+        position: fixed; /* Fixed position */
+        bottom: 40px; /* Adjust this value to position it above the footer */
+        right: 20px; 
+        border: 3px solid beige; /* Black border */
+        color: black; /* Text color */
+        padding: 8px 8px; /* Padding for the button */
+        font-size: 14px; /* Font size */
+        font-family: Tahoma, sans-serif; /* Font family */
+        z-index: 1000; /* Ensure it is above other elements */
+        border-radius: 5px; /* Rounded corners */
+        text-decoration: none; /* Remove underline */
+        display: flex; /* Flexbox for alignment */
+        align-items: center; /* Center items vertically */
+    }
 
-        /* Optional: Add hover effect */
-        #next-page-button:hover {
-          background-color: #EDEADE; /* Darker gold on hover */
-        }
-    </style>
+ 
+    /* Arrow styling */
+    .arrow {
+        margin-left: 1px; /* Space between text and arrow */
+        display: inline-block; /* Ensure it's treated as a block */
+        width: 0; 
+        height: 0; 
+        border-top: 5px solid transparent; /* Top triangle */
+        border-bottom: 8px solid transparent; /* Bottom triangle */
+        border-left: 12px solid beige; /* Left triangle for right arrow */
+    }
+</style>
 
-<a id="next-page-button" href="about-this-clock.html">Next Page</a>
+<a id="next-page-button" href="about-this-clock.html">
+  <span class="arrow"></span> <!-- Arrow element -->
+    <span class="arrow"></span> <!-- Arrow element -->
+</a>
 
 
 
