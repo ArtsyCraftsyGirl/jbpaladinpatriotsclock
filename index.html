@@ -18,7 +18,7 @@
         width: 100%;
         height: 100vh;
         object-fit: cover;
-        z-index: -1; /* Send the video to the background */
+        z-index: -1; /* Send the video to the background *
         min-width: 100%;
         min-height: 100%;
    opacity: 0; /* Initially hidden */
@@ -76,7 +76,7 @@ body {
     color: #FFFFFF;
     text-transform: uppercase;
     font-size: 25px;
-     font-family: tahoma;
+    font-family: open sans;
     padding: 2px;
     text-align: center;
     margin: 0 auto;
@@ -87,12 +87,14 @@ body {
     margin-top: 0.5rem;
   }
 
-
+h3 {
+    font-family: open sans; /* Adding a fallback */
+}
 
 
 header {
   background-color: black; 
-  padding: 5px; /* Adjust padding to fit the new height */
+  padding: 4px; /* Adjust padding to fit the new height */
   text-align: center; /* Center the h3 element */
   box-sizing: border-box; /* Include padding in full width */
   height: 50px; /* Default height for smaller screens or mobiles */
@@ -212,19 +214,19 @@ changeFontSize(); // Call the function initially
         <div class="bar"></div>
     </div>
     <div class="color-menu" id="color-menu">
-        <div class="color-option" data-color="darkblue"> Switch background-color to Blue</div>
-        <div class="color-option" data-color="darkgreen">Switch background-color to Green</div>
-        <div class="color-option" data-color="purple">Switch background-color to Purple</div>
-        <div class="color-option" data-color="gray">Switch background-color to Gray</div>
-        <div class="color-option" data-color="black">Switch background-color to Black</div>
-        <div class="color-option" data-color="maroon">Switch background-color to Maroon</div>
-        <div class="color-option" data-color="turquoise">Switch background-color to Turquoise</div>
-        <div class="color-option" data-color="orange">Switch background-color to Orange</div>
-        <div class="color-option" data-color="brown">Switch background-color to Brown</div>
-        <div class="color-option" data-color="gold">Switch background-color to Gold</div>
-        <div class="color-option" data-color="fuchsia">Switch background-color to Fuchsia</div>
-        <div class="color-option" data-color="image">Switch to Background Image</div>
-        <div class="color-option" data-color="default">Back to Default Video Background</div> <!-- New option -->
+        <div class="color-option" data-color="darkblue" style="background-color: darkblue;"></div>
+        <div class="color-option" data-color="darkgreen" style="background-color: darkgreen;"></div>
+        <div class="color-option" data-color="purple" style="background-color: purple;"></div>
+        <div class="color-option" data-color="gray" style="background-color: gray;"></div>
+        <div class="color-option" data-color="black" style="background-color: black;"></div>
+        <div class="color-option" data-color="maroon" style="background-color: maroon;"></div>
+        <div class="color-option" data-color="turquoise" style="background-color: turquoise;"></div>
+        <div class="color-option" data-color="orange" style="background-color: orange;"></div>
+        <div class="color-option" data-color="brown" style="background-color: brown;"></div>
+        <div class="color-option" data-color="gold" style="background-color: gold;"></div>
+        <div class="color-option" data-color="fuchsia" style="background-color: fuchsia;"></div>
+        <div class="color-option" data-color="image" style="background-image: url('img-icon.jpg'); background-size: cover;"></div>
+        <div class="color-option" data-color="default" style="background-image: url('video-icon.jpg'); background-size: cover;"></div>
     </div>
 </div>
 
@@ -246,14 +248,13 @@ changeFontSize(); // Call the function initially
     flex-direction: column; /* Stack bars vertically */
     justify-content: space-between; /* Space between bars */
     margin: 30px; /* Margin around the hamburger */
- 
 }
 
 .bar {
     height: 4px; /* Height of each bar */
     background-color: red; /* Color of the bars */
     transition: 0.3s; /* Transition for smooth effect */
-   border: 1px solid black;
+    border: 1px solid black;
 }
 
 .color-menu {
@@ -266,17 +267,30 @@ changeFontSize(); // Call the function initially
     border-radius: 5px; /* Rounded corners */
     max-height: 200px; /* Set a maximum height */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    font-family: open sans;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex; /* Use flexbox to arrange options */
+    flex-wrap: wrap; /* Allow options to wrap to the next line */
+    padding: 5px; /* Add padding around the menu */
 }
 
 .color-option {
-    padding: 10px; /* Padding for each color option */
+    width: 30px; /* Fixed width for color icons */
+    height: 30px; /* Fixed height for color icons */
+    margin: 5px; /* Margin around each icon */
     cursor: pointer; /* Pointer cursor for options */
-    color: black; /* Text color */
+    border-radius: 3px; /* Slightly rounded corners for a softer look */
+    border: 1px solid black; /* Optional: border for better visibility */
+    display: inline-block; /* Ensure they display in a row */
+    background-size: cover; /* Ensure background images cover the div */
 }
 
 .color-option:hover {
-    background-color: beige; /* Background change on hover */
-}
+    opacity: 0.8; /* Slight opacity change on hover */
+    transform: scale(1.1); /* Slightly enlarge
+
+
 
 </style>
 
@@ -290,11 +304,19 @@ let currentBackground = 'video'; // Set default background to video
 // Function to initialize the default background on page load
 function initializeDefaultBackground() {
     resetToVideoBackground();
+    colorMenu.style.display = 'none'; // Ensure the color menu is hidden on page load
 }
 
 // Toggle the color menu visibility
 hamburgerIcon.addEventListener('click', () => {
     colorMenu.style.display = colorMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide color menu when clicking outside
+document.addEventListener('click', (event) => {
+    if (!hamburgerIcon.contains(event.target) && !colorMenu.contains(event.target)) {
+        colorMenu.style.display = 'none'; // Hide the color menu if clicked outside
+    }
 });
 
 // Handle background color changes
@@ -350,6 +372,8 @@ function resetToVideoBackground() {
 
 // Initialize the default background when the page loads
 document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
+
+
 </script>
 
 
@@ -408,7 +432,7 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 #dropdown option {
   font-size: 12px;
   font-weight: bold;
-  font-family: tahoma;
+  font-family: open sans;
   padding: 9px; /* Add padding for options */
 }
 /* Media query for small screens (e.g., smartphones) */
@@ -1315,8 +1339,7 @@ setInterval(drawClock7, 1000);
 
 <style>
 footer {
-  font-family: 'Orbitron-Medium';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
+ font-family: open sans;
   font-size: 12px;
   text-align: center;
   color: white;
