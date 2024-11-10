@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,8 +51,7 @@ body {
     color: #FFFFFF;
     text-transform: uppercase;
     font-size: 25px;
-    font-family: 'Orbitron';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
+    font-family: open sans;
     padding: 2px;
     text-align: center;
     margin: 0 auto;
@@ -61,6 +61,10 @@ body {
     white-space: nowrap;
     margin-top: 0.15rem;
   }
+
+h3 {
+    font-family: open sans; /* Adding a fallback */
+}
 
 
 
@@ -179,32 +183,31 @@ changeFontSize(); // Call the function initially
 </body>
 
 
-
 <div class="menu-container">
     <div class="hamburger" id="hamburger-icon">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
     </div>
-     <div class="color-menu" id="color-menu">
-        <div class="color-option" data-color="darkblue"> Switch background-color to Blue</div>
-        <div class="color-option" data-color="darkgreen">Switch background-color to Green</div>
-        <div class="color-option" data-color="purple">Switch background-color to Purple</div>
-        <div class="color-option" data-color="gray">Switch background-color to Gray</div>
-        <div class="color-option" data-color="black">Switch background-color to Black</div>
-        <div class="color-option" data-color="maroon">Switch background-color to Maroon</div>
-        <div class="color-option" data-color="turquoise">Switch background-color to Turquoise</div>
-        <div class="color-option" data-color="orange">Switch background-color to Orange</div>
-        <div class="color-option" data-color="brown">Switch background-color to Brown</div>
-        <div class="color-option" data-color="gold">Switch background-color to Gold</div>
-        <div class="color-option" data-color="fuchsia">Switch background-color to Fuchsia</div>
-        <div class="color-option" data-color="image">Switch to Background Image</div>
-        <div class="color-option" data-color="default">Back to Default Video Background</div> <!-- New option -->
+    <div class="color-menu" id="color-menu">
+        <div class="color-option" data-color="darkblue" style="background-color: darkblue;"></div>
+        <div class="color-option" data-color="darkgreen" style="background-color: darkgreen;"></div>
+        <div class="color-option" data-color="purple" style="background-color: purple;"></div>
+        <div class="color-option" data-color="gray" style="background-color: gray;"></div>
+        <div class="color-option" data-color="black" style="background-color: black;"></div>
+        <div class="color-option" data-color="maroon" style="background-color: maroon;"></div>
+        <div class="color-option" data-color="turquoise" style="background-color: turquoise;"></div>
+        <div class="color-option" data-color="orange" style="background-color: orange;"></div>
+        <div class="color-option" data-color="brown" style="background-color: brown;"></div>
+        <div class="color-option" data-color="gold" style="background-color: gold;"></div>
+        <div class="color-option" data-color="fuchsia" style="background-color: fuchsia;"></div>
+        <div class="color-option" data-color="white" style="background-color: white;"></div>
+        <div class="color-option" data-color="#dee113" style="background-color: #dee113;"></div>
+     <div class="color-option" data-color="#1390e1" style="background-color: #1390e1;"></div>
+        <div class="color-option" data-color="image" style="background-image: url('img-icon.jpg'); background-size: cover;"></div>
+        <div class="color-option" data-color="default" style="background-image: url('video-icon.jpg'); background-size: cover;"></div>
     </div>
 </div>
-
-
-
 
     <input type="file" id="image-input" accept="image/*" style="display: none;">
     <div id="video-background" style="display: block;"></div> <!-- Placeholder for your video background -->
@@ -224,14 +227,13 @@ changeFontSize(); // Call the function initially
     flex-direction: column; /* Stack bars vertically */
     justify-content: space-between; /* Space between bars */
     margin: 30px; /* Margin around the hamburger */
- 
 }
 
 .bar {
     height: 4px; /* Height of each bar */
     background-color: red; /* Color of the bars */
     transition: 0.3s; /* Transition for smooth effect */
-   border: 1px solid black;
+    border: 1px solid black;
 }
 
 .color-menu {
@@ -244,61 +246,34 @@ changeFontSize(); // Call the function initially
     border-radius: 5px; /* Rounded corners */
     max-height: 200px; /* Set a maximum height */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    font-family: 'Open Sans', sans-serif; /* Ensure proper font family syntax */
+    font-size: 12px;
+    font-weight: bold;
+    display: flex; /* Use flexbox to arrange options */
+    flex-wrap: wrap; /* Allow options to wrap to the next line */
+    padding: 5px; /* Add padding around the menu */
+    width: 260px; /* Adjust width to fit 8 icons per line */
 }
 
+/* Ensure color options are displayed in two lines */
 .color-option {
-    padding: 10px; /* Padding for each color option */
+    width: 30px; /* Fixed width for color icons */
+    height: 30px; /* Fixed height for color icons */
+    margin: 5px; /* Margin around each icon */
     cursor: pointer; /* Pointer cursor for options */
-    color: black; /* Text color */
+    border-radius: 3px; /* Slightly rounded corners for a softer look */
+    border: 1px solid black; /* Optional: border for better visibility */
+    display: inline-block; /* Ensure they display in a row */
+    background-size: cover; /* Ensure background images cover the div */
 }
 
 .color-option:hover {
-    background-color: beige; /* Background change on hover */
-}
-
-
-#next-page-button {
-    position: absolute; 
-    margin-top: 130px;
-    right: 20px;
-    border: 3px solid beige; /* Border color */
-    padding: 8px 8px; /* Padding for the button */
-    z-index: 1000; /* Ensure it is above other elements */
-    border-radius: 5px; /* Rounded corners */
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Center items vertically */
-}
-
-/* Media query for smaller screens */
-@media (max-width: 767px) {
-    #next-page-button {
-  margin-top: 100px;
-
-}
-
-}
-
-
-/* Arrow styling */
-.arrow {
-    margin-left: 1px; /* Space between text and arrow */
-    display: inline-block; /* Ensure it's treated as a block */
-    width: 0; 
-    height: 0; 
-    border-top: 6px solid transparent; /* Top triangle */
-    border-bottom: 8px solid transparent; /* Bottom triangle */
-    border-right: 12px solid beige; /* Right triangle for left arrow */
-}
+    opacity: 0.8; /* Slight opacity change on hover */
+    transform: scale(1.1); /* Slightly enlarge
 
 
 
 </style>
-
-<a id="next-page-button" href="index.html">
-  <span class="arrow"></span> <!-- Arrow element -->
-    <span class="arrow"></span> <!-- Arrow element -->
-</a>
-
 
 <script>
 const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -310,11 +285,19 @@ let currentBackground = 'video'; // Set default background to video
 // Function to initialize the default background on page load
 function initializeDefaultBackground() {
     resetToVideoBackground();
+    colorMenu.style.display = 'none'; // Ensure the color menu is hidden on page load
 }
 
 // Toggle the color menu visibility
 hamburgerIcon.addEventListener('click', () => {
     colorMenu.style.display = colorMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide color menu when clicking outside
+document.addEventListener('click', (event) => {
+    if (!hamburgerIcon.contains(event.target) && !colorMenu.contains(event.target)) {
+        colorMenu.style.display = 'none'; // Hide the color menu if clicked outside
+    }
 });
 
 // Handle background color changes
@@ -370,6 +353,8 @@ function resetToVideoBackground() {
 
 // Initialize the default background when the page loads
 document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
+
+
 </script>
 
 
@@ -377,6 +362,52 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 
 
 
+
+
+
+
+<style>
+#next-page-button {
+    position: absolute; 
+    margin-top: 130px;
+    right: 20px;
+    border: 3px solid beige; /* Border color */
+    padding: 8px 8px; /* Padding for the button */
+    z-index: 1000; /* Ensure it is above other elements */
+    border-radius: 5px; /* Rounded corners */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+    #next-page-button {
+  margin-top: 80px;
+
+}
+
+}
+
+
+/* Arrow styling */
+.arrow {
+    margin-left: 1px; /* Space between text and arrow */
+    display: inline-block; /* Ensure it's treated as a block */
+    width: 0; 
+    height: 0; 
+    border-top: 6px solid transparent; /* Top triangle */
+    border-bottom: 8px solid transparent; /* Bottom triangle */
+    border-right: 12px solid beige; /* Right triangle for left arrow */
+}
+
+</style>
+
+
+
+<a id="next-page-button" href="index.html">
+  <span class="arrow"></span> <!-- Arrow element -->
+    <span class="arrow"></span> <!-- Arrow element -->
+</a>
 
 
 
@@ -474,7 +505,7 @@ body {
 
 .patriot-clock-description {
   text-align: center;
-  font-family: Lucida Grande;
+  font-family: open sans;
   font-size: 14px;
   font-weight: bold;
   color: white;
@@ -482,6 +513,13 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px; /* Keep bottom margin as 30px */
+
+ text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; /* Black stroke effect */
+
 }
 .patriot-clock-description p {
   margin-bottom: 8px;
@@ -490,11 +528,16 @@ body {
 
 .description {
   text-align: center;
-  font-family: Lucida Grande;
+  font-family: open sans;
   font-size: 14px;
   font-weight: bold;
   color: white;
   margin: -45px auto; /* Use a positive margin to create space */
+ text-shadow: 
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; /* Black stroke effect */
 }
 
 .description p {
@@ -506,8 +549,7 @@ body {
 
 .about-the-clock {
             text-align: center;
-            font-family: 'Orbitron';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
+            font-family: open sans;
             font-size: 25px;
  text-shadow: 
       -1px -1px 0 #000,  
@@ -558,10 +600,7 @@ p {
 
         .how-the-clock-works {
             text-align: center;
-           font-family: 'Orbitron';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
-           }
-
+         font-family: open sans;
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
   .how-the-clock-works {
@@ -603,8 +642,7 @@ p {
 
         .about-the-clock {
             text-align: center;
-         font-family: 'Orbitron';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
+         font-family: open sans;
             font-size: 25px;
                }
 
@@ -658,7 +696,7 @@ p {
 
 .patriot-clock-description {
   text-align: center;
-  font-family: Lucida Grande;
+  font-family: open sans;
   font-size: 14px;
   font-weight: bold;
 
@@ -676,9 +714,7 @@ p {
 
  .how-the-clock-works {
             text-align: center;
-              font-family: 'Orbitron';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
-           }
+             font-family: open sans;
 
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
@@ -761,8 +797,7 @@ The creative genius behind this remarkable clock is none other than Mr. Jeff Bir
 
         .how-the-clock-works {
             text-align: center;
-                font-family: 'Orbitron';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
+              font-family: open sans;
  text-shadow: 
       -1px -1px 0 #000,  
       1px -1px 0 #000,
@@ -866,7 +901,7 @@ html, body {
     font-size: 15px;
     font-weight: bold;
     color: gold; /* Set font color to gold */
-    font-family: Lucida Grande;
+    font-family: open sans;
     text-shadow: 
       -1px -1px 0 #000,  
       1px -1px 0 #000,
@@ -891,7 +926,7 @@ html, body {
     font-size: 11px;
     font-weight: bold;
     color: gold; /* Set font color to gold */
-    font-family: Lucida Grande;
+    font-family: open sans;
     text-shadow: 
       -1px -1px 0 #000,  
       1px -1px 0 #000,
@@ -943,7 +978,7 @@ table {
   }
   th, td {
     font-size: 11px;
-    font-family: Lucida Grande;
+    font-family: open sans;
     font-weight: bolder; /* increased font weight to bolder */
     border: 4px inset gold; /* added border to each cell */
     text-align: center; 
@@ -960,7 +995,7 @@ table {
   }
   th, td {
     font-size: 6px;
-    font-family: Lucida Grande;
+    font-family: open sans;
     font-weight: bolder; /* increased font weight to bolder */
     border: 3px inset gold; /* added border to each cell */
     text-align: center; 
@@ -1157,8 +1192,7 @@ td {
 
 
 footer {
-       font-family: 'Orbitron';
-     src: url('Orbitron-Medium.ttf') format('ttf'),
+  font-family: open sans;
   font-size: 12px;
   text-align: center;
   color: white;
