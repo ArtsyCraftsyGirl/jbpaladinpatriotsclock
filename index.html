@@ -1,20 +1,60 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=3.0">
   <!-- This analog clock program was created by Ehllen Quezada a.k.a ELLIE... made with ❤ -->
-
-
 <style>
 
  body {
            overflow-x: hidden; /* prevent horizontal scrolling */
     }
+
+#video-background {
+      transition: opacity 0.5s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1; /* Send the video to the background *
+        min-width: 100%;
+        min-height: 100%;
+   opacity: 0; /* Initially hidden */
+        display: none; /* Initially hidden */
+          }
 </style>
 
+<video autoplay muted loop id="video-background">
+    <source src="BackgroundVideo.mp4" type="video/mp4">
+</video>
+
+<script>
+
+  // Ensure the video is properly loaded and ready
+    document.addEventListener("DOMContentLoaded", function () {
+        // Add event listener for when the video is ready to play
+        video.addEventListener('canplaythrough', function () {
+            if (currentBackground === 'video') {
+                video.style.display = 'block'; // Show the video
+                video.style.opacity = 1; // Fade in the video
+            }
+        });
+
+
+  // Add event listener for error handling
+        video.addEventListener('error', function () {
+            console.error("Error loading video.");
+            // If the video fails to load, default to a white background
+            document.body.style.backgroundColor = "white";
+        });
+
+        // Start loading the video
+        video.load();
+    });
+
+</script>
 
 
 
@@ -26,23 +66,8 @@ body {
   justify-content: space-between; /* Space between header, content, and footer */
 }
 
+</style>
 
-  #video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1; /* Send the video to the background */
-  min-width: 100%;
-  min-height: 100%;
-}
-    </style>
-
-    <video autoplay muted loop id="video-background">
-  <source src="BackgroundVideo.mp4" type="video/mp4">
-    </video>
 
 
 <style>
@@ -59,7 +84,7 @@ body {
     max-width: 100%;
     width: 100%;
     white-space: nowrap;
-    margin-top: 0.15rem;
+    margin-top: 0.5rem;
   }
 
 h3 {
@@ -67,12 +92,9 @@ h3 {
 }
 
 
-
-
-
 header {
   background-color: black; 
-  padding: 5px; /* Adjust padding to fit the new height */
+  padding: 4px; /* Adjust padding to fit the new height */
   text-align: center; /* Center the h3 element */
   box-sizing: border-box; /* Include padding in full width */
   height: 50px; /* Default height for smaller screens or mobiles */
@@ -102,7 +124,6 @@ header {
     height: 3.40rem; /* Decrease height for smaller screens or mobiles */
   }
 }
-
 
 
 
@@ -136,6 +157,7 @@ h3 span {
     text-shadow: 0 0 9px #00BFFF, 0 0 20px lightgreen, 0 0 35px #00BFFF;
   }
 }
+
 
 
 /* Media query for large to medium screens */
@@ -176,11 +198,13 @@ changeFontSize(); // Call the function initially
 </script>
 
 
+
 <body>
  <header>
   <h3><span>JB PALADIN PATRIOTS CLOCK</span></h3>
  </header>
 </body>
+
 
 
 <div class="menu-container">
@@ -366,816 +390,269 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 
 
 
-<style>
-#next-page-button {
-    position: absolute; 
-    margin-top: 130px;
-    right: 20px;
-    border: 3px solid beige; /* Border color */
-    padding: 8px 8px; /* Padding for the button */
-    z-index: 1000; /* Ensure it is above other elements */
-    border-radius: 5px; /* Rounded corners */
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Center items vertically */
-}
-
-/* Media query for smaller screens */
-@media (max-width: 767px) {
-    #next-page-button {
-  margin-top: 80px;
-
-}
-
-}
-
-
-/* Arrow styling */
-.arrow {
-    margin-left: 1px; /* Space between text and arrow */
-    display: inline-block; /* Ensure it's treated as a block */
-    width: 0; 
-    height: 0; 
-    border-top: 6px solid transparent; /* Top triangle */
-    border-bottom: 8px solid transparent; /* Bottom triangle */
-    border-right: 12px solid beige; /* Right triangle for left arrow */
-}
-
-</style>
-
-
-
-<a id="next-page-button" href="index.html">
-  <span class="arrow"></span> <!-- Arrow element -->
-    <span class="arrow"></span> <!-- Arrow element -->
-</a>
 
 
 
 
 
 
-
-
-<style>
-.logo {
-  display: block; /* Make the logo a block element */
-  margin: 0 auto; /* Center the logo horizontally */
-  position: relative; /* Set position to relative */
-  transform: scale(1.5); /* Zoom in the logo by 50% */
- }
-
-/* Media query for smaller to medium screens */
-@media (max-width: 360px) {
-  .logo {
-    margin-top: -20px; /* Move the logo up by 20 pixels */
-    margin-bottom: 30px;
-  }
-}
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  .logo {
-    width: 125px; 
-    height: 80px; 
-    transform: scale(2); /* Zoom in the logo by 100% on larger screens */
-    margin-top: -20px; /* Move the logo up by 60 pixels */
-    margin-bottom: 10px; /* Add a 10px margin at the bottom */
-  }
-}
-
-/* Media query for smaller screens */
-@media (max-width: 767px) {
-  .logo {
-    width: 120px; 
-    height: 80px;
-    transform: scale(1.2); /* Zoom in the logo by 20% on smaller screens */
-    margin-top: -50px; /* Move the logo up by 30 pixels */
-    margin-bottom: 20px; /* Add a 10px margin at the bottom */
-  }
-}
-
-</style>
-
-<div id="logo-section">
-<img src="logo.jpg" alt="Description" class="logo" style="top: 70px;">
+<div id="dropdown-container" style="text-align: center;">
+  <select id="dropdown" class="canvas-select" style="font-size: 12px; font-weight: bold; font-family: arial;">
+    <option value="">Select an option</option>
+    <option value="4-stripes-normal"> Display clock with 4 stripes design &#9672; <br> Sweeping movement</option>
+    <option value="4-stripes-normal-swiss"> Display clock with 4 stripes design &#9672;<br>Swiss move.. & color changes</option>
+    <option value="5-stripes-normal">Display clock with 5 stripes design &#9672;<br> Sweeping movement </option>
+    <option value="5-stripes-normal-swiss">Display clock with 5 stripes design &#9672;<br> Swiss move.. & color changes </option>
+  </select>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
 <style>
-  /* Add this to make the footer stick to the bottom */
+/* Your existing CSS styles here */
 
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0; /* Add this to remove default margin */
-}
-
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  footer {
-    font-size: 18px;
-    height: 50%;
-  }
-}
-
-/* Media query for smaller screens/mobile */
-@media (max-width: 767px) {
-  footer {
-    font-size: 12px;
-    height: 20%;
-  }
-}
-
-</style>
-  
-  <style>
-
-.patriot-clock-description {
-  text-align: center;
+.canvas-select {
   font-family: open sans;
-  font-size: 14px;
+  width: 145px; /* Set width for the canvas options dropdown */
+  height: 50px; /* Set height of the dropdown */
+ transform: translateY(-45px); /* Adjust this value to control how much to move up */
+  font-size: 12px; /* Font size for the dropdown */
+}
+
+#dropdown {
+    font-family: open sans;
+    padding: 1px;
+    background-color: Beige;
+    color: black;
+    border: 4px solid black; /* Change border style */
+    border-radius: 5px; /* Rounded corners for a softer look */
+    position: relative; /* Ensure dropdown is positioned correctly */
+    z-index: 20; /* Ensure it is above other elements */
+}
+
+
+
+#dropdown:hover {
+  background-color: beige; /* Change background on hover */
+  color: black; /* Change text color on hover */
+  }
+
+#dropdown option {
+  font-size: 12px;
   font-weight: bold;
-  color: white;
-  margin-top: -30px; /* Set top margin to 15px */
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px; /* Keep bottom margin as 30px */
-
- text-shadow: 
-      -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000; /* Black stroke effect */
-
-}
-.patriot-clock-description p {
-  margin-bottom: 8px;
-  text-align: justify;
-}
-
-.description {
-  text-align: center;
   font-family: open sans;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-  margin: -45px auto; /* Use a positive margin to create space */
- text-shadow: 
-      -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000; /* Black stroke effect */
+  padding: 9px; /* Add padding for options */
 }
-
-.description p {
-  margin-bottom: 14px;
-  text-align: justify;
-}
-
-
-
-.about-the-clock {
-            text-align: center;
-            font-family: open sans;
-            font-size: 25px;
- text-shadow: 
-      -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000; /* Black stroke effect */
-
-               }
-
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-   .about-the-clock {
-    font-size: 32px;
-     margin-top: 65px; /* Adjust this value to move the text up */
-
-     }
-}
-
-/* Media query for smaller screens/mobiles */
-@media (max-width: 767px) {
-   .about-the-clock {
-    font-size: 25px;
-    margin-top: 65px; /* Adjust this value to move the text up */
-
-     }
-}
-
-        .red { color: red; }
-        .white { color: #FFF9F8; }
-        .blue { color: #1BEAFF; }
-
-p {
-  text-align: center;
-  padding: 0 20px; /* add padding instead of margin */
-  margin-bottom: 70px;
-  z-index: 10;
-}
-
-
-
-
-
-
-</style>
-
-<style>
-
-        .how-the-clock-works {
-            text-align: center;
-         font-family: open sans;
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  .how-the-clock-works {
-    font-size: 32px;
-    margin-top: -32rem; /* No change needed, already set to -32rem */
-    white-space: nowrap;
+/* Media query for small screens (e.g., smartphones) */
+@media only screen and (max-width: 375px) {
+  #dropdown {
+    padding: 1px;
+    font-size: 2px;
+    width: 150px; /* Adjust the width to 150px */
+  }
+  #dropdown option {
+    font-size: 2px;
   }
 }
 
-/* Media query for smaller screens/mobiles */
-@media (max-width: 767px) {
-  .how-the-clock-works {
-    font-size: 21px;
-    margin-top: -35rem; /* Adjusted margin-top for smaller screens/mobiles */
-    white-space: nowrap;
+/* Media query for small screens (e.g., smartphones) */
+@media only screen and (max-width: 390px) {
+  #dropdown {
+    padding: 1px;
+    font-size: 2px;
+    width: 150px; /* Adjust the width to 150px */
+  }
+  #dropdown option {
+    font-size: 2px;
   }
 }
 
-
-        .red { color: red; }
-        .white { color: #FFF9F8; }
-        .blue { color: #1BEAFF; }
-
-
-
-    </style>
-</head>
-
-
-
-
-
-
-
-
-
-
-<style>
-
-        .about-the-clock {
-            text-align: center;
-         font-family: open sans;
-            font-size: 25px;
-               }
-
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-   .about-the-clock {
-    font-size: 32px;
-     margin-top: 130px; /* Adjust this value to move the text up */
-
-     }
-}
-
-/* Media query for smaller screens/mobiles */
-@media (max-width: 767px) {
-   .about-the-clock {
-    font-size: 25px;
-    margin-top: 70px; /* Adjust this value to move the text up */
-
-     }
-}
-
-        .red { color: red; }
-        .white { color: #FFF9F8; }
-        .blue { color: #1BEAFF; }
-
-p {
-  text-align: center;
-  padding: 0 20px; /* add padding instead of margin */
-  margin-bottom: 70px;
-  z-index: 10;
-}
-
-
-
-    </style>
-</head>
-<body>
-
-<!-- About the clock section -->
-<div id="about-the-clock-section">
-<p class="about-the-clock">
-    <span class="red">ABOUT</span>
-    <span class="white">THE</span>
-    <span class="blue">CLOCK</span>
-</p>
-</div>
-
-
-<style>
-
-.patriot-clock-description {
-  text-align: center;
-  font-family: open sans;
-  font-size: 14px;
-  font-weight: bold;
-
-  color: white;
-  margin-top: -55px; /* Set top margin to 15px */
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px; /* Keep bottom margin as 30px */
-}
-.patriot-clock-description p {
-  margin-bottom: 8px;
-  text-align: justify;
-}
-
-
- .how-the-clock-works {
-            text-align: center;
-             font-family: open sans;
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  .how-the-clock-works {
-    font-size: 32px;
-    margin-top: -32rem; /* No change needed, already set to -32rem */
-    white-space: nowrap;
+/* Media query for small screens (e.g., smartphones) */
+@media only screen and (max-width: 414px) {
+  #dropdown {
+    padding: 1px;
+    font-size: 2px;
+    width: 150px; /* Adjust the width to 150px */
+  }
+  #dropdown option {
+    font-size: 2px;
   }
 }
 
-/* Media query for smaller screens/mobiles */
-@media (max-width: 767px) {
-  .how-the-clock-works {
-    font-size: 21px;
-    margin-top: -35rem; /* Adjusted margin-top for smaller screens/mobiles */
-    white-space: nowrap;
-  }
-}
-
-
-        .red { color: red; }
-        .white { color: #FFF9F8; }
-        .blue { color: #1BEAFF; }
-
-
-
-
-</style>
-
-
-<div class="patriot-clock-description">
-
-
-<p> The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telling time. Our clock’s innovative design will amaze the world in the exciting way that people will perceive and tell time. This is not just a typical or traditional clock; our groundbreaking clock uses colorful lights to indicate the time instead of the traditional hands or digital numbers found on ordinary clocks. This makes our clock extraordinary, ensuring it stands out as unique and special among the myriad of clocks in the world today. <br> </p>
-
-<p>
-The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring love for America, celebrating the courageous men and women who have selflessly dedicated themselves to serving our nation, both past and present. At "JB Paladin," we take immense pride in designing clocks that reflect not just the passage of time but also capture the spirit of patriotism that binds us as a nation in a way that no other clock can. The name "Patriots Clock" embodies our commitment to honoring the values and freedoms that define our great country, the United States of America. By integrating our brand name, "JB Paladin," we add a personal touch that emphasizes our identity and dedication to craftsmanship.<br></p>
-
-<p>
-In celebration of the Semiquincentennial (250<sup>th</sup>) birthday of the United States of America on July 4, 2026, we proudly introduce the "JB PALADIN PATRIOTS CLOCK." This stunning clock draws inspiration from the bold colors and iconic design of the American flag, capturing the spirit of America's Declaration of Independence in 1776. In addition to the 12 stars located at the hour positions, a radiant gold-colored 13<sup>th</sup> star at the very center of the clock symbolizes the original 13 colonies of the United States of America and honors the brave individuals who have paid the ultimate price for defending our country. The star that denotes the correct hour of time is dark blue, which stands for those who are currently serving on active duty, while the light blue five-minute star pays tribute to all who have served in the past. We chose a color inspired by the iconic Statue of Liberty for the clock's face, adding a meaningful touch that reinforces our connection to freedom and hope.
-<br></p>
-
-
-<p>
-The creative genius behind this remarkable clock is none other than Mr. Jeff Birge, whose vision shines through in every intricate detail. After years of anticipation, we are thrilled to see his dream come to life, with the help of his programmer, Ehllen Quezada, who collaborated with Jeff on this project. Ehllen’s skill in programming languages such as HTML5, CSS, and JavaScript brought this clock to fruition. Additionally, Ehllen’s extensive knowledge in Information Technology played a crucial role in transforming Jeff’s ideas and concepts into a vibrant, fully functional app, which will now be available for all electronic devices.
-
-<p>There is no doubt that the "JB PALADIN PATRIOTS CLOCK" is bound to inspire admiration with its exclusive design and unique functions. The moment has finally arrived; we know every American will love this magnificent clock as it pays homage to the greatest country that the world has ever seen: the United States of America!
-<br></p>
-
-
-
- </div>
-
-
-
-
-
-
-
-<style>
-
-/* Add this to your existing stylesheet */
-
-
-
-#logo-section {
-  margin-top: 0px;
-}
-
-
-
-
-</style>
-
-
-</div>
-
-
-<style>
-
-        .how-the-clock-works {
-            text-align: center;
-              font-family: open sans;
- text-shadow: 
-      -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000; /* Black stroke effect */
-
-           }
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  .how-the-clock-works {
-    font-size: 32px;
-    margin-top: 1rem; /* No change needed, already set to -32rem */
-    white-space: nowrap;
-  }
-}
-
-/* Media query for smaller screens/mobiles */
-@media (max-width: 767px) {
-  .how-the-clock-works {
-    font-size: 21px;
-    margin-top: 1rem; /* Adjusted margin-top for smaller screens/mobiles */
-    white-space: nowrap;
-  }
-}
-
-
-        .red { color: red; }
-        .white { color: #FFF9F8; }
-        .blue { color: #1BEAFF; }
-
-
-
-    </style>
-</head>
-
-
-
-
-<body>
-
-<p class="how-the-clock-works">
-    <span class="red">HOW THE</span>
-    <span class="white">CLOCK</span>
-    <span class="blue">WORKS</span>
-</p>
-
-
-
-<body>
-
-
-<div class="description">
-<p>Our clock features a unique hour marker system with 12 white stars in place of traditional numbers. Each white star represents an hour and lights up in dark blue to show the current hour. At 3:00, for instance, the 3<sup>rd</sup> star illuminates in dark blue, and the 12<sup>th</sup> star changes to light blue. To represent minutes, we’ve included the red stripes of the American flag between the hour stars, with each stripe marking one minute of time. So, at 3:01, the 3<sup>rd</sup> star remains dark blue, the 12<sup>th</sup> star continues to be light blue, and one red stripe lights up next to it. By 3:05, the 3<sup>rd</sup> star continues to stay dark blue, the appropriate number of red stripes are lit up, and the 1<sup>st</sup> star lights up in light blue, indicating five minutes past the hour. Next to the hour stars, the red stripes will continue to light up until all are lit at 59 minutes past the hour; then, at the strike of a new hour, all red stripes will disappear, and the cycle repeats again.<br><p>
-
-<p>In the center of the clock, we feature a beautiful ring-shaped circle representative of the original circle of stars on the very first American flag. This circle serves as the seconds counter and it gradually fills with a blue-colored light. We chose the color blue as that was the background color of the circle of 13 stars, just as it is still for the current 50 stars. A choice can be made between a smooth sweeping motion or a Swiss movement for the seconds indicator, and as it completes a 60-second cycle, it then resets itself and repeats the action for the next 60 seconds.</p>
-</div>
-
-
-
-
-
-<style>
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-}
-
-div {
-  margin: 0;
-  padding: 0;
-  }
-
-
-
-
-html, body {
-  height: 100%;
-}
-
-
-</style>
-
-
-<style>
-.credits {
-  text-align: center;
-  margin-top: 30px; /* Add a 10px margin top to move the text down */
-}
-
-/* Media query for larger and medium screens */
-@media only screen and (min-width: 480px) {
-  .credits {
-    font-size: 15px;
-    text-align: left;
-  }
-  .credits p {
-    font-size: 15px;
-    font-weight: bold;
-    color: gold; /* Set font color to gold */
-    font-family: open sans;
-    text-shadow: 
-      -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000; /* Black stroke effect */
-  }
-  .credits p:first-child {
-    float: left; /* Position "Designed by" on the left */
-  }
-  .credits p:last-child {
-    float: right; /* Position "Developer" on the right */
-  }
-}
-
-/* Media query for smaller screens or mobiles */
-@media only screen and (max-width: 479px) {
-  .credits {
-    font-size: 11px; /* Adjust font size for smaller screens */
-    text-align: left;
-  }
-  .credits p {
-    font-size: 11px;
-    font-weight: bold;
-    color: gold; /* Set font color to gold */
-    font-family: open sans;
-    text-shadow: 
-      -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000; /* Black stroke effect */
-  }
-  .credits p:first-child {
-    float: left; /* Remove float for smaller screens */
-  }
-  .credits p:last-child {
-    float: right; /* Remove float for smaller screens */
-  }
-}
-</style>
-
-<div class="credits">
-  <p> Designed by: Jeff Birge</p>
-  <p> Developer: Ehllen Quezada</p>
-</div>
-
-
-
-<style>
-
-
-
-table {
-  background-color: gray;
-  background-image: url("wall.jpg");
-  background-size: cover;
-  border-collapse: collapse;
-  position: relative; 
-  top: -1rem; 
-  margin: 1rem auto; /* Adjust margin */
-  padding: 3px;
-  width: 80%; /* Optional: to ensure it doesn't take the full width */
-}
-
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  table {
-    top: -1rem; 
-    width: 80px;
-    height: 60px;
-    padding: 8px;
-    font-style: bold;
-    border: 6px solid orange;
-  }
-  th, td {
-    font-size: 11px;
-    font-family: open sans;
-    font-weight: bolder; /* increased font weight to bolder */
-    border: 4px inset gold; /* added border to each cell */
-    text-align: center; 
-  }
-}
-
-/* Media query for smaller screens/mobile */
-@media (max-width: 767px) {
-  table {
-    top: -1rem; 
-    width: 60%;
-    height: auto;
-    border: 4px solid orange;
-  }
-  th, td {
+/* Media query for small screens (e.g., smartphones) */
+@media only screen and (max-width: 420px) {
+  #dropdown {
+    padding: 5px;
     font-size: 6px;
-    font-family: open sans;
-    font-weight: bolder; /* increased font weight to bolder */
-    border: 3px inset gold; /* added border to each cell */
-    text-align: center; 
+  }
+  #dropdown option {
+    font-size: 4px;
+    width: 50px; /* Adjust the width to 150px */
 
+  }
+}
+
+/* Media query for medium screens (e.g., tablets) */
+@media only screen and (max-width: 768px) {
+  #dropdown {
+    padding: 7px;
+    font-size: 8px;
+  }
+  #dropdown option {
+    font-size: 8px;
+    width: 110px; /* Adjust the width to 150px */
+
+  }
+}
+
+/* Media query for large screens (e.g., desktops) */
+@media only screen and (max-width: 1200px) {
+  #dropdown {
+    padding: 10px;
+    font-size: 12px;
+  }
+  #dropdown option {
+    font-size: 12px;
+    width: 150px; /* Adjust the width to 150px */
+
+  }
+}
+</style>
+
+<canvas id="canvas" class="canvas" style="display: none;"></canvas>
+<canvas id="canvas5" class="canvas" style="display: none;"></canvas>
+<canvas id="canvas6" class="canvas" style="display: none;"></canvas>
+<canvas id="canvas7" class="canvas" style="display: none;"></canvas>
+
+
+
+<script>
+const dropdown = document.getElementById('dropdown');
+
+dropdown.addEventListener('change', () => {
+  hideAllCanvases();
+  switch (dropdown.value) {
+    case '4-stripes-normal':
+      document.getElementById('canvas').style.display = 'block';
+      break;
+    case '4-stripes-normal-swiss':
+      document.getElementById('canvas6').style.display = 'block';
+      break;
+    case '5-stripes-normal':
+      document.getElementById('canvas5').style.display = 'block';
+      break;
+    case '5-stripes-normal-swiss':
+      document.getElementById('canvas7').style.display = 'block';
+      break;
+      }
+});
+
+function hideAllCanvases() {
+  const canvases = document.getElementsByClassName('canvas');
+  for (let i = 0; i < canvases.length; i++) {
+    canvases[i].style.display = 'none';
+  }
+}
+</script>
+
+
+
+
+
+
+
+<div style="text-align:center;">
+  <canvas id="canvas"></canvas>
+</div>
+
+<style>
+
+/* Media query for small screens (e.g., older Android phones or iOS devices) */
+@media only screen and (max-width: 360px) {
+  #canvas {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
   }
 }
 
 
 
-th {
-  padding: 5px; /* adjust header padding for mobile view */
-}
 
-
-th {
-  background-color: black;
-  color: gold;
-}
-
-td {
-  background-color: none;
-  color: black;
-}
-
-.star {
-  font-size: 30px;
-  color: #333;
-  vertical-align: middle;
-}
-
-.dark-blue {
-  color: darkblue;
-  vertical-align: middle;
-}
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  .dark-blue {
-    font-size: 35px;
+/* Media query for small screens (e.g., older Android phones or iOS devices) */
+@media only screen and (max-width: 360px) {
+  #canvas5 {
+    width: 320px;
+    height: 320px;
   }
 }
 
-/* Media query for smaller screens */
-@media (max-width: 767px) {
-  .dark-blue {
-    font-size: 30px;
-  }
-}
-
-.light-blue {
-  font-size: 30px;
-  color: #87CEEB;
-  vertical-align: middle;
-}
-
-/* Media query for larger to medium screens */
-@media (min-width: 768px) {
-  .light-blue {
-    font-size: 35px;
-  }
-}
-
-/* Media query for smaller screens */
-@media (max-width: 767px) {
-  .light-blue {
-    font-size: 30px;
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas5 {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
   }
 }
 
 
-.circle {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: blue;
-  border: 1px solid #ccc;
-  display: inline-block;
-  margin: 10px;
-  position: relative;
+/* Media query for small screens (e.g., older Android phones or iOS devices) */
+@media only screen and (max-width: 360px) {
+  #canvas6 {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas6 {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
+  }
 }
 
 
-
-.inner-circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #f5fffa;
-  border: 2px solid #ccc;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Media query for small screens (e.g., older Android phones or iOS devices) */
+@media only screen and (max-width: 360px) {
+  #canvas7 {
+    width: 320px;
+    height: 320px;
+  }
 }
-
-.inner-star {
-  font-size: 14px;
-  color: #C9AE21;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.horizontal-line {
-  width: 30px;
-  height: 5px;
-  background-color: red;
-  margin: 10px auto;
-}
-
-#clock-th1 {
-  padding: 5px; /* adjusted padding for headers */
-}
-
-#clock-th {
-  padding: 10px; /* adjusted padding for headers */
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  #canvas7 {
+    width: 315px; /* Set the desired width for tablets */
+    height: 315px; /* Set the desired height for tablets */
+  }
 }
 
 </style>
 
+<style>
 
-<body>
+#canvas {
+  position: relative;
+ transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  display: block;
+  margin: 0 auto; /* add this to center the canvas horizontally */
+  border-radius: 100%; /* add this to make the canvas a circle */
+  margin-bottom: 20px; 
+  vertical-align: bottom;
 
-<div id= "content">
-  <div id="container">
-    <table>
-<th id="clock-th1">CLOCK SYMBOLS & FUNCTIONS</th>
-<th id="clock-th"> NORMAL SPEED </th>
-<th> X2 SPEED CONVERSION </th>
-<th> X5 SPEED CONVERSION </th>
-<th> X10 SPEED CONVERSION </th>
-      <tr>
-        <td style=" text-shadow: none;"><span class="star dark-blue">&#9733;</span></td>
-        <td>1 HOUR MARKER</td>
-        <td>30 MINUTES MARKER</td>
-        <td>12 MINUTES MARKER</td>
-        <td>6 MINUTES MARKER</td>
-      </tr>
-      <tr>
-        <td style=" text-shadow: none;"><span class="star light-blue">&#9733;</span></td>
-        <td>5 MINUTES MARKER</td>
-        <td>2.5 MINUTES MARKER</td>
-        <td>1 MINUTE MARKER</td>
-        <td>30 SECONDS MARKER</td>
-
-      </tr>
-      <tr>
-        <td style=" text-shadow: none;"><div class="horizontal-line"></div></td>
-        <td>1 MINUTE MARKER <br> when clock face is full of stripes  = 59 minutes 
-       at exact 1 hour all stripes are cleared
-      </td>
-      <td> 30 SECONDS MARKER <br>  when clock face is full of stripes = 29 minutes
-       at exact 30 minutes all stripes are cleared
-      </td>
-      <td> 12 SECONDS MARKER <br> when clock face is full of stripes = 11 minutes
-       at exact 12 minutes all stripes are cleared
-      </td>
-      <td> 6 SECONDS MARKER <br> when clock face is full of stripes = 5 minutes
-       at exact 6 minutes all stripes are cleared
-      </td>
+}
 
 
-      </tr>
-      <tr>
-         <td style=" text-shadow: none;">
-          <div class="circle">
-            <div class="inner-circle"></div>
-            <span class="inner-star">&#9733;</span>
-          </div>
-        </td>
-        <td>1 FULL ROTATION  <br> = 60 SECONDS</td>
-        <td>1 FULL ROTATION  <br> = 30 SECONDS</td>
-        <td>1 FULL ROTATION  <br> = 12 SECONDS</td>
-        <td>1 FULL ROTATION  <br> = 6 SECONDS</td>
+  
 
-      </tr>
-
-    </table>
-  </div>
+</style>
 
 
 
@@ -1183,26 +660,702 @@ td {
 
 
 
+<script>
+
+// Get the canvas element
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Set the canvas dimensions
+canvas.width = 385;
+canvas.height = 385;
+
+// Set the clock center and radius
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+const radius = canvas.width / 2 - 20;
+
+// Function to draw a five-pointed star
+function drawStar(x, y, size, color) {
+  ctx.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const angle = i * 4 * Math.PI / 5;
+    const sx = x + size * Math.sin(angle);
+    const sy = y - size * Math.cos(angle);
+    ctx.lineTo(sx, sy);
+  }
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+
+
+
+// Function to draw a stripe
+function drawStripe(x, y, length, angle, color) {
+  ctx.beginPath();
+  ctx.lineWidth = 3.8;
+  ctx.strokeStyle = color;
+  ctx.moveTo(x, y);
+  ctx.lineTo(x + length * Math.sin(angle), y - length * Math.cos(angle));
+  ctx.stroke();
+}
+
+
+
+
+let currentSeconds = 0;
+let lastUpdateTime = 0;
+
+function drawClock() {
+  // Clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw the clock circle
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius, 0, 5 * Math.PI);
+  ctx.fillStyle = '#5FFAFA';
+  ctx.fill();
+  ctx.lineWidth = 11;
+  ctx.strokeStyle = 'red';
+  ctx.stroke();
+
+  // Draw the outer ring
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius * 0.95, 0, 2 * Math.PI);
+  ctx.lineWidth = 11;
+  ctx.strokeStyle = 'white'; /* blue color for the outer ring */
+  ctx.stroke();
+
+
+ 
+
+  // Draw the hour markers (stars)
+  for (let i = 0; i < 12; i++) {
+    const angle = i * 30 * Math.PI / 180;
+    const x = centerX + radius * 0.8 * Math.sin(angle);
+    const y = centerY - radius * 0.8 * Math.cos(angle);
+    let color;
+    const hour = new Date().getHours() % 12;
+    const minute = new Date().getMinutes();
+    if (i === hour) {
+      color = 'darkblue'; // current hour
+    } else if (i === Math.floor((minute / 5) % 12)) {
+      color = '#2FD2D6 '; // current minute 
+    } else {
+      color = 'white';
+    }
+    drawStar(x, y, 14, color);
+  }
+
+  // Draw the stripes
+  const minute = new Date().getMinutes();
+  let stripeBorder = 'white';
+  const stripeWidth = 0.9; // adjust this value to change the width of the stripes
+  const stripeOffset = 0.5; // adjust this value to change the position of the stripes
+  const centerCircleRadius = radius * 0.9; // radius of the center circle
+  const maxStripeLength = radius * 0.28 - radius * 0.02; // calculate the maximum stripe length
+  for (let i = 0; i < minute; i++) {
+    if ((i + 1) % 5 !== 0) { // skip drawing an extra stripe for every 5 minutes passed
+      const angle = (i + 0.4 + 0.6) * 6 * Math.PI / 180; // added 0.1 to shift the angle clockwise
+      const x = centerX + radius * stripeOffset * Math.sin(angle);
+      const y = centerY - radius * stripeOffset * Math.cos(angle);
+      let color = '#FB2413';
+      drawStripe(x, y, maxStripeLength, angle, color);
+      drawStripe(x, y, maxStripeLength, angle + Math.PI, color);
+    }
+  }
+
+
+
+
+  // Draw the center circle (seconds indicator)
+  const now = new Date().getTime();
+  const seconds = now / 1000;
+  const deltaTime = now - lastUpdateTime;
+  lastUpdateTime = now;
+
+
+
+
+  currentSeconds += deltaTime / 1000; // update current seconds
+  currentSeconds %= 60; // keep current seconds between 0 and 60
+
+  const circleProgress = currentSeconds / 60; // calculate progress based on current seconds
+
+
+
+
+
+// Draw the filled circle (seconds indicator)
+ctx.beginPath();
+ctx.arc(centerX, centerY, radius * 0.10 * (currentSeconds / 60), 0, 2 * Math.PI);
+ctx.fillStyle = 'blue'; 
+ctx.fill();
+ctx.beginPath();
+ctx.arc(centerX, centerY, radius * 0.10, 0, 2 * Math.PI);
+ctx.lineWidth = 10;
+ctx.strokeStyle = '#B7950B';
+ctx.stroke();
+ctx.fillStyle = 'white'; 
+ctx.fill();
+
+
+  // Draw the inner circle
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius * 0.10, 0, 2 * Math.PI);
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = '#4FA8C2';
+  ctx.stroke();
+  ctx.fillStyle = '#f5fffa';
+  ctx.fill();
+
+
+
+
+  // Draw a star inside the inner circle
+  drawStar(centerX, centerY, 14, ' #C9AE21');
+
+
+
+// Draw the outer ring
+ctx.beginPath();
+ctx.arc(centerX, centerY, radius * 0.25, 0, 2 * Math.PI);
+ctx.lineWidth = 6;
+ctx.strokeStyle = '#4FA8C2';
+ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius * 0.12, -Math.PI / 2, circleProgress * 2 * Math.PI - Math.PI / 2); 
+  ctx.arc(centerX, centerY, radius * 0.24, circleProgress * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
+  ctx.lineWidth = 7;
+  ctx.fillStyle = '#1B52E2'; // changed to blue only
+  ctx.fill();
+
+
+  
+
+  // Add a small delay to smooth out the animation
+  setTimeout(() => {
+    requestAnimationFrame(drawClock);
+  }, 16); // 16ms = 60fps
+}
+
+drawClock();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<div id="5th-page-content">
+    <!-- Content from the 5th page  -->
+    <div style="text-align:center;">
+      <canvas id="canvas5"></canvas>
+    </div>
+
+
+<style>
+#canvas5 {
+  position: relative;
+  transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  display: block;
+  margin: 0 auto; /* add this to center the canvas horizontally */
+  border-radius: 100%; /* add this to make the canvas a circle */
+  margin-bottom: 20px; 
+  vertical-align: bottom;
+}
+</style>
+
+<script>
+// Get the canvas element
+const canvas5 = document.getElementById('canvas5');
+const ctx5 = canvas5.getContext('2d');
+
+// Set the canvas dimensions
+canvas5.width = 385;
+canvas5.height = 385;
+
+// Set the clock center and radius
+const centerX5 = canvas5.width / 2;
+const centerY5 = canvas5.height / 2;
+const radius5 = canvas5.width / 2 - 20;
+
+// Function to draw a five-pointed star
+function drawStar5(x, y, size, color) {
+  ctx5.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const angle = i * 4 * Math.PI / 5;
+    const sx = x + size * Math.sin(angle);
+    const sy = y - size * Math.cos(angle);
+    ctx5.lineTo(sx, sy);
+  }
+  ctx5.closePath();
+  ctx5.fillStyle = color;
+  ctx5.fill();
+}
+
+// Function to draw a stripe
+function drawStripe5(x, y, length, angle, color) {
+  ctx5.beginPath();
+  ctx5.lineWidth = 3.8;
+  ctx5.strokeStyle = color;
+  ctx5.moveTo(x, y);
+  ctx5.lineTo(x + length * Math.sin(angle), y - length * Math.cos(angle));
+  ctx5.stroke();
+}
+
+let currentSeconds5 = 0;
+let lastUpdateTime5 = 0;
+
+function drawClock5() {
+  // Clear the canvas
+  ctx5.clearRect(0, 0, canvas5.width, canvas5.height);
+
+  // Draw the clock circle
+  ctx5.beginPath();
+  ctx5.arc(centerX5, centerY5, radius5, 0, 5 * Math.PI);
+  ctx5.fillStyle = '#5FFAFA';
+  ctx5.fill();
+  ctx5.lineWidth = 11;
+  ctx5.strokeStyle = 'red';
+  ctx5.stroke();
+
+  // Draw the outer ring
+  ctx5.beginPath();
+  ctx5.arc(centerX5, centerY5, radius5 * 0.95, 0, 2 * Math.PI);
+  ctx5.lineWidth = 11;
+  ctx5.strokeStyle = 'white'; /* blue color for the outer ring */
+  ctx5.stroke();
+
+  // Draw the hour markers (stars)
+  for (let i = 0; i < 12; i++) {
+    const angle = i * 30 * Math.PI / 180;
+    const x = centerX5 + radius5 * 0.8 * Math.sin(angle);
+    const y = centerY5 - radius5 * 0.8 * Math.cos(angle);
+    let color;
+    const hour = new Date().getHours() % 12;
+    const minute = new Date().getMinutes();
+    if (i === hour) {
+      color = 'darkblue'; // current hour
+    } else if (i === Math.floor((minute / 5) % 12)) {
+      color = '#2FD2D6'; // current minute 
+    } else {
+      color = 'white';
+    }
+    drawStar5(x, y, 14, color);
+  }
+
+ // Draw the stripes
+const minute5 = new Date().getMinutes();
+let stripeBorder5='white';
+const stripeWidth5 = 0.7; // adjust this value to change the width of the stripes
+const stripeOffset5 = 0.5; // adjust this value to change the position of the stripes
+const centerCircleRadius5 = radius5 * 0.10; // radius of the center circle
+const maxStripeLength5 = radius5 * 0.33 - radius5 * 0.10; // calculate the maximum stripe length
+for (let i = 0; i < minute5; i++) {
+  if ((i + 1)) { // skip drawing an extra stripe for every 5 minutes passed
+    const angle = (i + 0.5 + 0.6) * 6 * Math.PI / 180; // added 0.1 to shift the angle clockwise
+    const x = centerX5 + radius5 * stripeOffset5 * Math.sin(angle);
+    const y = centerY5 - radius5 * stripeOffset5 * Math.cos(angle);
+    let color = '#FB2413';
+    drawStripe5(x, y, maxStripeLength5, angle, color);
+    drawStripe5(x, y, maxStripeLength5, angle + Math.PI, color);
+  }
+}
+
+
+
+  // Draw the center circle (seconds indicator)
+  const now5 = new Date().getTime();
+  const seconds5 = now5 / 1000;
+  const deltaTime5 = now5 - lastUpdateTime5;
+  lastUpdateTime5 = now5;
+
+  currentSeconds5 += deltaTime5 / 1000; // update current seconds
+  currentSeconds5 %= 60; // keep current seconds between 0 and 60
+
+  const circleProgress5 = currentSeconds5 / 60; // calculate progress based on current seconds
+
+  // Draw the filled circle (seconds indicator)
+  ctx5.beginPath();
+  ctx5.arc(centerX5, centerY5, radius5 * 0.10 * (currentSeconds5 / 60), 0, 2 * Math.PI);
+  ctx5.fillStyle = 'blue'; 
+  ctx5.fill();
+  ctx5.beginPath();
+  ctx5.arc(centerX5, centerY5, radius5 * 0.10, 0, 2 * Math.PI);
+  ctx5.lineWidth = 9;  //do not change
+  ctx5.strokeStyle = '#B7950B';
+  ctx5.stroke();
+  ctx5.fillStyle = 'white'; 
+  ctx5.fill();
+
+  // Draw the inner circle
+  ctx5.beginPath();
+  ctx5.arc(centerX5, centerY5, radius5 * 0.10, 0, 2 * Math.PI);
+  ctx5.lineWidth = 9;  // do not change
+  ctx5.strokeStyle = '#4FA8C2';
+  ctx5.stroke();
+  ctx5.fillStyle = '#f5fffa';
+  ctx5.fill();
+
+  // Draw a star inside the inner circle
+  drawStar5(centerX5, centerY5, 14, '#C9AE21');
+
+  // Draw the outer ring
+  ctx5.beginPath();
+  ctx5.arc(centerX5, centerY5, radius5 * 0.25, 0, 2 * Math.PI);
+  ctx5.lineWidth = 6; // changing colors 
+  ctx5.strokeStyle = '#4FA8C2';
+  ctx5.stroke();
+
+  ctx5.beginPath();
+  ctx5.arc(centerX5, centerY5, radius5 * 0.12, -Math.PI / 2, circleProgress5 * 2 * Math.PI - Math.PI / 2); 
+  ctx5.arc(centerX5, centerY5, radius5 * 0.24, circleProgress5 * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
+  ctx5.lineWidth = 5;  // do not change
+  ctx5.fillStyle = '#1B52E2'; // changed to blue only
+  ctx5.fill();
+
+  // Add a small delay to smooth out the animation
+  setTimeout(() => {
+    requestAnimationFrame(drawClock5);
+  }, 16); // 16ms = 60fps
+}
+
+drawClock5();
+</script>
+
+<style>
+ 
+  #canvas6 {
+ position: relative;
+ transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  display: block;
+  margin: 0 auto; /* add this to center the canvas horizontally */
+  border-radius: 100%; /* add this to make the canvas a circle */
+  margin-bottom: 10px; 
+ vertical-align: bottom;
+}
+ overflow-x: hidden; /* prevent horizontal scrolling */
+
+ 
+
+</style>
+
+
+
+<script>
+
+// Get the canvas element
+const canvas6 = document.getElementById('canvas6');
+const ctx6 = canvas6.getContext('2d');
+
+// Set the canvas dimensions
+canvas6.width = 385;
+canvas6.height = 385;
+
+// Set the clock center and radius
+const centerX6 = canvas6.width / 2;
+const centerY6 = canvas6.height / 2;
+const radius6 = canvas6.width / 2 - 20;
+
+// Function to draw a five-pointed star
+function drawStar6(x, y, size, color) {
+  ctx6.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const angle = i * 4 * Math.PI / 5;
+    const sx = x + size * Math.sin(angle);
+    const sy = y - size * Math.cos(angle);
+    ctx6.lineTo(sx, sy);
+  }
+  ctx6.closePath();
+  ctx6.fillStyle = color;
+  ctx6.fill();
+}
+
+// Function to draw a stripe
+function drawStripe6(x, y, length, angle, color) {
+  ctx6.beginPath();
+  ctx6.lineWidth = 3.8;
+  ctx6.strokeStyle = color;
+  ctx6.moveTo(x, y);
+  ctx6.lineTo(x + length * Math.sin(angle), y - length * Math.cos(angle));
+  ctx6.stroke();
+}
+
+let currentSeconds6 = 0;
+let lastUpdateTime6 = 0;
+
+function drawClock6() {
+  // Clear the canvas
+  ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
+
+  // Draw the clock circle
+  ctx6.beginPath();
+  ctx6.arc(centerX6, centerY6, radius6, 0, 5 * Math.PI);
+  ctx6.fillStyle = '#5FFAFA';
+  ctx6.fill();
+  ctx6.lineWidth = 11;
+  ctx6.strokeStyle = 'red';
+  ctx6.stroke();
+
+  // Draw the outer ring
+  ctx6.beginPath();
+  ctx6.arc(centerX6, centerY6, radius6 * 0.95, 0, 2 * Math.PI);
+  ctx6.lineWidth = 11;
+  ctx6.strokeStyle = 'white'; /* blue color for the outer ring */
+  ctx6.stroke();
+
+  // Draw the hour markers (stars)
+  for (let i = 0; i < 12; i++) {
+    const angle = i * 30 * Math.PI / 180;
+    const x = centerX6 + radius6 * 0.8 * Math.sin(angle);
+    const y = centerY6 - radius6 * 0.8 * Math.cos(angle);
+    let color6;
+    const hour6 = new Date().getHours() % 12;
+    const minute6 = new Date().getMinutes();
+    if (i === hour6) {
+      color6 = 'darkblue'; // current hour
+    } else if (i === Math.floor((minute6 / 5) % 12)) {
+      color6 = '#2FD2D6'; // current minute 
+    } else {
+      color6 = 'white';
+    }
+    drawStar6(x, y, 14, color6);
+  }
+
+  // Draw the stripes
+  const minute6 = new Date().getMinutes();
+  let stripeBorder6 = 'white';
+  const stripeWidth6 = 0.9; // adjust this value to change the width of the stripes
+  const stripeOffset6 = 0.5; // adjust this value to change the position of the stripes
+  const centerCircleRadius6 = radius6 * 0.9; // radius of the center circle
+  const maxStripeLength6 = radius6 * 0.28 - radius6 * 0.02; // calculate the maximum stripe length
+  for (let i = 0; i < minute6; i++) {
+    if ((i + 1) % 5 !== 0) { // skip drawing an extra stripe for every 5 minutes passed
+      const angle6 = (i + 0.4 + 0.6) * 6 * Math.PI / 180; // added 0.1 to shift the angle clockwise
+      const x = centerX6 + radius6 * stripeOffset6 * Math.sin(angle6);
+      const y = centerY6 - radius6 * stripeOffset6 * Math.cos(angle6);
+      let color6 = '#FB2413';
+      drawStripe6(x, y, maxStripeLength6, angle6, color6);
+      drawStripe6(x, y, maxStripeLength6, angle6 + Math.PI, color6);
+    }
+  }
+
+  // Draw the center circle (seconds indicator)
+  const seconds6 = new Date().getSeconds();
+  const milliseconds6 = new Date().getMilliseconds();
+  const circleProgress6 = (seconds6 + milliseconds6 / 1000) / 60;
+
+  ctx6.beginPath();
+  ctx6.arc(centerX6, centerY6, radius6 * 0.20, 0, 2 * Math.PI);
+  ctx6.beginPath();
+  ctx6.lineWidth = 10;
+  ctx6.arc(centerX6, centerY6, radius6 * 0.10, -Math.PI / 2, circleProgress6 * 2 * Math.PI - Math.PI / 2);
+  ctx6.arc(centerX6, centerY6, radius6 * 0.27, circleProgress6 * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
+
+  let hue6 = seconds6 * 6; // Calculate the hue value based on the current second
+  let secondsColor6 = `hsl(${hue6}, 100%, 50%)`; // Use HSL color model to easily change hue
+
+  ctx6.fillStyle = secondsColor6; // use the calculated color
+  ctx6.fill(); // Draw the outer ring
+  ctx6.beginPath();
+  ctx6.arc(centerX6, centerY6, radius6 * 0.25, 0, 2 * Math.PI);
+  ctx6.lineWidth = 13;
+  ctx6.strokeStyle = '#4FA8C2';
+  ctx6.stroke(); // Draw the inner white circle with a border
+  ctx6.beginPath();
+  ctx6.arc(centerX6, centerY6, radius6 * 0.10, 0, 2 * Math.PI);
+  ctx6.lineWidth = 11;
+  ctx6.strokeStyle = '#4FA8C2';
+  ctx6.stroke();
+  ctx6.fillStyle = '#f5fffa';
+  ctx6.fill();
+
+  // Draw the star in the center
+  drawStar6(centerX6, centerY6, 14, '#B7950B');
+}
+
+// Update the clock every second
+setInterval(drawClock6, 1000);
+
+</script>
+
+
+
+<style>
+#canvas7 {
+  position: relative;
+ transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  display: block;
+  margin: 0 auto; /* add this to center the canvas horizontally */
+  border-radius: 100%; /* add this to make the canvas a circle */
+  margin-bottom: 10px; 
+  vertical-align: bottom;
+}
+</style>
+
+<script>
+// Get the canvas element
+const canvas7 = document.getElementById('canvas7');
+const ctx7 = canvas7.getContext('2d');
+
+// Set the canvas dimensions
+canvas7.width = 385;
+canvas7.height = 385;
+
+// Set the clock center and radius
+const centerX7 = canvas7.width / 2;
+const centerY7 = canvas7.height / 2;
+const radius7 = canvas7.width / 2 - 20;
+
+// Function to draw a five-pointed star
+function drawStar7(x, y, size, color) {
+  ctx7.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const angle = i * 4 * Math.PI / 5;
+    const sx = x + size * Math.sin(angle);
+    const sy = y - size * Math.cos(angle);
+    ctx7.lineTo(sx, sy);
+  }
+  ctx7.closePath();
+  ctx7.fillStyle = color;
+  ctx7.fill();
+}
+
+// Function to draw a stripe
+function drawStripe7(x, y, length, angle, color) {
+  ctx7.beginPath();
+  ctx7.lineWidth = 3.8;
+  ctx7.strokeStyle = color;
+  ctx7.moveTo(x, y);
+  ctx7.lineTo(x + length * Math.sin(angle), y - length * Math.cos(angle));
+  ctx7.stroke();
+}
+
+let currentSeconds7 = 0;
+let lastUpdateTime7 = 0;
+
+function drawClock7() {
+  // Clear the canvas
+  ctx7.clearRect(0, 0, canvas7.width, canvas7.height);
+
+  // Draw the clock circle
+  ctx7.beginPath();
+  ctx7.arc(centerX7, centerY7, radius7, 0, 5 * Math.PI);
+  ctx7.fillStyle = '#5FFAFA';
+  ctx7.fill();
+  ctx7.lineWidth = 11;
+  ctx7.strokeStyle = 'red';
+  ctx7.stroke();
+
+  // Draw the outer ring
+  ctx7.beginPath();
+  ctx7.arc(centerX7, centerY7, radius7 * 0.95, 0, 2 * Math.PI);
+  ctx7.lineWidth = 11;
+  ctx7.strokeStyle = 'white'; /* blue color for the outer ring */
+  ctx7.stroke();
+
+  // Draw the hour markers (stars)
+  for (let i = 0; i < 12; i++) {
+    const angle = i * 30 * Math.PI / 180;
+    const x = centerX7 + radius7 * 0.8 * Math.sin(angle);
+    const y = centerY7 - radius7 * 0.8 * Math.cos(angle);
+    let color;
+    const hour7 = new Date().getHours() % 12;
+    const minute7 = new Date().getMinutes();
+    if (i === hour7) {
+      color = 'darkblue'; // current hour
+    } else if (i === Math.floor((minute7 / 5) % 12)) {
+      color = '#2FD2D6 '; // current minute 
+    } else {
+      color = 'white';
+    }
+    drawStar7(x, y, 14, color);
+  }
+
+// Draw the stripes
+const minute7 = new Date().getMinutes();
+let stripeBorder7='white';
+const stripeWidth7 = 0.8; // adjust this value to change the width of the stripes
+const stripeOffset7 = 0.5; // adjust this value to change the position of the stripes
+const centerCircleRadius7 = radius7 * 0.10; // radius of the center circle
+const maxStripeLength7 = radius7 * 0.32 - radius7 * 0.10; // calculate the maximum stripe length
+for (let i = 0; i < minute7; i++) {
+  if ((i + 1)) { // skip drawing an extra stripe for every 5 minutes passed
+    const angle = (i + 0.5 + 0.6) * 6 * Math.PI / 180; // added 0.1 to shift the angle clockwise
+    const x = centerX7 + radius7 * stripeOffset7 * Math.sin(angle);
+    const y = centerY7 - radius7 * stripeOffset7 * Math.cos(angle);
+    let color = '#FB2413';
+    drawStripe7(x, y, maxStripeLength7, angle, color);
+    drawStripe7(x, y, maxStripeLength7, angle + Math.PI, color);
+  }
+}
+
+
+
+
+
+  // Draw the center circle (seconds indicator)
+  const seconds7 = new Date().getSeconds();
+  const milliseconds7 = new Date().getMilliseconds();
+  const circleProgress7 = (seconds7 + milliseconds7 / 1000) / 60;
+
+  ctx7.beginPath();
+  ctx7.arc(centerX7, centerY7, radius7 * 0.20, 0, 2 * Math.PI);
+  ctx7.beginPath();
+  ctx7.lineWidth = 10;
+  ctx7.arc(centerX7, centerY7, radius7 * 0.10, -Math.PI / 2, circleProgress7 * 2 * Math.PI - Math.PI / 2);
+  ctx7.arc(centerX7, centerY7, radius7 * 0.27, circleProgress7 * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
+
+  let hue7 = seconds7 * 6; // Calculate the hue value based on the current second
+  let secondsColor7 = 'blue';
+  ctx7.fillStyle = secondsColor7; // use the calculated color
+  ctx7.fill(); // Draw the outer ring
+  ctx7.beginPath();
+  ctx7.arc(centerX7, centerY7, radius7 * 0.25, 0, 2 * Math.PI);
+  ctx7.lineWidth = 13;
+  ctx7.strokeStyle = '#4FA8C2';
+  ctx7.stroke(); // Draw the inner white circle with a border
+  ctx7.beginPath();
+  ctx7.arc(centerX7, centerY7, radius7 * 0.10, 0, 2 * Math.PI);
+  ctx7.lineWidth = 11;
+  ctx7.strokeStyle = '#4FA8C2';
+  ctx7.stroke();
+  ctx7.fillStyle = '#f5fffa';
+  ctx7.fill();
+
+  // Draw the star in the center
+  drawStar7(centerX7, centerY7, 14, '#B7950B');
+}
+
+// Update the clock every second
+setInterval(drawClock7, 1000);
+
+</script>
 
 
 
 
 <style>
-/* Add this CSS code to your existing stylesheet */
-
-
 footer {
-  font-family: open sans;
+ font-family: open sans;
   font-size: 12px;
   text-align: center;
   color: white;
   background-color: #000;
   width: 100%;
   position: relative; /* Keep it relative for normal flow */
-  margin-top: 40px; /* Move it up by adjusting the margin */
+  margin-top: -20px; /* Move it up by adjusting the margin */
   padding: 5px 0 5px 0; /* Increase the top padding to move the text down */
   height: 20px; /* Set the height to 50px */
-  margin-bottom: 0;
 }
 
 /* Media query for larger to medium screens */
@@ -1225,9 +1378,103 @@ footer {
 </style>
 
 
+
+
+
+
+
+
   <footer>
     Copyright &copy; 2024 - JB PALADIN PATRIOTS CLOCK.
   </footer>
+
+<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  }
+
+canvas, canvas5, canvas6,canvas7 {
+  display: block;
+  margin-bottom: 10%;
+}
+
+#canvas, #canvas5, #canvas6, #canvas7 {
+  position: relative;
+  top: 0; /* Change this to 0 */
+  display: block;
+  margin: 2rem auto; /* Add margin to create space */
+  border-radius: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  margin-top: 0;
+}
+</style>
+
+
+<style>
+    #next-page-button {
+        position: fixed; /* Fixed position */
+        bottom: 40px; /* Adjust this value to position it above the footer */
+        right: 20px; 
+        border: 3px solid beige; /* Black border */
+        color: black; /* Text color */
+        padding: 8px 8px; /* Padding for the button */
+        font-size: 14px; /* Font size */
+        font-family: open sans;
+        z-index: 1000; /* Ensure it is above other elements */
+        border-radius: 5px; /* Rounded corners */
+        text-decoration: none; /* Remove underline */
+        display: flex; /* Flexbox for alignment */
+        align-items: center; /* Center items vertically */
+    }
+
+ 
+    /* Arrow styling */
+    .arrow {
+        margin-left: 1px; /* Space between text and arrow */
+        display: inline-block; /* Ensure it's treated as a block */
+        width: 0; 
+        height: 0; 
+        border-top: 5px solid transparent; /* Top triangle */
+        border-bottom: 8px solid transparent; /* Bottom triangle */
+        border-left: 12px solid beige; /* Left triangle for right arrow */
+    }
+</style>
+
+<a id="next-page-button" href="about-this-clock.html">
+  <span class="arrow"></span> <!-- Arrow element -->
+    <span class="arrow"></span> <!-- Arrow element -->
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
