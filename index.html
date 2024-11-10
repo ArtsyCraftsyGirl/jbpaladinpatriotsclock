@@ -225,6 +225,9 @@ changeFontSize(); // Call the function initially
         <div class="color-option" data-color="brown" style="background-color: brown;"></div>
         <div class="color-option" data-color="gold" style="background-color: gold;"></div>
         <div class="color-option" data-color="fuchsia" style="background-color: fuchsia;"></div>
+        <div class="color-option" data-color="white" style="background-color: white;"></div>
+        <div class="color-option" data-color="#dee113" style="background-color: #dee113;"></div>
+     <div class="color-option" data-color="#1390e1" style="background-color: #1390e1;"></div>
         <div class="color-option" data-color="image" style="background-image: url('img-icon.jpg'); background-size: cover;"></div>
         <div class="color-option" data-color="default" style="background-image: url('video-icon.jpg'); background-size: cover;"></div>
     </div>
@@ -267,14 +270,16 @@ changeFontSize(); // Call the function initially
     border-radius: 5px; /* Rounded corners */
     max-height: 200px; /* Set a maximum height */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
-    font-family: open sans;
+    font-family: 'Open Sans', sans-serif; /* Ensure proper font family syntax */
     font-size: 12px;
     font-weight: bold;
     display: flex; /* Use flexbox to arrange options */
     flex-wrap: wrap; /* Allow options to wrap to the next line */
     padding: 5px; /* Add padding around the menu */
+    width: 260px; /* Adjust width to fit 8 icons per line */
 }
 
+/* Ensure color options are displayed in two lines */
 .color-option {
     width: 30px; /* Fixed width for color icons */
     height: 30px; /* Fixed height for color icons */
