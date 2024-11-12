@@ -89,15 +89,23 @@ body {
 
 h3 {
     font-family: open sans; /* Adding a fallback */
+position: relative; /* Enable positioning */
+    top: -15px; /* Move the text up by 5 pixels */
 }
 
+/* Media query for smaller screens (e.g., mobile phones) */
+@media (max-width: 600px) {
+    h3 {
+        top: -6px; /* Adjust the upward position for smaller screens */
+        /* You can also adjust other properties here if needed */
+    }
+}
 
 header {
   background-color: black; 
   padding: 4px; /* Adjust padding to fit the new height */
   text-align: center; /* Center the h3 element */
   box-sizing: border-box; /* Include padding in full width */
-  height: 50px; /* Default height for smaller screens or mobiles */
   /* Add these styles to make the header responsive */
   width: 100vw; /* Take up the full width of the viewport */
   margin-left: 0; /* Remove any left margin */
@@ -114,7 +122,7 @@ header {
 /* Media query for larger screens to medium */
 @media only screen and (min-width: 768px) {
   header {
-    height: 6.19rem; /* Increase height for larger screens to medium */
+    height: 5.5rem; /* Increase height for larger screens to medium */
   }
 }
 
@@ -177,26 +185,6 @@ h3 span {
 </style>
 
 
-<script>
-
-const h1Element = document.querySelector('h1');
-
-function changeFontSize() {
-  const screenWidth = window.innerWidth;
-  if (screenWidth >= 992) { // larger screens
-    h1Element.style.fontSize = '80px';
-  } else if (screenWidth >= 768) { // medium screens
-    h1Element.style.fontSize = '50px';
-  } else { // smaller screens
-    h1Element.style.fontSize = '20px'; // adjust this value as needed
-  }
-}
-
-window.addEventListener('resize', changeFontSize);
-changeFontSize(); // Call the function initially
-
-</script>
-
 
 
 <body>
@@ -204,7 +192,6 @@ changeFontSize(); // Call the function initially
   <h3><span>JB PALADIN PATRIOTS CLOCK</span></h3>
  </header>
 </body>
-
 
 
 <div class="menu-container">
@@ -243,10 +230,11 @@ changeFontSize(); // Call the function initially
     display: inline-block; /* Inline block for the container */
 }
 
+
 .hamburger {
     cursor: pointer; /* Pointer cursor for the hamburger icon */
-    width: 30px; /* Width of the hamburger icon */
-    height: 20px; /* Height of the hamburger icon */
+    width: 35px; /* Width of the hamburger icon */
+    height: 25px; /* Height of the hamburger icon */
     display: flex;
     flex-direction: column; /* Stack bars vertically */
     justify-content: space-between; /* Space between bars */
@@ -254,7 +242,7 @@ changeFontSize(); // Call the function initially
 }
 
 .bar {
-    height: 4px; /* Height of each bar */
+    height: 5px; /* Height of each bar */
     background-color: red; /* Color of the bars */
     transition: 0.3s; /* Transition for smooth effect */
     border: 1px solid black;
@@ -395,14 +383,13 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 
 
 
-
 <div id="dropdown-container" style="text-align: center;">
   <select id="dropdown" class="canvas-select" style="font-size: 12px; font-weight: bold; font-family: arial;">
     <option value="">Select an option</option>
-    <option value="4-stripes-normal"> Display clock with 4 stripes design &#9672; <br> Sweeping movement</option>
-    <option value="4-stripes-normal-swiss"> Display clock with 4 stripes design &#9672;<br>Swiss move.. & color changes</option>
-    <option value="5-stripes-normal">Display clock with 5 stripes design &#9672;<br> Sweeping movement </option>
-    <option value="5-stripes-normal-swiss">Display clock with 5 stripes design &#9672;<br> Swiss move.. & color changes </option>
+    <option value="4-stripes-normal"> Display clock with 4 stripes design &#9672;  Sweeping movement</option>
+    <option value="4-stripes-normal-swiss"> Display clock with 4 stripes design &#9672; Swiss move.. & color changes</option>
+    <option value="5-stripes-normal">Display clock with 5 stripes design &#9672; Sweeping movement </option>
+    <option value="5-stripes-normal-swiss">Display clock with 5 stripes design &#9672; Swiss move.. & color changes </option>
   </select>
 </div>
 
@@ -1361,7 +1348,7 @@ footer {
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
   footer {
-    font-size: 18px;
+    font-size: 15px;
     height: 20px; /* Increase height for larger screens to medium */
   }
 }
@@ -1371,7 +1358,7 @@ footer {
   footer {
     font-size: 12px;
     height: 18px; /* Decrease height for smaller screens or mobiles */
-    padding: 5px 0 5px 0;
+    padding: 6px 0 6px 0;
   }
 }
 
@@ -1430,7 +1417,6 @@ footer {
         position: fixed; /* Fixed position */
         bottom: 40px; /* Adjust this value to position it above the footer */
         right: 20px; 
-        border: 3px solid beige; /* Black border */
         color: black; /* Text color */
         padding: 8px 8px; /* Padding for the button */
         font-size: 14px; /* Font size */
@@ -1449,9 +1435,9 @@ footer {
         display: inline-block; /* Ensure it's treated as a block */
         width: 0; 
         height: 0; 
-        border-top: 5px solid transparent; /* Top triangle */
-        border-bottom: 8px solid transparent; /* Bottom triangle */
-        border-left: 12px solid beige; /* Left triangle for right arrow */
+        border-top: 6px solid transparent; /* Top triangle */
+        border-bottom: 9px solid transparent; /* Bottom triangle */
+        border-left: 13px solid beige; /* Left triangle for right arrow */
     }
 </style>
 
@@ -1461,14 +1447,69 @@ footer {
 </a>
 
 
+<style>
+  #dateDisplay {
+            position: fixed; 
+            bottom: 75px; /* Position above the date icon */
+            right: 25px; 
+            z-index: 1000; 
+            font-family: 'Open Sans', sans-serif; /* Correct font-family syntax */
+            font-size: 12px;
+            color: white; 
+            background-color: black; /* Set background color to beige */
+            padding: 8px; /* Add some padding for better appearance */
+            border: 4px solid black; /* Add a solid black border */
+            border-radius: 5px;
+            width: 70px; /* Set a fixed width */
+            display: none; /* Initially hidden */
+            text-align: center; /* Center text */
+        }
 
+        #dateIcon {
+            position: fixed; 
+            bottom: 43px; /* Position above the date button */
+            right: 65px; 
+            z-index: 1000; 
+            font-family: 'Open Sans', sans-serif;
+            font-size: 24px; /* Adjust icon size */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+    </style>
+</head>
+<body>
 
+    <div id="dateIcon">📆</div> <!-- Calendar icon -->
+    <div id="dateDisplay"></div> 
 
+    <script>
+        // Automatically display the current day and date based on the user's local time
+        const now = new Date();
+        
+        // Options for formatting the date
+        const options = { 
+            weekday: 'long', // Full name of the day
+            year: 'numeric', 
+            month: 'long', // Full name of the month
+            day: 'numeric' 
+        };
 
+        // Get the formatted date string
+        const formattedDate = `${now.toLocaleDateString(undefined, options)}`; // Format as "Today is Tuesday, November 12, 2024"
 
+        // Set the formatted date in the dateDisplay div
+        document.getElementById('dateDisplay').innerText = formattedDate;
 
-
-
+        // Add click event to the date icon
+        document.getElementById('dateIcon').addEventListener('click', function() {
+            const dateDisplay = document.getElementById('dateDisplay');
+            // Toggle visibility
+            if (dateDisplay.style.display === 'none' || dateDisplay.style.display === '') {
+                dateDisplay.style.display = 'block'; // Show the date
+            } else {
+                dateDisplay.style.display = 'none'; // Hide the date
+            }
+        });
+    </script>
 
 
 
