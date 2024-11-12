@@ -27,23 +27,10 @@ body {
 }
 
 
-  #video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1; /* Send the video to the background */
-  min-width: 100%;
-  min-height: 100%;
-}
+
     </style>
 
-    <video autoplay muted loop id="video-background">
-  <source src="BackgroundVideo.mp4" type="video/mp4">
-    </video>
-
+ 
 
 <style>
 
@@ -59,23 +46,28 @@ body {
     max-width: 100%;
     width: 100%;
     white-space: nowrap;
-    margin-top: 0.15rem;
+    margin-top: 0.5rem;
   }
 
 h3 {
     font-family: open sans; /* Adding a fallback */
+position: relative; /* Enable positioning */
+    top: -15px; /* Move the text up by 5 pixels */
 }
 
-
-
-
+/* Media query for smaller screens (e.g., mobile phones) */
+@media (max-width: 600px) {
+    h3 {
+        top: -6px; /* Adjust the upward position for smaller screens */
+        /* You can also adjust other properties here if needed */
+    }
+}
 
 header {
   background-color: black; 
-  padding: 5px; /* Adjust padding to fit the new height */
+  padding: 4px; /* Adjust padding to fit the new height */
   text-align: center; /* Center the h3 element */
   box-sizing: border-box; /* Include padding in full width */
-  height: 50px; /* Default height for smaller screens or mobiles */
   /* Add these styles to make the header responsive */
   width: 100vw; /* Take up the full width of the viewport */
   margin-left: 0; /* Remove any left margin */
@@ -92,7 +84,7 @@ header {
 /* Media query for larger screens to medium */
 @media only screen and (min-width: 768px) {
   header {
-    height: 6.19rem; /* Increase height for larger screens to medium */
+    height: 5.5rem; /* Increase height for larger screens to medium */
   }
 }
 
@@ -102,7 +94,6 @@ header {
     height: 3.40rem; /* Decrease height for smaller screens or mobiles */
   }
 }
-
 
 
 
@@ -138,6 +129,7 @@ h3 span {
 }
 
 
+
 /* Media query for large to medium screens */
 @media only screen and (min-width: 768px) {
   h3 {
@@ -155,25 +147,6 @@ h3 span {
 </style>
 
 
-<script>
-
-const h1Element = document.querySelector('h1');
-
-function changeFontSize() {
-  const screenWidth = window.innerWidth;
-  if (screenWidth >= 992) { // larger screens
-    h1Element.style.fontSize = '80px';
-  } else if (screenWidth >= 768) { // medium screens
-    h1Element.style.fontSize = '50px';
-  } else { // smaller screens
-    h1Element.style.fontSize = '20px'; // adjust this value as needed
-  }
-}
-
-window.addEventListener('resize', changeFontSize);
-changeFontSize(); // Call the function initially
-
-</script>
 
 
 <body>
@@ -183,6 +156,7 @@ changeFontSize(); // Call the function initially
 </body>
 
 
+
 <div class="menu-container">
     <div class="hamburger" id="hamburger-icon">
         <div class="bar"></div>
@@ -190,23 +164,22 @@ changeFontSize(); // Call the function initially
         <div class="bar"></div>
     </div>
     <div class="color-menu" id="color-menu">
-        <div class="color-option" data-color="darkblue" style="background-color: darkblue;"></div>
-        <div class="color-option" data-color="darkgreen" style="background-color: darkgreen;"></div>
-        <div class="color-option" data-color="purple" style="background-color: purple;"></div>
-        <div class="color-option" data-color="gray" style="background-color: gray;"></div>
-        <div class="color-option" data-color="black" style="background-color: black;"></div>
-        <div class="color-option" data-color="maroon" style="background-color: maroon;"></div>
+        <div class="color-option" data-color="#ffd292" style="background-color: #ffd292;"></div>
+        <div class="color-option" data-color="white" style="background-color: white;"></div>
+        <div class="color-option" data-color="#edd7ff" style="background-color: #edd7ff;"></div>
+        <div class="color-option" data-color="#ebe6ee" style="background-color: #ebe6ee;"></div>
+        <div class="color-option" data-color="#eea1d0" style="background-color: #eea1d0;"></div>
+        <div class="color-option" data-color="#a1eedf" style="background-color: #a1eedf;"></div>
         <div class="color-option" data-color="turquoise" style="background-color: turquoise;"></div>
         <div class="color-option" data-color="orange" style="background-color: orange;"></div>
-        <div class="color-option" data-color="brown" style="background-color: brown;"></div>
+        <div class="color-option" data-color="#e1db8f" style="background-color: #e1db8f;"></div>
         <div class="color-option" data-color="gold" style="background-color: gold;"></div>
         <div class="color-option" data-color="fuchsia" style="background-color: fuchsia;"></div>
         <div class="color-option" data-color="#e19013" style="background-color: #e19013;"></div>
         <div class="color-option" data-color="#dee113" style="background-color: #dee113;"></div>
      <div class="color-option" data-color="#1390e1" style="background-color: #1390e1;"></div>
         <div class="color-option" data-color="image" style="background-image: url('img-icon.jpg'); background-size: cover;"></div>
-        <div class="color-option" data-color="default" style="background-image: url('video-icon.jpg'); background-size: cover;"></div>
-    </div>
+            </div>
 </div>
 
     <input type="file" id="image-input" accept="image/*" style="display: none;">
@@ -219,10 +192,11 @@ changeFontSize(); // Call the function initially
     display: inline-block; /* Inline block for the container */
 }
 
+
 .hamburger {
     cursor: pointer; /* Pointer cursor for the hamburger icon */
-    width: 30px; /* Width of the hamburger icon */
-    height: 20px; /* Height of the hamburger icon */
+    width: 35px; /* Width of the hamburger icon */
+    height: 25px; /* Height of the hamburger icon */
     display: flex;
     flex-direction: column; /* Stack bars vertically */
     justify-content: space-between; /* Space between bars */
@@ -230,11 +204,12 @@ changeFontSize(); // Call the function initially
 }
 
 .bar {
-    height: 4px; /* Height of each bar */
+    height: 5px; /* Height of each bar */
     background-color: red; /* Color of the bars */
     transition: 0.3s; /* Transition for smooth effect */
     border: 1px solid black;
 }
+
 
 .color-menu {
     display: none; /* Initially hidden */
@@ -371,7 +346,6 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
     position: absolute; 
     margin-top: 130px;
     right: 20px;
-    border: 3px solid beige; /* Border color */
     padding: 8px 8px; /* Padding for the button */
     z-index: 1000; /* Ensure it is above other elements */
     border-radius: 5px; /* Rounded corners */
@@ -395,9 +369,9 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
     display: inline-block; /* Ensure it's treated as a block */
     width: 0; 
     height: 0; 
-    border-top: 6px solid transparent; /* Top triangle */
-    border-bottom: 8px solid transparent; /* Bottom triangle */
-    border-right: 12px solid beige; /* Right triangle for left arrow */
+    border-top: 8px solid transparent; /* Top triangle */
+    border-bottom: 10px solid transparent; /* Bottom triangle */
+    border-right: 14px solid black; /* Right triangle for left arrow */
 }
 
 </style>
@@ -417,12 +391,22 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 
 
 <style>
+
 .logo {
   display: block; /* Make the logo a block element */
   margin: 0 auto; /* Center the logo horizontally */
   position: relative; /* Set position to relative */
-  transform: scale(1.5); /* Zoom in the logo by 50% */
- }
+  width: 130px; /* Set a fixed width */
+  height: 125px; /* Set a fixed height */
+  clip-path: polygon(
+    50% 0%,   /* Top point */
+    100% 38%, /* Right top */
+    82% 100%, /* Bottom right */
+    18% 100%, /* Bottom left */
+    0% 38%    /* Left top */
+  ); /* Create a pentagon shape */
+  object-fit: cover; /* Ensure the image covers the entire area */
+}
 
 /* Media query for smaller to medium screens */
 @media (max-width: 360px) {
@@ -433,6 +417,19 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
     height: 80px; 
   }
 }
+
+.logo-text {
+            position: absolute; /* Position the text absolutely within the logo section */
+            bottom: -20px; /* Position below the logo */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust to center */
+            color: gold; /* Text color */
+            font-size: 14px; /* Font size */
+            text-align: center; /* Center align the text */
+            width: 100%; /* Full width to fit the text */
+            margin: 0; /* Remove default margins */
+        }
+
 
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
@@ -459,10 +456,11 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 
 </style>
 
-<div id="logo-section">
-<img src="logo.jpg" alt="Description" class="logo" style="top: 70px;">
-</div>
 
+    <div id="logo-section">
+        <img src="logo.jpg" alt="Description" class="logo" style="top: 70px;">
+        <div class="logo-text">A unique and revolutionary way of telling time</div>
+    </div>
 
 
 
@@ -489,7 +487,7 @@ body {
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
   footer {
-    font-size: 18px;
+    font-size: 14px;
     height: 50%;
   }
 }
@@ -529,7 +527,7 @@ body {
   font-family: open sans;
   font-size: 14px;
   font-weight: bold;
-  color: white;
+  color: black;
   margin: -45px auto; /* Use a positive margin to create space */
 }
 
@@ -636,14 +634,14 @@ p {
         .about-the-clock {
             text-align: center;
          font-family: open sans;
-            font-size: 25px;
+           
                }
 
 
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
    .about-the-clock {
-    font-size: 32px;
+    font-size: 37px;
      margin-top: 150px; /* Adjust this value to move the text up */
 
      }
@@ -652,7 +650,7 @@ p {
 /* Media query for smaller screens/mobiles */
 @media (max-width: 767px) {
    .about-the-clock {
-    font-size: 25px;
+    font-size: 28px;
     margin-top: 90px; /* Adjust this value to move the text up */
 
      }
@@ -692,8 +690,7 @@ p {
   font-family: open sans;
   font-size: 14px;
   font-weight: bold;
-
-  color: white;
+  color: black;
   margin-top: -55px; /* Set top margin to 15px */
   margin-left: auto;
   margin-right: auto;
@@ -712,7 +709,7 @@ p {
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
   .how-the-clock-works {
-    font-size: 32px;
+    font-size: 37px;
     margin-top: -32rem; /* No change needed, already set to -32rem */
     white-space: nowrap;
   }
@@ -721,7 +718,7 @@ p {
 /* Media query for smaller screens/mobiles */
 @media (max-width: 767px) {
   .how-the-clock-works {
-    font-size: 21px;
+    font-size: 28px;
     margin-top: -35rem; /* Adjusted margin-top for smaller screens/mobiles */
     white-space: nowrap;
   }
@@ -970,7 +967,7 @@ table {
     border: 6px solid orange;
   }
   th, td {
-    font-size: 11px;
+    font-size: 13px;
     font-family: open sans;
     font-weight: bolder; /* increased font weight to bolder */
     border: 4px inset gold; /* added border to each cell */
@@ -982,8 +979,8 @@ table {
 @media (max-width: 767px) {
   table {
     top: -1rem; 
-    max-width: 120%;
-    max-height: 180%;
+    min-width: 90%;
+    min-height: 90%;
     border: 4px solid orange;
   }
   th, td {
@@ -1201,7 +1198,7 @@ footer {
 /* Media query for larger to medium screens */
 @media (min-width: 768px) {
   footer {
-    font-size: 18px;
+    font-size: 15px;
     height: 20px; /* Increase height for larger screens to medium */
   }
 }
@@ -1211,7 +1208,7 @@ footer {
   footer {
     font-size: 12px;
     height: 18px; /* Decrease height for smaller screens or mobiles */
-    padding: 5px 0 5px 0;
+    padding: 6px 0 6px 0;
   }
 }
 
@@ -1221,6 +1218,7 @@ footer {
   <footer>
     &copy; JB PALADIN PATRIOTS CLOCK. ALL RIGHTS RESERVED.
   </footer>
+
 
 </body>
 </html>
