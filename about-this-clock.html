@@ -24,24 +24,26 @@ body {
             z-index: -1; /* Place it behind other content */
         }
 
-        .slideshow-container {
+
+
+.slideshow-container {
     position: relative;
     max-width: 800px;
     margin: auto;
     overflow: hidden;
     border: 2px solid black;
     border-radius: 10px;
-   background: rgba(255, 165, 0, 0.9); /* Semi-transparent orange */
+    background: rgba(255, 165, 0, 0.9); /* Semi-transparent orange */
     padding: 20px; /* Add padding to the container */
     z-index: 1; /* Ensure it's above the video */
 }
 
 .slide {
     display: none; /* Hide all slides by default */
-    height: 300px; /* Set a fixed height for all slides */
+    height: auto; /* Allow height to adjust based on content */
     display: flex; /* Use flexbox to center content */
     justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    align-items: flex-start; /* Align items to the start vertically */
     text-align: center; /* Center text */
     padding: 20px; /* Add padding to the slide */
     overflow: hidden; /* Prevent overflow of text */
@@ -50,8 +52,28 @@ body {
 .slide p {
     text-align: justify; /* Justify text */
     margin: 0; /* Remove default margin */
-    line-height: 2.0; /* Improve readability */
+    line-height: 1.5; /* Improve readability */
     letter-spacing: 0.1px; /* Adjust letter spacing */
+}
+
+/* Adjust the image size for smaller screens */
+img {
+    max-width: 15%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Media Queries for smaller devices */
+@media (max-width: 600px) {
+    img {
+        max-width: 100%; /* Increase image size on smaller screens */
+        height: 100%; /* Maintain aspect ratio */
+    }
 }
 
 .fade {
@@ -90,6 +112,64 @@ h1 span {
     white-space: nowrap;
 }
 
+/* Media Queries for smaller devices */
+@media (max-width: 600px) {
+    .slideshow-container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    .slide {
+        padding: 10px; /* Reduce padding on slides */
+    }
+
+    img {
+        max-width: 50%; /* Increase image size on smaller screens */
+    }
+
+    .slide p {
+        line-height: 1.4; /* Adjust line height for better readability */
+    }
+}
+  
+
+
+
+.fade {
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 13px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 3px;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* Text shadow for the heading */
+h2 span {
+    text-shadow: 2px 2px 1px black; /* Apply text shadow */
+    white-space: nowrap;
+}
+
     </style>
 </head>
 <body>
@@ -100,11 +180,15 @@ h1 span {
 
  <div class="slideshow-container">
     <div class="slide fade" style="text-align: center; padding: 20px;"> <!-- Center text and add padding -->
-        <h1>
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+
+
+        <h2>
             <span style="color: red;">ABOUT</span> 
             <span style="color: beige;">THIS </span> 
             <span style="color: #1BEAFF;"> CLOCK</span>
-        </h1>
+        </h2>
         <p style="margin-top: 15px;">
 The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telling time. Our clock’s innovative design will amaze the world in the exciting way that people will perceive and tell time.This is not just a typical or traditional clock; our groundbreaking clock uses colorful lights to indicate the time instead of the traditional hands or digital numbers found on ordinary clocks.This makes our clock extraordinary, ensuring it stands out as unique and special among the myriad of clocks in the world today.
 
@@ -112,7 +196,11 @@ The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telli
         </div>
 
 
+
         <div class="slide fade">
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h1> </h1>
             <p>
 
 The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring love for America, celebrating the courageous men and women who have selflessly dedicated themselves to serving our nation, both past and present. At "JB Paladin," we take immense pride in designing clocks that reflect not just the passage of time but also capture the spirit of patriotism that binds us as a nation in a way that no other clock can. The name "Patriots Clock" embodies our commitment to honoring the values and freedoms that define our great country, the United States of America. By integrating our brand name,"JB Paladin," we add a personal touch that emphasizes our identity and dedication to craftsmanship. 
@@ -123,6 +211,9 @@ The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring lo
 
 
         <div class="slide fade">
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h1> </h1>
             <p>
 
 In celebration of the Semiquincentennial (250<sup>th</sup>) birthday of the United States of America on July 4, 2026, we proudly introduce the "JB PALADIN PATRIOTS CLOCK." This stunning clock draws inspiration from the bold colors and iconic design of the American flag, capturing the spirit of America's Declaration of Independence in 1776. In addition to the 12 stars located at the hour positions, a radiant gold-colored 13<sup>th</sup> star at the very center of the clock symbolizes the original 13 colonies of the United States of America and honors the brave individuals who have paid the ultimate price for defending our country. 
@@ -132,6 +223,9 @@ In celebration of the Semiquincentennial (250<sup>th</sup>) birthday of the Unit
 
 
  <div class="slide fade">
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h1> </h1>
          <p> 
 The star that denotes the correct hour of time is dark blue, which stands for those who are currently serving on active duty, while the light blue five-minute star pays tribute to all who have served in the past. We chose a color inspired by the iconic Statue of Liberty for the clock's face, adding a meaningful touch that reinforces our connection to freedom and hope. The creative genius behind this remarkable clock is none other than Mr. Jeff Birge, whose vision shines through in every intricate detail. After years of anticipation, we are thrilled to see his dream come to life, with the help of his programmer, Ehllen Quezada, who collaborated with Jeff on this project. 
         </p></div>
@@ -142,6 +236,9 @@ The star that denotes the correct hour of time is dark blue, which stands for th
 
 
         <div class="slide fade">
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h1> </h1>
             <p>
 
 Ehllen’s skill in programming languages such as HTML5, CSS, and JavaScript brought this clock to fruition. Additionally,Ehllen’s extensive knowledge in Information Technology played a crucial role in transforming Jeff’s ideas and concepts into a vibrant,fully functional app, which will now be available for all electronic devices. There is no doubt that the "JB PALADIN PATRIOTS CLOCK" is bound to inspire admiration with its exclusive design and unique functions. The moment has finally arrived; we know every American will love this magnificent clock as it pays homage to the greatest country that the world has ever seen: the United States of America!
@@ -149,7 +246,10 @@ Ehllen’s skill in programming languages such as HTML5, CSS, and JavaScript bro
         </div>
 
  <div class="slide fade">
-             <h1><span style="color: red;">HOW THE</span> <span style="color: beige;">CLOCK</span> <span style="color: #1BEAFF;"> WORKS</span></h1>
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+
+             <h2><span style="color: red;">HOW THE</span> <span style="color: beige;">CLOCK</span> <span style="color: #1BEAFF;"> WORKS</span></h2>
             <p>
 Our clock features a unique hour marker system with 12 white stars in place of traditional numbers. Each white star represents an hour and lights up in dark blue to show the current hour. At 3:00, for instance, the 3<sup>rd</sup> star illuminates in dark blue, and the 12<sup>th</sup> star changes to light blue. To represent minutes, we’ve included the red stripes of the American flag between the hour stars, with each stripe marking one minute of time.
 
@@ -158,6 +258,9 @@ Our clock features a unique hour marker system with 12 white stars in place of t
 
 
    <div class="slide fade">
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h1> </h1>
             <p>
 
 So, at 3:01, the 3<sup>rd</sup> star remains dark blue, the 12<sup>th</sup> star continues to be light blue, and one red stripe lights up next to it. By 3:05, the 3<sup>rd</sup> star continues to stay dark blue, the appropriate number of red stripes are lit up, and the 1<sup>st</sup> star lights up in light blue, indicating five minutes past the hour. Next to the hour stars, the red stripes will continue to light up until all are lit at 59 minutes past the hour; then, at the strike of a new hour, all red stripes will disappear, and the cycle repeats again.
@@ -165,6 +268,9 @@ So, at 3:01, the 3<sup>rd</sup> star remains dark blue, the 12<sup>th</sup> star
         </div>
 
     <div class="slide fade">
+ <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h1> </h1>
             <p>
 
 In the center of the clock, we feature a beautiful ring-shaped circle representative of the original circle of stars on the very first American flag. This circle serves as the seconds counter and it gradually fills with a blue-colored light. We chose the color blue as that was the background color of the circle of 13 stars, just as it is still for the current 50 stars. A choice can be made between a smooth sweeping motion or a Swiss movement for the seconds indicator, and as it completes a 60-second cycle, it then resets itself and repeats the action for the next 60 seconds.
