@@ -31,7 +31,7 @@ body {
     overflow: hidden;
     border: 2px solid black;
     border-radius: 10px;
-    background: rgba(248, 197, 127, 0.9); /* Semi-transparent background */
+background: rgba(255, 165, 0, 0.5); /* 50% transparent orange */
     padding: 20px; /* Add padding to the container */
     z-index: 1; /* Ensure it's above the video */
 }
@@ -45,6 +45,7 @@ body {
     text-align: center; /* Center text */
     padding: 20px; /* Add padding to the slide */
     overflow: hidden; /* Prevent overflow of text */
+    color: black; /* Set the font color to white for all text in the slide */
 }
 
 .slide p {
@@ -229,9 +230,9 @@ In the center of the clock, we feature a beautiful ring-shaped circle representa
         .arrow {
             width: 0;
             height: 0;
-            border-top: 15px solid transparent; /* Adjust size */
-            border-bottom: 15px solid transparent; /* Adjust size */
-            border-right: 25px solid white; /* Color of the arrow */
+            border-top: 10px solid transparent; /* Adjust size */
+            border-bottom: 10px solid transparent; /* Adjust size */
+            border-right: 14px solid white; /* Color of the arrow */
             display: inline-block;
             margin-right: 5px; /* Space between arrow and text */
         }
@@ -280,7 +281,7 @@ In the center of the clock, we feature a beautiful ring-shaped circle representa
 
 <body>
     <a href="index.html" class="go-home">
-        <div class="arrow"></div>
+        <div class="arrow"></div> <div class="arrow"></div>
     </a>
 
 
