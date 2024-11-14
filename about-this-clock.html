@@ -25,10 +25,10 @@ body {
         }
 
 
-
 .slideshow-container {
     position: relative;
     max-width: 800px;
+    max-height: 400px; /* Limit the height of the slideshow container */
     margin: auto;
     overflow: hidden;
     border: 2px solid black;
@@ -40,12 +40,12 @@ body {
 
 .slide {
     display: none; /* Hide all slides by default */
-    height: auto; /* Allow height to adjust based on content */
-    display: flex; /* Use flexbox to center content */
+    flex: 1; /* Allow slides to grow and fill the container */
+    min-height: 400px; /* Set a minimum height for all slides */
     justify-content: center; /* Center horizontally */
-    align-items: flex-start; /* Align items to the start vertically */
+    align-items: center; /* Center vertically */
     text-align: center; /* Center text */
-    padding: 20px; /* Add padding to the slide */
+    padding: 25px; /* Add padding to the slide */
     overflow: hidden; /* Prevent overflow of text */
 }
 
@@ -54,27 +54,9 @@ body {
     margin: 0; /* Remove default margin */
     line-height: 1.5; /* Improve readability */
     letter-spacing: 0.1px; /* Adjust letter spacing */
+    overflow: visible; /* Allow overflow to be visible */
 }
 
-/* Adjust the image size for smaller screens */
-img {
-    max-width: 15%;
-    height: auto;
-    margin-bottom: 15px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Media Queries for smaller devices */
-@media (max-width: 600px) {
-    img {
-        max-width: 100%; /* Increase image size on smaller screens */
-        height: 100%; /* Maintain aspect ratio */
-    }
-}
 
 .fade {
     animation: fade 1s;
@@ -122,10 +104,7 @@ h1 span {
         padding: 10px; /* Reduce padding on slides */
     }
 
-    img {
-        max-width: 50%; /* Increase image size on smaller screens */
-    }
-
+ 
     .slide p {
         line-height: 1.4; /* Adjust line height for better readability */
     }
@@ -170,6 +149,24 @@ h2 span {
     white-space: nowrap;
 }
 
+img {
+            width: 20%; /* Default size for larger screens */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 300px; /* Limit size on larger screens */
+            margin-bottom: 15px; /* Spacing below the image */
+            border-radius: 50%; /* Rounded corners */
+            overflow: hidden; /* Hide overflow */
+            display: block; /* Block display */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+        }
+
+        @media only screen and (max-width: 480px) { /* For mobile devices */
+            img {
+                width: 40%; /* Increase size for mobile */
+                max-width: none; /* Remove max-width restriction */
+            }
+        }
     </style>
 </head>
 <body>
@@ -180,7 +177,7 @@ h2 span {
 
  <div class="slideshow-container">
     <div class="slide fade" style="text-align: center; padding: 20px;"> <!-- Center text and add padding -->
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<img src="logo.jpg" alt="Logo">
 <p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
 
 
@@ -189,8 +186,8 @@ h2 span {
             <span style="color: beige;">THIS </span> 
             <span style="color: #1BEAFF;"> CLOCK</span>
         </h2>
-        <p style="margin-top: 15px;">
-The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telling time. Our clock’s innovative design will amaze the world in the exciting way that people will perceive and tell time.This is not just a typical or traditional clock; our groundbreaking clock uses colorful lights to indicate the time instead of the traditional hands or digital numbers found on ordinary clocks.This makes our clock extraordinary, ensuring it stands out as unique and special among the myriad of clocks in the world today.
+        <p>
+The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telling time. Our clock’s original and innovative design will amaze the world in the exciting way that people will perceive and tell time. This is not a typical or traditional clock which uses hands or digital numbers to tell the time that is found on ordinary clocks.
 
            </p>
         </div>
@@ -198,12 +195,11 @@ The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telli
 
 
         <div class="slide fade">
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<img src="logo.jpg" alt="Logo">
 <p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
-<h1> </h1>
+<h2> </h2>
             <p>
-
-The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring love for America, celebrating the courageous men and women who have selflessly dedicated themselves to serving our nation, both past and present. At "JB Paladin," we take immense pride in designing clocks that reflect not just the passage of time but also capture the spirit of patriotism that binds us as a nation in a way that no other clock can. The name "Patriots Clock" embodies our commitment to honoring the values and freedoms that define our great country, the United States of America. By integrating our brand name,"JB Paladin," we add a personal touch that emphasizes our identity and dedication to craftsmanship. 
+Instead, our groundbreaking and revolutionary clock uses colorful lights to indicate the time! This makes our clock extraordinary and ensures that it will stand out as unique and special among the myriad of clocks that can be found around the world today. The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring love for America, celebrating the courageous men and women who have selflessly dedicated themselves to serving our nation, both past and present. At "JB Paladin," we take immense pride in designing clocks that reflect not just the passage of time but also capture the spirit of patriotism that binds us as a nation in a way that no other clock can.
 
            </p>
         </div>
@@ -211,42 +207,52 @@ The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring lo
 
 
         <div class="slide fade">
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<img src="logo.jpg" alt="Logo">
 <p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
-<h1> </h1>
+<h2> </h2>
             <p>
+The name "Patriots Clock" embodies our commitment to honoring the values and freedoms that define our great country, the United States of America. By integrating our brand name, "JB Paladin," we add a personal touch that emphasizes our identity and dedication to craftsmanship. In celebration of the Semiquincentennial, (250th) birthday of the United States of America on July 4, 2026, we proudly introduce the "JB PALADIN PATRIOTS CLOCK." This stunning clock draws inspiration from the bold colors and iconic design of the American flag, capturing the spirit of America's Declaration of Independence in 1776. 
+          </p>
+        </div>
 
-In celebration of the Semiquincentennial (250<sup>th</sup>) birthday of the United States of America on July 4, 2026, we proudly introduce the "JB PALADIN PATRIOTS CLOCK." This stunning clock draws inspiration from the bold colors and iconic design of the American flag, capturing the spirit of America's Declaration of Independence in 1776. In addition to the 12 stars located at the hour positions, a radiant gold-colored 13<sup>th</sup> star at the very center of the clock symbolizes the original 13 colonies of the United States of America and honors the brave individuals who have paid the ultimate price for defending our country. 
+
+      <div class="slide fade">
+<img src="logo.jpg" alt="Logo">
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h2> </h2>
+            <p>
+In addition to the 12 stars located at the hour positions, a radiant gold-colored 13th star at the very center of the clock symbolizes the original 13 colonies of the United States of America and honors the brave individuals who have paid the ultimate price for defending our country. The star that denotes the correct hour of time is dark blue, which stands for those who are currently serving on active duty, while the light blue five-minute star pays tribute to all who have served in the past. We chose a color inspired by the iconic Statue of Liberty for the clock's face, adding a meaningful touch that reinforces our connection to freedom and hope. 
+          </p>
+        </div>
+
+      <div class="slide fade">
+<img src="logo.jpg" alt="Logo">
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h2> </h2>
+            <p>
+The creative genius behind this remarkable clock is none other than Mr. Jeff Birge, whose vision shines through in every intricate detail. After years of anticipation, we are thrilled to see his dream come to life, with the help of his programmer, Ehllen Quezada, who collaborated with Jeff on this project. Ehllen’s skill in programming languages such as HTML5, CSS, and JavaScript brought this clock to fruition. Additionally, Ehllen’s extensive knowledge in Information Technology played a crucial role in transforming Jeff’s ideas and concepts into a vibrant, fully functional app,
+          </p>
+        </div>
+
+    <div class="slide fade">
+<img src="logo.jpg" alt="Logo">
+<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h2> </h2>
+            <p>
+which will now be available for all electronic devices. There is no doubt that the "JB PALADIN PATRIOTS CLOCK" is bound to inspire admiration with its exclusive design and unique functions. The moment has finally arrived; we know every American will love this magnificent clock as it pays homage to the greatest country that the world has ever seen: the United States of America!
+
 
           </p>
         </div>
 
 
- <div class="slide fade">
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
-<h1> </h1>
-         <p> 
-The star that denotes the correct hour of time is dark blue, which stands for those who are currently serving on active duty, while the light blue five-minute star pays tribute to all who have served in the past. We chose a color inspired by the iconic Statue of Liberty for the clock's face, adding a meaningful touch that reinforces our connection to freedom and hope. The creative genius behind this remarkable clock is none other than Mr. Jeff Birge, whose vision shines through in every intricate detail. After years of anticipation, we are thrilled to see his dream come to life, with the help of his programmer, Ehllen Quezada, who collaborated with Jeff on this project. 
-        </p></div>
 
 
 
 
-
-
-        <div class="slide fade">
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
-<h1> </h1>
-            <p>
-
-Ehllen’s skill in programming languages such as HTML5, CSS, and JavaScript brought this clock to fruition. Additionally,Ehllen’s extensive knowledge in Information Technology played a crucial role in transforming Jeff’s ideas and concepts into a vibrant,fully functional app, which will now be available for all electronic devices. There is no doubt that the "JB PALADIN PATRIOTS CLOCK" is bound to inspire admiration with its exclusive design and unique functions. The moment has finally arrived; we know every American will love this magnificent clock as it pays homage to the greatest country that the world has ever seen: the United States of America!
-</p>
-        </div>
 
  <div class="slide fade">
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<img src="logo.jpg" alt="Logo">
 <p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
 
              <h2><span style="color: red;">HOW THE</span> <span style="color: beige;">CLOCK</span> <span style="color: #1BEAFF;"> WORKS</span></h2>
@@ -258,9 +264,9 @@ Our clock features a unique hour marker system with 12 white stars in place of t
 
 
    <div class="slide fade">
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<img src="logo.jpg" alt="Logo">
 <p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
-<h1> </h1>
+<h2> </h2>
             <p>
 
 So, at 3:01, the 3<sup>rd</sup> star remains dark blue, the 12<sup>th</sup> star continues to be light blue, and one red stripe lights up next to it. By 3:05, the 3<sup>rd</sup> star continues to stay dark blue, the appropriate number of red stripes are lit up, and the 1<sup>st</sup> star lights up in light blue, indicating five minutes past the hour. Next to the hour stars, the red stripes will continue to light up until all are lit at 59 minutes past the hour; then, at the strike of a new hour, all red stripes will disappear, and the cycle repeats again.
@@ -268,9 +274,9 @@ So, at 3:01, the 3<sup>rd</sup> star remains dark blue, the 12<sup>th</sup> star
         </div>
 
     <div class="slide fade">
- <img src="logo.jpg" alt="Logo" style="max-width: 15%; height: auto; margin-bottom: 15px; border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;"> <!-- Adjust size and spacing -->
+<img src="logo.jpg" alt="Logo">
 <p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
-<h1> </h1>
+<h2> </h2>
             <p>
 
 In the center of the clock, we feature a beautiful ring-shaped circle representative of the original circle of stars on the very first American flag. This circle serves as the seconds counter and it gradually fills with a blue-colored light. We chose the color blue as that was the background color of the circle of 13 stars, just as it is still for the current 50 stars. A choice can be made between a smooth sweeping motion or a Swiss movement for the seconds indicator, and as it completes a 60-second cycle, it then resets itself and repeats the action for the next 60 seconds.
@@ -309,6 +315,32 @@ In the center of the clock, we feature a beautiful ring-shaped circle representa
             showSlide(slideIndex);
         }
     </script>
+
+
+<script>
+function adjustSlideHeight() {
+    const slides = document.getElementsByClassName("slide");
+    let maxHeight = 0;
+
+    // Reset heights to calculate the maximum
+    for (let slide of slides) {
+        slide.style.height = 'auto'; // Reset height
+        maxHeight = Math.max(maxHeight, slide.offsetHeight); // Find the maximum height
+    }
+
+    // Set all slides to the maximum height
+    for (let slide of slides) {
+        slide.style.height = maxHeight + 'px';
+    }
+}
+
+// Call this function whenever you change slides
+adjustSlideHeight();
+
+// Optionally call it on window resize
+window.addEventListener('resize', adjustSlideHeight);
+
+</script>
 
 
 
@@ -399,6 +431,88 @@ In the center of the clock, we feature a beautiful ring-shaped circle representa
             <a href="https://www.youtube.com" target="_blank" class="social-icon youtube">Youtube</a>
         </div>
     </div>
+
+<style>
+.circle {
+    width: 45px; /* Diameter of the black circle */
+    height: 45px; /* Diameter of the black circle */
+    background-color: #000; /* Black circle color */
+    border-radius: 50%; /* Makes the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    position: fixed; /* Fix position relative to the viewport */
+    bottom: 20px; /* Distance from the bottom */
+    left: calc(50% + 120px); /* Center horizontally + 10px to the right */
+    transform: translateX(-50%); /* Adjust to center the circle */
+}
+
+.human-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.head {
+    width: 12px; /* Smaller head size */
+    height: 12px; /* Smaller head size */
+    background-color: #ffcc00; /* Head color */
+    border-radius: 50%; /* Makes the head a circle */
+}
+
+.body {
+    width: 25px; /* Width of the half-circle */
+    height: 12px; /* Height of the half-circle */
+    background-color: #007bff; /* Body color */
+    border-top-left-radius: 25px; /* Make the top left corner round */
+    border-top-right-radius: 25px; /* Make the top right corner round */
+    position: relative;
+    top: -4px; /* Adjust position to overlap the head */
+}
+
+.tooltip {
+    display: none; /* Hidden by default */
+    position: absolute;
+    bottom: 60px; /* Position above the icon */
+    left: 50%; /* Center tooltip horizontally */
+    transform: translate(-80%, 0); /* Center tooltip */
+    background-color: beige; 
+    color: black;
+    padding: 12px 24px; /* Increased horizontal padding for oval shape */
+    border: 3px inset black; /* Black border */
+    border-radius: 50px; /* High border-radius for oval shape */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    font-family: 'Open Sans', sans-serif; /* Font family */
+    white-space: nowrap; /* Prevent text wrapping */
+    text-align: center; /* Center text */
+}
+    </style>
+</head>
+<body>
+    <div class="circle" id="tooltip-icon">
+        <div class="human-logo">
+            <div class="head"></div>
+            <div class="body"></div>
+        </div>
+        <div class="tooltip" id="tooltip">Clock Designer : Mr. Jeff Birge <br> Programmed By : Ehllen Quezada </div>
+    </div>
+
+    <script>
+        // Function to initialize the tooltip behavior
+        function initializeTooltip() {
+            const tooltipIcon = document.getElementById('tooltip-icon');
+            const tooltip = document.getElementById('tooltip');
+
+            tooltipIcon.addEventListener('click', function() {
+                tooltip.style.display = tooltip.style.display === 'none' || tooltip.style.display === '' ? 'block' : 'none';
+            });
+        }
+
+        // Initialize tooltip when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', initializeTooltip);
+    </script>
 
 
 
