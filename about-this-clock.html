@@ -406,6 +406,7 @@ window.addEventListener('resize', adjustSlideHeight);
 
 
    <style>
+
 .go-home {
     position: absolute; /* Keep absolute positioning */
     bottom: 20px; /* Position it 20px from the bottom */
@@ -420,7 +421,8 @@ window.addEventListener('resize', adjustSlideHeight);
     transform: translateX(-50%); /* Adjust position to center horizontally */
 }
 
-.arrow {
+
+.back-arrow {
     position: relative; /* Make it relative for the pseudo-element */
     width: 0;
     height: 0;
@@ -430,7 +432,6 @@ window.addEventListener('resize', adjustSlideHeight);
     display: inline-block;
     margin-right: 5px; /* Space between arrow and text */
 }
-
 
 
 .connect {
@@ -469,6 +470,7 @@ window.addEventListener('resize', adjustSlideHeight);
     display: flex; /* Centering the letter */
     align-items: center; /* Centering vertically */
     justify-content: center; /* Centering horizontally */
+
 }
 
 .info-letter {
@@ -481,11 +483,12 @@ window.addEventListener('resize', adjustSlideHeight);
 
 <body>
 
-<div class="info-icon">
+<div class="info-icon" onclick="toggleTable()">
     <span class="info-letter">i</span>
 </div>
+
     <a href="index.html" class="go-home">
-        <div class="arrow"></div>
+        <div class="back-arrow"></div>
     </a>
 
 
@@ -546,15 +549,313 @@ window.addEventListener('resize', adjustSlideHeight);
     transform: translate(-80%, 0); /* Center tooltip */
     background-color: beige; 
     color: black;
-    padding: 12px 24px; /* Increased horizontal padding for oval shape */
+    padding: 10px 15px; /* Increased horizontal padding for oval shape */
     border: 3px inset black; /* Black border */
-    border-radius: 50px; /* High border-radius for oval shape */
-    font-size: 16px; /* Font size */
+    border-radius: 10px; /* High border-radius for oval shape */
+    font-size: 14px; /* Font size */
     font-weight: bold; /* Bold text */
     font-family: 'Open Sans', sans-serif; /* Font family */
     white-space: nowrap; /* Prevent text wrapping */
     text-align: center; /* Center text */
 }
+
+
+
+
+.info-icon-circle {
+    width: 30px; /* Size of the circle */
+    height: 30px; /* Size of the circle */
+    background-color: black; /* Circle color */
+    border-radius: 50%; /* Makes it a circle */
+    display: flex; /* Center the letter */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    color: beige; /* Letter color */
+    font-family: Georgia, serif; /* Font style */
+    font-size: 16px; /* Size of the letter */
+    font-weight: bold; /* Make the letter bold */
+}
+
+
+.info-table {
+    font-family: 'Open Sans', sans-serif; /* Corrected font-family */
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Position at the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: #f5edd3; /* Table background */
+    border: 1px solid #ccc; /* Table border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the table */
+    z-index: 1000; /* Ensure it is above other elements */
+    padding: 20px; /* Padding around the table */
+    box-sizing: border-box; /* Include padding and border in width and height */
+    overflow-y: auto; /* Add scroll if content overflows */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out children */
+display: none;
+}
+
+.info-table .close-icon {
+    display: flex; /* Centering the icon */
+    justify-content: center; /* Center horizontally */
+    margin: 20px 0; /* Space around the icon */
+}
+
+.info-table th,
+.info-table td {
+    padding: 10px; /* Add padding for spacing within cells */
+    text-align: center; /* Center-align text in cells */
+    border: 1px solid black; /* Add a black border for rows and columns */
+}
+
+.info-table th {
+    background-color: gray; /* Set background color to gray */
+    color: white;
+}
+ 
+
+.info-table span.star {
+    display: inline-block; /* Make the span an inline-block element */
+    margin-left: 0; /* Remove the left margin if needed */
+}
+
+.info-table .double-circle-icon {
+    display: inline-block; /* Make the span an inline-block element */
+    margin-left: 0; /* Remove the left margin if needed */
+}
+
+
+        .star {
+            width: 30px; /* Size of the star icon */
+            height: 30px; /* Size of the star icon */
+            display: inline-block; /* Ensure inline display */
+        }
+
+        .horizontal-icon {
+            background-color: red; /* Color of the horizontal icon */
+            width: 40px; /* Width of the icon */
+            height: 4px; /* Height of the icon */
+            display: inline-block; /* Ensure inline display */
+        }
+
+        .double-circle-icon {
+            position: relative; /* Position for the inner elements */
+            width: 18px; /* Outer circle diameter */
+            height: 18px; /* Outer circle diameter */
+            border: 5px solid blue; /* Outer circle color and thickness */
+            border-radius: 50%; /* Makes it a circle */
+            display: flex; /* Centering the inner circle */
+            align-items: center; /* Centering vertically */
+            justify-content: center; /* Centering horizontally */
+            background-color: white; /* Inner circle background */
+        }
+
+        .double-circle-icon::before {
+            content: ""; /* Create the inner circle */
+            width: 5px; /* Inner circle diameter */
+            height: 5px; /* Inner circle diameter */
+            border-radius: 50%; /* Makes it a circle */
+            background-color: beige; /* Inner circle color */
+            position: absolute; /* Positioning */
+        }
+
+       .double-circle-icon::after {
+    content: ""; /* Create the small star */
+    width: 12px; /* Size of the star */
+    height: 12px; /* Size of the star */
+    background-color: gold; /* Star color */
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); /* Star shape */
+    position: absolute; /* Positioning */
+    top: 50%; /* Move to the vertical center */
+    left: 50%; /* Move to the horizontal center */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+}
+
+.menu-bar-icon {
+    width: 28px; /* Width of the menu bar icon */
+    height: 4px; /* Height of the menu bar icon */
+    background-color: red; /* Color of the menu bar */
+    display: block; /* Ensure block display */
+    position: relative; /* For positioning the lines */
+    margin: 0 auto; /* Centering the icon horizontally */
+    top: -12px; /* Move the entire icon up by 5 pixels (adjust as needed) */
+}
+
+.menu-bar-icon::before,
+.menu-bar-icon::after {
+    content: ""; /* Create lines for the menu bar */
+    width: 100%; /* Full width of the icon */
+    height: 4px; /* Height of each line */
+    background-color: red; /* Color of the lines */
+    position: absolute; /* Positioning */
+    left: 50%; /* Position from left to horizontal center */
+    transform: translateX(-50%); /* Shift the element back by half its width */
+}
+
+.menu-bar-icon::before {
+    top: 10px; /* Move the first line up by 5 pixels (adjust as needed) */
+}
+
+.menu-bar-icon::after {
+    top: 20px; /* Move the second line up by 5 pixels (adjust as needed) */
+}
+
+.info-table span.menu-bar-icon {
+    display: inline-block; /* Make the span an inline-block element */
+    margin-left: 0; /* Remove the left margin if needed */
+}
+
+        .display-clock-icon {
+            display: inline-block; /* Allows padding and margin */
+            background-color: beige; /* Background color of the rectangle */
+            border: 4px solid black; /* Thinner black border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 2px 4px; /* Reduced padding around the text */
+            font-weight: bold; /* Make the text bold */
+            color: black; /* Text color */
+            font-size: 10px; /* Smaller text size */
+        }
+
+table {
+    width: 100%;
+    margin-bottom: 25px;
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 15px; /* Consistent padding */
+    vertical-align: middle; /* Center content vertically */
+    height: 60px; /* Set a specific height */
+}
+
+/* Optional: Adding some styling to headers */
+th {
+    background-color: #f0f0f0; /* Light gray background for headers */
+    height: 60px; /* Ensure the same height as td */
+}
+
+.arrow-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    width: 0; 
+    height: 0; 
+    border-top: 12px solid transparent; /* Top part transparent */
+    border-bottom: 12px solid transparent; /* Bottom part transparent */
+    border-left: 20px solid white; /* Arrow color pointing right */
+}
+
+
+/* For arrow icon cell and height adjustments */
+.arrow-icon-cell {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 80px; /* Increased cell height for larger layout */
+    /* You can adjust this value to fit your design needs */
+}
+
+
+.arrow-left {
+    width: 0; 
+    height: 0; 
+    border-top: 12px solid transparent; /* Top part transparent */
+    border-bottom: 12px solid transparent; /* Bottom part transparent */
+    border-right: 20px solid white; /* Arrow color pointing right */
+   
+    
+}
+
+.clock-designer-icon {
+    width: 30px; /* Size of the outer circle */
+    height: 30px; /* Size of the outer circle */
+    background-color: black; /* Outer circle color */
+    border-radius: 50%; /* Makes it a circle */
+    position: relative; /* Positioning context for child elements */
+    display: flex; /* Center the letter */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.clock-designer-icon .head {
+    width: 10px; /* Size of the head */
+    height: 10px; /* Size of the head */
+    background-color: gold; /* Head color */
+    border-radius: 50%; /* Makes it a circle */
+    position: absolute; /* Absolute positioning within the parent */
+    top: 5px; /* Positioning the head */
+}
+
+.clock-designer-icon .body {
+    width: 20px; /* Width of the body */
+    height: 10px; /* Height of the body */
+    background-color: blue; /* Body color */
+    border-radius: 10px 10px 0 0; /* Makes it a half-circle at the top */
+    position: absolute; /* Absolute positioning within the parent */
+    top: 12px; /* Move body closer to the head */
+}
+
+.note {
+    text-align: center; /* Center text horizontally */
+    color: black; /* Set font color to black */
+    margin: 20px 0; /* Space around the note */
+    font-size: 16px; /* Font size for the note (adjust as needed) */
+    font-family: Arial, sans-serif; /* Font family (choose your preferred font) */
+}
+
+.table-container {
+    position: relative; /* Position context for absolute elements */
+}
+
+.exit-icon {
+    display: inline-block;
+   width: 30px; /* Increased size */
+    height: 30px; /* Increased size */
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+}
+
+.exit-icon::before {
+    content: "×";
+    font-size: 35px; /* Increased size */
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold; 
+}
+
+.exit-icon2 {
+    display: inline-block;
+    width: 35px; /* Increased size */
+    height: 35px; /* Increased size */
+    background-color: black;
+    border-radius: 50%;
+    position: absolute; /* Position it absolutely */
+    left: 10px; /* Adjust to your preference */
+    top: 10px; /* Adjust to your preference */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+}
+
+.exit-icon2::before {
+    content: "×";
+    font-size: 35px; /* Increased font size */
+    font-weight: bold; /* Make it bold */
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
     </style>
 </head>
 <body>
@@ -580,6 +881,129 @@ window.addEventListener('resize', adjustSlideHeight);
         // Initialize tooltip when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', initializeTooltip);
     </script>
+
+
+
+<div class="info-table" id="infoTable" style="display: none;">
+    <table style="width: 100%; margin-bottom: 20px;">
+        <thead>
+            <tr>
+                <th>Clock Icons</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> 
+                    <span class="star" style="background-color: darkblue; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"> </span>
+                </td>
+                <td> (Dark blue star) - This is an hour marker</td>
+            </tr>
+            <tr>
+                <td> 
+                    <span class="star" style="background-color: lightblue; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></span>
+                </td>
+                <td>(Light blue star) - This is a 5 minutes marker</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="star" style="background-color: red; width: 40px; height: 4px; display: inline-block;"></span>
+                </td>
+                <td>(Red stripe) - This is a 1 minute marker</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="double-circle-icon"></span>
+                </td>
+                <td>(Double circle w/ star) - This is a seconds marker</td>
+            </tr>
+            <tr>
+                <th>App Icons</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>
+                    <span class="menu-bar-icon"></span>
+                </td>
+                <td>(Menu bar) - Background Changer</td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-size: 26px;">📅</span>
+                </td>
+                <td>(Date icon) - To show the current date today</td>
+            </tr>
+
+<tr>
+               <td class="arrow-icon-cell">
+    <div class="arrow"></div>
+</td>
+                <td>(Arrow right icon) - This is to go to the next page</td>
+     <tr>
+    <td class="arrow-icon-cell">
+        <div class="arrow-left"></div> 
+    </td>
+    <td> (Arrow left icon) - This will make users back to the main page</td>
+</tr>
+
+<tr>
+    <td class="arrow-icon-cell">
+        <div class="info-icon-circle">i</div> <!-- New information icon -->
+    </td>
+    <td>(Information icon) - To display all icons in our app</td>
+</tr>
+
+<tr>
+    <td class="arrow-icon-cell">
+        <div class="clock-designer-icon">
+            <div class="head"></div>
+            <div class="body"></div>
+        </div> 
+    </td>
+    <td>(Human icon) - Shows who are the people who made the clock </td>
+</tr>
+
+<tr>
+    <td>
+        <span class="exit-icon"></span>
+    </td>
+    <td>(Exit table page icon) - This will close the table page</td>
+</tr>
+
+
+
+<div class="note">
+        <div class="exit-icon" id="exitIcon2"></div> <!-- Added exit icon -->
+        <p>NOTE: All app icons are click-based. Users need to click each icon to display and hide the content.</p>
+        <p>LINKS: Just click the link to go to our facebook, instagram and youtube account.</p>
+    </div>
+
+
+        </tbody>
+    </table>
+ 
+
+</div>
+
+<script>
+    function toggleTable() {
+        const table = document.getElementById('infoTable');
+        if (table.style.display === 'none' || table.style.display === '') {
+            table.style.display = 'flex'; // Show the table
+        } else {
+            table.style.display = 'none'; // Hide the table
+        }
+    }
+</script>
+
+ <script>
+    const exitIcon = document.getElementById('exitIcon2');
+
+    exitIcon.addEventListener('click', () => {
+        window.location.href = 'about-this-clock.html'; 
+    });
+</script>
+
 
 
 
