@@ -88,16 +88,16 @@ body {
   }
 
 h3 {
-    font-family: open sans; /* Adding a fallback */
-position: relative; /* Enable positioning */
-    top: -15px; /* Move the text up by 5 pixels */
+    font-family: 'Open Sans', sans-serif; /* Corrected to have a fallback */
+    position: relative; /* Enable positioning */
+    top: -16px; /* Move the text up by 15 pixels */
 }
 
-/* Media query for smaller screens (e.g., mobile phones) */
+/* Media query for mobile screens */
 @media (max-width: 600px) {
     h3 {
-        top: -6px; /* Adjust the upward position for smaller screens */
-        /* You can also adjust other properties here if needed */
+        top: -6px; /* Adjust the upward position for mobile screens */
+        /* Adjust other properties here if needed */
     }
 }
 
@@ -239,6 +239,8 @@ h3 span {
     flex-direction: column; /* Stack bars vertically */
     justify-content: space-between; /* Space between bars */
     margin: 30px; /* Margin around the hamburger */
+margin-left: 15px; /* Adjust the value to move it left */
+
 }
 
 .bar {
@@ -1359,6 +1361,8 @@ footer {
     font-size: 12px;
     height: 18px; /* Decrease height for smaller screens or mobiles */
     padding: 6px 0 6px 0;
+top: -6px; /* Adjust the upward position for mobile screens */
+
   }
 }
 
@@ -1414,36 +1418,33 @@ footer {
 
 <style>
     #next-page-button {
-        position: fixed; /* Fixed position */
-        bottom: 40px; /* Adjust this value to position it above the footer */
-        right: 20px; 
-        color: black; /* Text color */
-        padding: 8px 8px; /* Padding for the button */
-        font-size: 14px; /* Font size */
-        font-family: open sans;
-        z-index: 1000; /* Ensure it is above other elements */
-        border-radius: 5px; /* Rounded corners */
-        text-decoration: none; /* Remove underline */
-        display: flex; /* Flexbox for alignment */
-        align-items: center; /* Center items vertically */
-    }
+    position: fixed; /* Fixed position */
+    bottom: 40px; /* Adjust this value to position it above the footer */
+    right: 20px; 
+    color: black; /* Text color */
+    padding: 8px 8px; /* Padding for the button */
+    font-size: 14px; /* Font size */
+    font-family: open sans;
+    z-index: 1000; /* Ensure it is above other elements */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    margin-left: 20px; /* Adjust the value to move it right */
+}
 
- 
-    /* Arrow styling */
-    .arrow {
-        margin-left: 1px; /* Space between text and arrow */
-        display: inline-block; /* Ensure it's treated as a block */
-        width: 0; 
-        height: 0; 
-        border-top: 6px solid transparent; /* Top triangle */
-        border-bottom: 9px solid transparent; /* Bottom triangle */
-        border-left: 13px solid beige; /* Left triangle for right arrow */
-    }
+.arrow {
+    width: 0; 
+    height: 0; 
+    border-top: 12px solid transparent; /* Top part transparent */
+    border-bottom: 12px solid transparent; /* Bottom part transparent */
+    border-left: 20px solid beige; /* Arrow color pointing right */
+    margin-left: 60px; /* Increased value to move it further right */
+}
 </style>
 
 <a id="next-page-button" href="about-this-clock.html">
   <span class="arrow"></span> <!-- Arrow element -->
-    <span class="arrow"></span> <!-- Arrow element -->
 </a>
 
 
@@ -1469,10 +1470,10 @@ footer {
         #dateIcon {
             position: fixed; 
             bottom: 43px; /* Position above the date button */
-            left: 30px; 
+            left: 10px; 
             z-index: 1000; 
             font-family: 'Open Sans', sans-serif;
-            font-size: 24px; /* Adjust icon size */
+            font-size: 30px; /* Adjust icon size */
             cursor: pointer; /* Change cursor to pointer */
         }
     </style>
