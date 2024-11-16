@@ -856,6 +856,37 @@ th {
     transform: translate(-50%, -50%);
 }
 
+
+.clock-icon-cell {
+    display: flex;
+    justify-content: center; /* Center the icon */
+    align-items: center; /* Center the content vertically */
+    height: 80px; /* Adjust height as needed */
+    margin: 10px; /* Spacing around the cell */
+}
+
+.clock-icon {
+    background-color: white; /* Background color */
+    border: 4px solid black; /* Black border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Inner padding */
+    text-align: center; /* Center text inside */
+    max-width: 75px; 
+    max-height: 15px;
+}
+
+.clock-text {
+    font-weight: bold; /* Make the main text bold */
+    margin: 0; /* Remove default margins */
+}
+
+.clock-description {
+    font-size: 12px; /* Make description smaller */
+    color: gray; /* Use a different color for the description */
+    margin: 0; /* Remove default margins */
+}
+
+
     </style>
 </head>
 <body>
@@ -921,6 +952,18 @@ th {
                 <th>App Icons</th>
                 <th>Description</th>
             </tr>
+<tr>
+<td>
+<div class="clock-icon-cell">
+    <div class="clock-icon">
+        <span class="clock-text">Click</span>
+    </div>
+</div>
+</td>
+
+<td> (Clock dropdown menu) - Use to display and hides the clocks</td>
+
+</tr>
             <tr>
                 <td>
                     <span class="menu-bar-icon"></span>
