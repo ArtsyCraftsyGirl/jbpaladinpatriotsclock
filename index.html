@@ -1343,7 +1343,7 @@ footer {
   width: 100%;
   position: relative; /* Keep it relative for normal flow */
   margin-top: -20px; /* Move it up by adjusting the margin */
-  padding: 5px 0 5px 0; /* Increase the top padding to move the text down */
+  padding: 10px 0 5px 0; /* Increase top padding to move text down */
   height: 20px; /* Set the height to 50px */
 }
 
@@ -1411,7 +1411,7 @@ footer {
     #next-page-button {
     position: fixed; /* Fixed position */
     bottom: 40px; /* Adjust this value to position it above the footer */
-    right: 20px; 
+    right: 3px; 
     color: black; /* Text color */
     padding: 8px 8px; /* Padding for the button */
     font-size: 14px; /* Font size */
@@ -1427,10 +1427,11 @@ footer {
 .arrow {
     width: 0; 
     height: 0; 
-    border-top: 12px solid transparent; /* Top part transparent */
-    border-bottom: 12px solid transparent; /* Bottom part transparent */
-    border-left: 20px solid beige; /* Arrow color pointing right */
-    margin-left: 60px; /* Increased value to move it further right */
+    border-top: 12px solid transparent; 
+    border-bottom: 12px solid transparent; 
+    border-left: 20px solid beige; 
+    padding-left: 5px; 
+    transform: translateY(-3px); /* Move the arrow up */
 }
 </style>
 
