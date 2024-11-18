@@ -574,21 +574,21 @@ function hideAllCanvases() {
 
 
 
-<div style="text-align:center;">
-  <canvas id="canvas"></canvas>
-</div>
-
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Clock</title>
+    <style>
         #canvas {
-            position: relative;
-            transform: translateY(-65px); /* Adjust this value to control how much to move up */
             display: block;
             margin: 0 auto; /* Center the canvas horizontally */
             border-radius: 100%; /* Make the canvas a circle */
             margin-bottom: 20px; 
-            vertical-align: bottom;
             width: 100%; /* Responsive width */
-            max-width: 385px; /* Limit maximum width */
+            max-width: 360px; /* Limit maximum width */
+            max-height: 360px; /* Limit maximum height */
             height: auto; /* Maintain aspect ratio with height */
         }
     </style>
@@ -607,7 +607,7 @@ function hideAllCanvases() {
         // Set the canvas dimensions based on the window size
         function resizeCanvas() {
             const minSize = 309;
-            const maxSize = 400;
+            const maxSize = 385;
 
             let size = Math.min(window.innerWidth, window.innerHeight);
             size = Math.max(size, minSize); // Ensure minimum size
@@ -759,8 +759,8 @@ function hideAllCanvases() {
         // Initial call to set size and start drawing
         resizeCanvas();
     </script>
-
-
+</body>
+</html>
 
 
 
