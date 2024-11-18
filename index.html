@@ -579,347 +579,186 @@ function hideAllCanvases() {
 </div>
 
 <style>
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas {
-    width: 320px;
-    height: 320px;
-  }
-}
-
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-
-
-
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas5 {
-    width: 320px;
-    height: 320px;
-  }
-}
-
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas5 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas6 {
-    width: 320px;
-    height: 320px;
-  }
-}
-
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas6 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas7 {
-    width: 320px;
-    height: 320px;
-  }
-}
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas7 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas8 {
-    width: 320px;
-    height: 320px;
-  }
-}
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas8 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas9 {
-    width: 320px;
-    height: 320px;
-  }
-}
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas9 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas10 {
-    width: 320px;
-    height: 320px;
-  }
-}
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas10 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-
-/* Media query for small screens (e.g., older Android phones or iOS devices) */
-@media only screen and (max-width: 360px) {
-  #canvas11 {
-    width: 320px;
-    height: 320px;
-  }
-}
-/* Media query for tablets */
-@media only screen and (min-width: 600px) and (max-width: 1200px) {
-  #canvas11 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
-  }
-}
-</style>
-
-<style>
-
-#canvas {
-  position: relative;
- transform: translateY(-65px); /* Adjust this value to control how much to move up */
-  display: block;
-  margin: 0 auto; /* add this to center the canvas horizontally */
-  border-radius: 100%; /* add this to make the canvas a circle */
-  margin-bottom: 20px; 
-  vertical-align: bottom;
-
-}
-
-
-  
-
-</style>
-
-
-
-
-
-
-
-<script>
-
-// Get the canvas element
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-// Set the canvas dimensions
-canvas.width = 360;
-canvas.height = 360;
-
-// Set the clock center and radius
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
-const radius = canvas.width / 2 - 20;
-
-// Function to draw a five-pointed star
-function drawStar(x, y, size, color) {
-  ctx.beginPath();
-  for (let i = 0; i < 5; i++) {
-    const angle = i * 4 * Math.PI / 5;
-    const sx = x + size * Math.sin(angle);
-    const sy = y - size * Math.cos(angle);
-    ctx.lineTo(sx, sy);
-  }
-  ctx.closePath();
-  ctx.fillStyle = color;
-  ctx.fill();
-}
-
-
-
-
-// Function to draw a stripe
-function drawStripe(x, y, length, angle, color) {
-  ctx.beginPath();
-  ctx.lineWidth = 3.8;
-  ctx.strokeStyle = color;
-  ctx.moveTo(x, y);
-  ctx.lineTo(x + length * Math.sin(angle), y - length * Math.cos(angle));
-  ctx.stroke();
-}
-
-
-
-
-let currentSeconds = 0;
-let lastUpdateTime = 0;
-
-function drawClock() {
-  // Clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Draw the clock circle
-  ctx.beginPath();
-  ctx.arc(centerX, centerY, radius, 0, 5 * Math.PI);
-  ctx.fillStyle = '#5FFAFA';
-  ctx.fill();
-  ctx.lineWidth = 11;
-  ctx.strokeStyle = 'red';
-  ctx.stroke();
-
-  // Draw the outer ring
-  ctx.beginPath();
-  ctx.arc(centerX, centerY, radius * 0.95, 0, 2 * Math.PI);
-  ctx.lineWidth = 11;
-  ctx.strokeStyle = 'white'; /* blue color for the outer ring */
-  ctx.stroke();
-
-
- 
-
-  // Draw the hour markers (stars)
-  for (let i = 0; i < 12; i++) {
-    const angle = i * 30 * Math.PI / 180;
-    const x = centerX + radius * 0.8 * Math.sin(angle);
-    const y = centerY - radius * 0.8 * Math.cos(angle);
-    let color;
-    const hour = new Date().getHours() % 12;
-    const minute = new Date().getMinutes();
-    if (i === hour) {
-      color = 'darkblue'; // current hour
-    } else if (i === Math.floor((minute / 5) % 12)) {
-      color = '#2FD2D6 '; // current minute 
-    } else {
-      color = 'white';
-    }
-    drawStar(x, y, 14, color);
-  }
-
-  // Draw the stripes
-  const minute = new Date().getMinutes();
-  let stripeBorder = 'white';
-  const stripeWidth = 0.9; // adjust this value to change the width of the stripes
-  const stripeOffset = 0.5; // adjust this value to change the position of the stripes
-  const centerCircleRadius = radius * 0.9; // radius of the center circle
-  const maxStripeLength = radius * 0.28 - radius * 0.02; // calculate the maximum stripe length
-  for (let i = 0; i < minute; i++) {
-    if ((i + 1) % 5 !== 0) { // skip drawing an extra stripe for every 5 minutes passed
-      const angle = (i + 0.4 + 0.6) * 6 * Math.PI / 180; // added 0.1 to shift the angle clockwise
-      const x = centerX + radius * stripeOffset * Math.sin(angle);
-      const y = centerY - radius * stripeOffset * Math.cos(angle);
-      let color = '#FB2413';
-      drawStripe(x, y, maxStripeLength, angle, color);
-      drawStripe(x, y, maxStripeLength, angle + Math.PI, color);
-    }
-  }
-
-
-
-
-  // Draw the center circle (seconds indicator)
-  const now = new Date().getTime();
-  const seconds = now / 1000;
-  const deltaTime = now - lastUpdateTime;
-  lastUpdateTime = now;
-
-
-
-
-  currentSeconds += deltaTime / 1000; // update current seconds
-  currentSeconds %= 60; // keep current seconds between 0 and 60
-
-  const circleProgress = currentSeconds / 60; // calculate progress based on current seconds
-
-
-
-
-
-// Draw the filled circle (seconds indicator)
-ctx.beginPath();
-ctx.arc(centerX, centerY, radius * 0.10 * (currentSeconds / 60), 0, 2 * Math.PI);
-ctx.fillStyle = 'blue'; 
-ctx.fill();
-ctx.beginPath();
-ctx.arc(centerX, centerY, radius * 0.10, 0, 2 * Math.PI);
-ctx.lineWidth = 10;
-ctx.strokeStyle = '#B7950B';
-ctx.stroke();
-ctx.fillStyle = 'white'; 
-ctx.fill();
-
-
-  // Draw the inner circle
-  ctx.beginPath();
-  ctx.arc(centerX, centerY, radius * 0.10, 0, 2 * Math.PI);
-  ctx.lineWidth = 10;
-  ctx.strokeStyle = '#4FA8C2';
-  ctx.stroke();
-  ctx.fillStyle = '#f5fffa';
-  ctx.fill();
-
-
-
-
-  // Draw a star inside the inner circle
-  drawStar(centerX, centerY, 13, ' #C9AE21');
-
-
-
-// Draw the outer ring
-ctx.beginPath();
-ctx.arc(centerX, centerY, radius * 0.26, 0, 2 * Math.PI);
-ctx.lineWidth = 7;
-ctx.strokeStyle = '#4FA8C2';
-ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(centerX, centerY, radius * 0.13, -Math.PI / 2, circleProgress * 2 * Math.PI - Math.PI / 2); 
-  ctx.arc(centerX, centerY, radius * 0.24, circleProgress * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
-  ctx.lineWidth = 7;
-  ctx.fillStyle = '#1B52E2'; // changed to blue only
-  ctx.fill();
-
-
-  
-
-  // Add a small delay to smooth out the animation
-  setTimeout(() => {
-    requestAnimationFrame(drawClock);
-  }, 16); // 16ms = 60fps
-}
-
-drawClock();
-</script>
-
-
-
+        #canvas {
+            position: relative;
+            transform: translateY(-65px); /* Adjust this value to control how much to move up */
+            display: block;
+            margin: 0 auto; /* Center the canvas horizontally */
+            border-radius: 100%; /* Make the canvas a circle */
+            margin-bottom: 20px; 
+            vertical-align: bottom;
+            width: 100%; /* Responsive width */
+            max-width: 385px; /* Limit maximum width */
+            height: auto; /* Maintain aspect ratio with height */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        // Get the canvas element
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let currentSeconds = 0;
+        let lastUpdateTime = 0;
+
+        // Set the canvas dimensions based on the window size
+        function resizeCanvas() {
+            const minSize = 309;
+            const maxSize = 400;
+
+            let size = Math.min(window.innerWidth, window.innerHeight);
+            size = Math.max(size, minSize); // Ensure minimum size
+            size = Math.min(size, maxSize); // Ensure maximum size
+
+            canvas.width = size;
+            canvas.height = size;
+
+            // Draw the clock with updated center and radius
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = canvas.width / 2 - 20;
+
+            // Call drawClock with updated parameters
+            drawClock(centerX, centerY, radius);
+        }
+
+        // Update canvas size when the window is resized
+        window.addEventListener('resize', resizeCanvas);
+
+        // Function to draw a five-pointed star
+        function drawStar(x, y, size, color) {
+            ctx.beginPath();
+            for (let i = 0; i < 5; i++) {
+                const angle = i * 4 * Math.PI / 5;
+                const sx = x + size * Math.sin(angle);
+                const sy = y - size * Math.cos(angle);
+                ctx.lineTo(sx, sy);
+            }
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        // Function to draw a stripe
+        function drawStripe(x, y, length, angle, color) {
+            ctx.beginPath();
+            ctx.lineWidth = 3.8;
+            ctx.strokeStyle = color;
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + length * Math.sin(angle), y - length * Math.cos(angle));
+            ctx.stroke();
+        }
+
+        function drawClock(centerX, centerY, radius) {
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the clock circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#5FFAFA';
+            ctx.fill();
+            ctx.lineWidth = 11;
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+
+            // Draw the outer ring
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.95, 0, 2 * Math.PI);
+            ctx.lineWidth = 11;
+            ctx.strokeStyle = 'white';
+            ctx.stroke();
+
+            // Draw the hour markers (stars)
+            for (let i = 0; i < 12; i++) {
+                const angle = i * 30 * Math.PI / 180;
+                const x = centerX + radius * 0.8 * Math.sin(angle);
+                const y = centerY - radius * 0.8 * Math.cos(angle);
+                let color;
+                const hour = new Date().getHours() % 12;
+                const minute = new Date().getMinutes();
+                if (i === hour) {
+                    color = 'darkblue'; // current hour
+                } else if (i === Math.floor((minute / 5) % 12)) {
+                    color = '#2FD2D6'; // current minute
+                } else {
+                    color = 'white';
+                }
+                drawStar(x, y, 14, color);
+            }
+
+            // Draw the stripes
+            const minute = new Date().getMinutes();
+            const stripeOffset = 0.5; // position of the stripes
+            const maxStripeLength = radius * 0.28 - radius * 0.02; // maximum stripe length
+            for (let i = 0; i < minute; i++) {
+                if ((i + 1) % 5 !== 0) { // skip every 5 minutes
+                    const angle = (i + 0.4 + 0.6) * 6 * Math.PI / 180; // angle adjustment
+                    const x = centerX + radius * stripeOffset * Math.sin(angle);
+                    const y = centerY - radius * stripeOffset * Math.cos(angle);
+                    let color = '#FB2413';
+                    drawStripe(x, y, maxStripeLength, angle, color);
+                    drawStripe(x, y, maxStripeLength, angle + Math.PI, color);
+                }
+            }
+
+            // Draw the center circle (seconds indicator)
+            const now = new Date().getTime();
+            const deltaTime = now - lastUpdateTime;
+            lastUpdateTime = now;
+
+            currentSeconds += deltaTime / 1000; // update current seconds
+            currentSeconds %= 60; // keep current seconds between 0 and 60
+
+            // Draw the filled circle (seconds indicator)
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.10 * (currentSeconds / 60), 0, 2 * Math.PI);
+            ctx.fillStyle = 'blue'; 
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.10, 0, 2 * Math.PI);
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = '#B7950B';
+            ctx.stroke();
+            ctx.fillStyle = 'white'; 
+            ctx.fill();
+
+            // Draw the inner circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.10, 0, 2 * Math.PI);
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = '#4FA8C2';
+            ctx.stroke();
+            ctx.fillStyle = '#f5fffa';
+            ctx.fill();
+
+            // Draw a star inside the inner circle
+            drawStar(centerX, centerY, 13, '#C9AE21');
+
+            // Draw the outer ring for the seconds indicator
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.26, 0, 2 * Math.PI);
+            ctx.lineWidth = 7;
+            ctx.strokeStyle = '#4FA8C2';
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.13, -Math.PI / 2, (currentSeconds / 60) * 2 * Math.PI - Math.PI / 2); 
+            ctx.arc(centerX, centerY, radius * 0.24, (currentSeconds / 60) * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
+            ctx.lineWidth = 7;
+            ctx.fillStyle = '#1B52E2'; // colored segment
+            ctx.fill();
+
+            // Smooth animation
+            requestAnimationFrame(() => drawClock(centerX, centerY, radius));
+        }
+
+        // Initial call to set size and start drawing
+        resizeCanvas();
+    </script>
 
 
 
@@ -953,8 +792,8 @@ const canvas5 = document.getElementById('canvas5');
 const ctx5 = canvas5.getContext('2d');
 
 // Set the canvas dimensions
-canvas5.width = 360;
-canvas5.height = 360;
+canvas5.width = 385;
+canvas5.height = 385;
 
 // Set the clock center and radius
 const centerX5 = canvas5.width / 2;
@@ -1131,8 +970,8 @@ const canvas6 = document.getElementById('canvas6');
 const ctx6 = canvas6.getContext('2d');
 
 // Set the canvas dimensions
-canvas6.width = 360;
-canvas6.height = 360;
+canvas6.width = 385;
+canvas6.height = 385;
 
 // Set the clock center and radius
 const centerX6 = canvas6.width / 2;
@@ -1281,8 +1120,8 @@ const canvas7 = document.getElementById('canvas7');
 const ctx7 = canvas7.getContext('2d');
 
 // Set the canvas dimensions
-canvas7.width = 360;
-canvas7.height = 360;
+canvas7.width = 385;
+canvas7.height = 385;
 
 // Set the clock center and radius
 const centerX7 = canvas7.width / 2;
@@ -1437,8 +1276,8 @@ const canvas8 = document.getElementById('canvas8');
 const ctx8 = canvas8.getContext('2d');
 
 // Set the canvas dimensions
-canvas8.width = 360;
-canvas8.height = 360;
+canvas8.width = 385;
+canvas8.height = 385;
 
 // Set the clock center and radius
 const centerX8 = canvas8.width / 2;
@@ -1609,8 +1448,8 @@ const canvas9 = document.getElementById('canvas9');
 const ctx9 = canvas9.getContext('2d');
 
 // Set the canvas dimensions
-canvas9.width = 360;
-canvas9.height = 360;
+canvas9.width = 385;
+canvas9.height = 385;
 
 // Set the clock center and radius
 const centerX9 = canvas9.width / 2;
@@ -1780,8 +1619,8 @@ const canvas10 = document.getElementById('canvas10');
 const ctx10 = canvas10.getContext('2d');
 
 // Set the canvas dimensions
-canvas10.width = 360;
-canvas10.height = 360;
+canvas10.width = 385;
+canvas10.height = 385;
 
 // Set the clock center and radius
 const centerX10 = canvas10.width / 2;
@@ -1951,8 +1790,8 @@ const canvas11 = document.getElementById('canvas11');
 const ctx11 = canvas11.getContext('2d');
 
 // Set the canvas dimensions
-canvas11.width = 360;
-canvas11.height = 360;
+canvas11.width = 385;
+canvas11.height = 385;
 
 // Set the clock center and radius
 const centerX11 = canvas11.width / 2;
