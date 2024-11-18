@@ -465,7 +465,7 @@ window.addEventListener('resize', adjustSlideHeight);
     transform: translateX(-340%); /* Adjust to move it slightly to the left */
     width: 45px; /* Size of the icon */
     height: 45px; /* Size of the icon */
-    background-color: black; /* Circle color */
+ background-color: #031e14;
     border-radius: 50%; /* Makes it a circle */
     display: flex; /* Centering the letter */
     align-items: center; /* Centering vertically */
@@ -493,20 +493,42 @@ window.addEventListener('resize', adjustSlideHeight);
 
 
 
-    <div class="connect">
-        <p>connect with us through:</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank" class="social-icon facebook">Facebook</a>
-            <a href="https://www.instagram.com" target="_blank" class="social-icon instagram">Instagram</a>
-            <a href="https://www.youtube.com" target="_blank" class="social-icon youtube">Youtube</a>
-        </div>
+<div class="connect">
+    <p>connect with us through:</p>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61566460534685&mibextid=ZbWKwL" target="_blank" class="social-icon facebook">Facebook</a>
+        <a href="https://www.instagram.com/jbpaladinclocks/profilecard/?igsh=Z2ViaGZ5aDl5YXlj" target="_blank" class="social-icon instagram">Instagram</a>
+        <a href="https://youtube.com/@jbpaladin?si=Dlgiqc0I8gWH9RIz" target="_blank" class="social-icon youtube">Youtube</a>
     </div>
+</div>
+<script>
+    // Function to handle link clicks
+    function handleLinkClick(event) {
+        if (!navigator.onLine) {
+            event.preventDefault(); // Prevent the default link behavior
+            alert('Hello, Please make sure you are connected to the internet to access the links.'); // Show alert message
+        }
+    }
+
+    // Wait for the DOM to be fully loaded before running the script
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Add click event listeners to social links
+        const socialLinks = document.querySelectorAll('.social-icons a');
+        socialLinks.forEach(link => {
+            link.addEventListener('click', handleLinkClick);
+        });
+    });
+</script>
+
+
+
+
 
 <style>
 .circle {
     width: 45px; /* Diameter of the black circle */
     height: 45px; /* Diameter of the black circle */
-    background-color: #000; /* Black circle color */
+  background-color: black;
     border-radius: 50%; /* Makes the circle */
     display: flex;
     justify-content: center;
@@ -565,7 +587,7 @@ window.addEventListener('resize', adjustSlideHeight);
 .info-icon-circle {
     width: 30px; /* Size of the circle */
     height: 30px; /* Size of the circle */
-    background-color: black; /* Circle color */
+    background-color: #031e14;
     border-radius: 50%; /* Makes it a circle */
     display: flex; /* Center the letter */
     align-items: center; /* Center vertically */
@@ -1017,8 +1039,8 @@ th {
 
 <div class="note">
         <div class="exit-icon" id="exitIcon2"></div> <!-- Added exit icon -->
-        <p>NOTE: All app icons are click-based. Users need to click each icon to display and hide the content.</p>
-        <p>LINKS: Just click the link to go to our facebook, instagram and youtube account.</p>
+         <p><span style="color: red;"><b>NOTE:</b></span> All app icons are click-based. Users need to click each icon to display and hide the content.</p>
+        <p><span style="color: red;"><b>LINKS REQUIRES INTERNET:</b></span> Just click the link to go to our facebook, instagram and youtube account.</p>
     </div>
 
 
@@ -1029,6 +1051,7 @@ th {
 </div>
 
 <script>
+    // Function to toggle the visibility of the info table
     function toggleTable() {
         const table = document.getElementById('infoTable');
         if (table.style.display === 'none' || table.style.display === '') {
@@ -1037,15 +1060,16 @@ th {
             table.style.display = 'none'; // Hide the table
         }
     }
-</script>
 
- <script>
+    // Event listener for the exit icon
     const exitIcon = document.getElementById('exitIcon2');
 
     exitIcon.addEventListener('click', () => {
-        window.location.href = 'about-this-clock.html'; 
+        const table = document.getElementById('infoTable');
+        table.style.display = 'none'; // Hide the info table
     });
 </script>
+
 
 
 
