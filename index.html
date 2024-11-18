@@ -388,14 +388,14 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 <div id="dropdown-container" style="text-align: center;">
   <select id="dropdown" class="canvas-select" style="font-size: 13px; font-weight: bold; font-family: open sans;">
     <option value="">Select an option</option>
-    <option value="4-stripes-normal">(MAIN DESIGN)    4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Default colors)  </option>
-    <option value="4-stripes-normal-swiss">(MAIN DESIGN)   4 Stripes Clock &#9679; Swiss Seconds & color changes &#9679; (Default colors) &nbsp; </option>
-    <option value="5-stripes-normal"> (MAIN DESIGN)   5 Stripes Clock &#9679; Sweeping Seconds &#9679; (Default colors) </option>
-    <option value="5-stripes-normal-swiss"> (MAIN DESIGN)   5 Stripes Clock &#9679; Swiss Seconds & color changes &#9679; (Default colors) </option>
-    <option value="design2"> (OTHER DESIGN)  4 Stripes Clock &#9679; Sweeping Seconds &#9679;  (Vivid Blue Color)</option>
-    <option value="design3"> (OTHER DESIGN)  4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Medium Orchid Color)</option>
-    <option value="design4"> (OTHER DESIGN)  4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Black Color)</option>
-    <option value="design5"> (OTHER DESIGN)  4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Red Color)</option>
+    <option value="4-stripes-normal">(FEATURED DESIGN)    - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Featured colors)  </option>
+    <option value="4-stripes-normal-swiss">(FEATURED DESIGN)   - 4 Stripes Clock &#9679; Swiss Seconds & color changes &#9679; (Featured colors) &nbsp; </option>
+    <option value="5-stripes-normal"> (FEATURED DESIGN)   - 5 Stripes Clock &#9679; Sweeping Seconds &#9679; (Featured colors) </option>
+    <option value="5-stripes-normal-swiss"> (FEATURED DESIGN)   - 5 Stripes Clock &#9679; Swiss Seconds & color changes &#9679; (Featured colors) </option>
+    <option value="design2"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679;  (Vivid Blue Color)</option>
+    <option value="design3"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Pink Color)</option>
+    <option value="design4"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Black Color)</option>
+    <option value="design5"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Red Color)</option>
   </select>
 </div>
 
@@ -740,8 +740,8 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 // Set the canvas dimensions
-canvas.width = 385;
-canvas.height = 385;
+canvas.width = 375;
+canvas.height = 375;
 
 // Set the clock center and radius
 const centerX = canvas.width / 2;
@@ -888,19 +888,19 @@ ctx.fill();
 
 
   // Draw a star inside the inner circle
-  drawStar(centerX, centerY, 14, ' #C9AE21');
+  drawStar(centerX, centerY, 13, ' #C9AE21');
 
 
 
 // Draw the outer ring
 ctx.beginPath();
-ctx.arc(centerX, centerY, radius * 0.25, 0, 2 * Math.PI);
-ctx.lineWidth = 6;
+ctx.arc(centerX, centerY, radius * 0.26, 0, 2 * Math.PI);
+ctx.lineWidth = 7;
 ctx.strokeStyle = '#4FA8C2';
 ctx.stroke();
 
   ctx.beginPath();
-  ctx.arc(centerX, centerY, radius * 0.12, -Math.PI / 2, circleProgress * 2 * Math.PI - Math.PI / 2); 
+  ctx.arc(centerX, centerY, radius * 0.13, -Math.PI / 2, circleProgress * 2 * Math.PI - Math.PI / 2); 
   ctx.arc(centerX, centerY, radius * 0.24, circleProgress * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
   ctx.lineWidth = 7;
   ctx.fillStyle = '#1B52E2'; // changed to blue only
@@ -953,8 +953,8 @@ const canvas5 = document.getElementById('canvas5');
 const ctx5 = canvas5.getContext('2d');
 
 // Set the canvas dimensions
-canvas5.width = 385;
-canvas5.height = 385;
+canvas5.width = 375;
+canvas5.height = 375;
 
 // Set the clock center and radius
 const centerX5 = canvas5.width / 2;
@@ -1080,19 +1080,19 @@ for (let i = 0; i < minute5; i++) {
   ctx5.fill();
 
   // Draw a star inside the inner circle
-  drawStar5(centerX5, centerY5, 14, '#C9AE21');
+  drawStar5(centerX5, centerY5, 13, '#C9AE21');
 
   // Draw the outer ring
   ctx5.beginPath();
-  ctx5.arc(centerX5, centerY5, radius5 * 0.25, 0, 2 * Math.PI);
-  ctx5.lineWidth = 6; // changing colors 
+  ctx5.arc(centerX5, centerY5, radius5 * 0.26, 0, 2 * Math.PI);
+  ctx5.lineWidth = 7; // changing colors 
   ctx5.strokeStyle = '#4FA8C2';
   ctx5.stroke();
 
   ctx5.beginPath();
-  ctx5.arc(centerX5, centerY5, radius5 * 0.12, -Math.PI / 2, circleProgress5 * 2 * Math.PI - Math.PI / 2); 
+  ctx5.arc(centerX5, centerY5, radius5 * 0.13, -Math.PI / 2, circleProgress5 * 2 * Math.PI - Math.PI / 2); 
   ctx5.arc(centerX5, centerY5, radius5 * 0.24, circleProgress5 * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
-  ctx5.lineWidth = 5;  // do not change
+  ctx5.lineWidth = 7;  // do not change
   ctx5.fillStyle = '#1B52E2'; // changed to blue only
   ctx5.fill();
 
@@ -1131,8 +1131,8 @@ const canvas6 = document.getElementById('canvas6');
 const ctx6 = canvas6.getContext('2d');
 
 // Set the canvas dimensions
-canvas6.width = 385;
-canvas6.height = 385;
+canvas6.width = 375;
+canvas6.height = 375;
 
 // Set the clock center and radius
 const centerX6 = canvas6.width / 2;
@@ -1281,8 +1281,8 @@ const canvas7 = document.getElementById('canvas7');
 const ctx7 = canvas7.getContext('2d');
 
 // Set the canvas dimensions
-canvas7.width = 385;
-canvas7.height = 385;
+canvas7.width = 375;
+canvas7.height = 375;
 
 // Set the clock center and radius
 const centerX7 = canvas7.width / 2;
@@ -1437,8 +1437,8 @@ const canvas8 = document.getElementById('canvas8');
 const ctx8 = canvas8.getContext('2d');
 
 // Set the canvas dimensions
-canvas8.width = 385;
-canvas8.height = 385;
+canvas8.width = 375;
+canvas8.height = 375;
 
 // Set the clock center and radius
 const centerX8 = canvas8.width / 2;
@@ -1609,8 +1609,8 @@ const canvas9 = document.getElementById('canvas9');
 const ctx9 = canvas9.getContext('2d');
 
 // Set the canvas dimensions
-canvas9.width = 385;
-canvas9.height = 385;
+canvas9.width = 375;
+canvas9.height = 375;
 
 // Set the clock center and radius
 const centerX9 = canvas9.width / 2;
@@ -1651,7 +1651,7 @@ function drawClock9() {
   // Draw the clock circle
   ctx9.beginPath();
   ctx9.arc(centerX9, centerY9, radius9, 0, 5 * Math.PI);
-  ctx9.fillStyle = '#a953e1';
+  ctx9.fillStyle = '#f456b1';
   ctx9.fill();
   ctx9.lineWidth = 11;
   ctx9.strokeStyle = 'red';
@@ -1673,7 +1673,7 @@ function drawClock9() {
     const hour = new Date().getHours() % 12;
     const minute = new Date().getMinutes();
     if (i === hour) {
-      color = 'darkblue'; // current hour
+      color = 'blue'; // current hour
     } else if (i === Math.floor((minute / 5) % 12)) {
       color = '#2FD2D6'; // current minute 
     } else {
@@ -1747,7 +1747,7 @@ function drawClock9() {
   ctx9.arc(centerX9, centerY9, radius9 * 0.13, -Math.PI / 2, circleProgress9 * 2 * Math.PI - Math.PI / 2); 
   ctx9.arc(centerX9, centerY9, radius9 * 0.23, circleProgress9 * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
   ctx9.lineWidth = 7;
-  ctx9.fillStyle = 'blue'; // changed to blue only
+  ctx9.fillStyle = '#7b00ef'; // changed to blue only
   ctx9.fill();
 
   // Add a small delay to smooth out the animation
@@ -1780,8 +1780,8 @@ const canvas10 = document.getElementById('canvas10');
 const ctx10 = canvas10.getContext('2d');
 
 // Set the canvas dimensions
-canvas10.width = 385;
-canvas10.height = 385;
+canvas10.width = 375;
+canvas10.height = 375;
 
 // Set the clock center and radius
 const centerX10 = canvas10.width / 2;
@@ -1951,8 +1951,8 @@ const canvas11 = document.getElementById('canvas11');
 const ctx11 = canvas11.getContext('2d');
 
 // Set the canvas dimensions
-canvas11.width = 385;
-canvas11.height = 385;
+canvas11.width = 375;
+canvas11.height = 375;
 
 // Set the clock center and radius
 const centerX11 = canvas11.width / 2;
