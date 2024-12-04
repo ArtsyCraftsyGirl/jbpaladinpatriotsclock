@@ -4,6 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About This Clock</title>
+
+<style>
+#video-background {
+    transition: opacity 0.5s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Send the video to the background */
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0; /* Initially hidden */
+    display: none; /* Initially hidden */
+}
+
+
+
+</style>
+
+
+
+
+<video autoplay muted loop id="video-background">
+    <source src="BackgroundVideo.mp4" type="video/mp4">
+</video>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById('video-background'); // Get the video element
+
+        video.addEventListener('canplaythrough', function () {
+            video.style.display = 'block'; // Show the video
+            video.style.opacity = 1; // Fade in the video
+        });
+
+        video.addEventListener('error', function () {
+            console.error("Error loading video.");
+            document.body.style.backgroundColor = "white"; // Default to white background on error
+        });
+
+        video.load();
+    });
+</script>
+
+
+
+
+
+
+
+
     <style>
      
 body {
@@ -13,30 +66,20 @@ body {
             overflow: hidden; /* Prevent scrolling */
         }
 
-        /* Video background that fits under the slideshow */
-        .background-video {
-            position: absolute; /* Absolute position */
-            top: 0;
-            left: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            object-fit: cover; /* Cover the area */
-            z-index: -1; /* Place it behind other content */
-        }
+     
 
-
-.slideshow-container {
-    position: relative;
-    max-width: 800px;
-    max-height: 420px; /* Limit the height of the slideshow container */
-    margin: auto;
-    overflow: hidden;
-    border: 2px solid black;
-    border-radius: 10px;
-    background: rgba(255, 165, 0, 0.9); /* Semi-transparent orange */
-    padding: 28px; /* Add padding to the container */
-    z-index: 1; /* Ensure it's above the video */
-}
+    .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            max-height: 440px; 
+            margin: auto;
+            overflow: hidden;
+            border: 2px solid black;
+            border-radius: 10px;
+            background: rgba(255, 165, 0, 0.9);
+            padding: 28px;
+            z-index: 1;
+                    }
 
 /* Media query for larger screens (laptops and desktops) */
 @media (min-width: 601px) {
@@ -45,6 +88,8 @@ body {
     }
 }
 
+
+
 .slide {
     display: none; /* Hide all slides by default */
     flex: 1; /* Allow slides to grow and fill the container */
@@ -52,9 +97,9 @@ body {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     text-align: center; /* Center text */
-    padding: 18px; /* Add padding to the slide */
-    overflow: hidden; /* Prevent overflow of text */
-}
+    overflow: auto; /* Allow overflow to be scrollable */
+   }
+
 
 .slide p {
     text-align: justify; /* Justify text */
@@ -63,22 +108,35 @@ body {
     letter-spacing: 0.1px; /* Adjust letter spacing */
     overflow: visible; /* Allow overflow to be visible */
     padding: 1px; /* Add padding around the text */
-}
-
-body {
+    transform-origin: center; /* Set the origin for scaling */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
     font-family: 'Open Sans', sans-serif; /* Set Open Sans as the default font */
-}
-
-.slide p {
-    font-size: 16px; /* Adjust the font size to small */
+    font-size: 16px; /* Default font size */
 }
 
 /* Media query for larger screens */
 @media (min-width: 601px) {
     .slide p {
-        font-size: 16px; /* Set font size to 16px for larger screens */
+        font-size: 17px; /* Set font size to 17px for larger screens */
     }
 }
+
+/* Media query for mobile screens */
+@media (max-width: 720px) {
+    .slide p {
+        font-size: 14px; /* Set font size to 13px for smaller screens */
+    }
+}
+
+/* Media query for mobile screens larger than 720px */
+@media (min-width: 721px) and (max-width: 1024px) { /* Adjust the max-width as needed */
+    .slide p {
+        font-size: 16px !important;
+    }
+}
+
+
+
 
 .fade {
     animation: fade 1s;
@@ -89,26 +147,8 @@ body {
     to { opacity: 1; }
 }
 
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 13px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-radius: 3px;
-    user-select: none;
-}
 
-.prev {
-    left: 0;
-}
 
-.next {
-    right: 0;
-}
 
 /* Text shadow for the heading */
 h1 span {
@@ -147,7 +187,8 @@ h1 span {
 .prev, .next {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 15%; /* Adjust this value to move the buttons down */
+    margin-top: 10px; /* Add margin to provide space from the text */
     width: auto;
     padding: 13px;
     color: white;
@@ -155,6 +196,7 @@ h1 span {
     border: none;
     border-radius: 3px;
     user-select: none;
+    transform: translateY(-50%); /* Center the buttons vertically */
 }
 
 .prev {
@@ -189,6 +231,24 @@ img {
                 max-width: none; /* Remove max-width restriction */
             }
         }
+
+
+@media (max-width: 320px) { /* Adjust this max-width as needed for older phone models */
+    .responsive-heading {
+        display: none; /* Hide the h3 */
+    }
+    
+    /* Create the h5 element for smaller screens */
+    .responsive-heading::after {
+        content: '" A unique and revolutionary way of telling time "';
+        display: block;
+        text-align: center;
+        font-size: 12px; /* Adjust font size as desired */
+        font-style: italic;
+        color: rgba(0, 0, 0, 0.7);
+    }
+}
+
     </style>
 </head>
 <body>
@@ -200,7 +260,7 @@ img {
  <div class="slideshow-container">
     <div class="slide fade" style="text-align: center; padding: 20px;"> <!-- Center text and add padding -->
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 
 
         <h2>
@@ -218,7 +278,7 @@ The "JB PALADIN PATRIOTS CLOCK" is a truly unique and revolutionary way of telli
 
         <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p>
 Instead, our groundbreaking and revolutionary clock uses colorful lights to indicate the time! This makes our clock extraordinary and ensures that it will stand out as unique and special among the myriad of clocks that can be found around the world today. The "JB PALADIN PATRIOTS CLOCK" stands as a heartfelt tribute to our enduring love for America, celebrating the courageous men and women who have selflessly dedicated themselves 
@@ -227,7 +287,7 @@ Instead, our groundbreaking and revolutionary clock uses colorful lights to indi
 
   <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p>to serving our nation, both past and present. At "JB Paladin,"  we take immense pride in designing clocks that reflect not just the passage of time but also capture the spirit of patriotism that binds us as a nation in a way that no other clock can. The name "Patriots Clock" embodies our commitment to honoring the values and freedoms that define our great country, the United States of America. By integrating our brand name,
 
@@ -241,16 +301,16 @@ Instead, our groundbreaking and revolutionary clock uses colorful lights to indi
 
         <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
-            <p> "JB Paladin," we add a personal touch that emphasizes our identity and dedication to craftsmanship. In celebration of the Semiquincentennial, (250<sup>th</sup>) birthday of the United States of America on July 4, 2026, we proudly introduce the "JB PALADIN PATRIOTS CLOCK." This stunning clock draws inspiration from the bold colors and iconic design of the American flag, capturing the spirit of America's Declaration of Independence in 1776. 
+            <p>"JB Paladin," we add a personal touch that emphasizes our identity and dedication to craftsmanship. In celebration of the Semiquincentennial, (250<sup>th</sup>) birthday of the United States of America on July 4, 2026, we proudly introduce the "JB PALADIN PATRIOTS CLOCK." This stunning clock draws inspiration from the bold colors and iconic design of the American flag, capturing the spirit of America's Declaration of Independence in 1776. 
           </p>
         </div>
 
 
       <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p>
 In addition to the 12 stars located at the hour positions, a radiant gold-colored 13<sup>th</sup> star at the very center of the clock symbolizes the original 13 colonies of the United States of America and honors the brave individuals who have paid the ultimate price for defending our country. The star that denotes the correct hour of time is dark blue, which stands for those who are currently serving on active duty, while the light blue five-minute star pays 
@@ -260,7 +320,7 @@ In addition to the 12 stars located at the hour positions, a radiant gold-colore
 
   <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p>
 
@@ -273,7 +333,7 @@ In addition to the 12 stars located at the hour positions, a radiant gold-colore
 
       <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p>
 Ehllen Quezada, who collaborated with Jeff on this project. Ehllen’s skill in programming languages such as HTML5, CSS, and JavaScript brought this clock to fruition. Additionally, Ehllen’s extensive knowledge in Information Technology played a crucial role in transforming Jeff’s ideas and concepts into a vibrant, fully functional app,
@@ -282,7 +342,7 @@ Ehllen Quezada, who collaborated with Jeff on this project. Ehllen’s skill in 
 
     <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p>
 which will now be available for all electronic devices. There is no doubt that the "JB PALADIN PATRIOTS CLOCK" is bound to inspire admiration with its exclusive design and unique functions. The moment has finally arrived; we know every American will love this magnificent clock as it pays homage to the greatest country that the world has ever seen: the United States of America!
@@ -299,7 +359,7 @@ which will now be available for all electronic devices. There is no doubt that t
 
  <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 
              <h2><span style="color: red;">HOW THE</span> <span style="color: beige;">CLOCK</span> <span style="color: #1BEAFF;"> WORKS</span></h2>
             <p>
@@ -309,7 +369,7 @@ Our clock features a unique hour marker system with 12 white stars in place of t
 
  <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 
              <h2></h2>
             <p>
@@ -323,7 +383,7 @@ we’ve included the red stripes of the American flag between the hour stars, wi
 
    <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p> Next to the hour stars, the red stripes will continue to light up until all are lit at 59 minutes past the hour; then, at the strike of a new hour, all red stripes will disappear, and the cycle repeats again. In the center of the clock, we feature a beautiful ring-shaped circle representative of the original circle of stars on the very first American flag. This circle serves as the seconds counter and it gradually fills with a blue-colored light.
 </p>
@@ -331,7 +391,7 @@ we’ve included the red stripes of the American flag between the hour stars, wi
 
     <div class="slide fade">
 <img src="logo.jpg" alt="Logo">
-<p style="text-align: center; font-size: 13px; font-style: italic;"> " A unique and revolutionary way of telling time " </p>
+<h3 style="text-align: center; font-size: 13px; font-style: italic; color: rgba(0, 0, 0, 0.7);"> " A unique and revolutionary way of telling time " </h3>
 <h2> </h2>
             <p>
  We chose the color blue as that was the background color of the circle of 13 stars, just as it is still for the current 50 stars. A choice can be made between a smooth sweeping motion or a Swiss movement for the seconds indicator, and as it completes a 60-second cycle, it then resets itself and repeats the action for the next 60 seconds.
@@ -340,9 +400,56 @@ we’ve included the red stripes of the American flag between the hour stars, wi
 
 
 
+<script>
 
+let scale = 1; // Initial scale
+const minScale = 1; // Minimum scale
+const maxScale = 2; // Maximum scale (adjust as needed)
+let startDistance = 0; // Distance between two touch points
 
+// Function to calculate distance between two touch points
+function getDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
 
+// Event listeners for touch events
+document.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+        startDistance = getDistance(e.touches);
+    }
+}, { passive: false });
+
+document.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2) {
+        const currentDistance = getDistance(e.touches);
+        const scaleChange = currentDistance / startDistance;
+        scale = Math.min(maxScale, Math.max(minScale, scale * scaleChange));
+        
+       
+       const elementsToScale = document.querySelectorAll('.slide p');
+        elementsToScale.forEach((el) => {
+            el.style.transform = `scale(${scale})`;
+            el.style.transformOrigin = 'center'; // Ensure scaling is from the center
+        });
+
+        startDistance = currentDistance; // Update startDistance
+        e.preventDefault(); // Prevent default behavior
+    }
+}, { passive: false });
+
+document.addEventListener('touchend', (e) => {
+    if (e.touches.length < 2) {
+        // Reset scale if only one touch remains
+        scale = Math.max(minScale, Math.min(scale, maxScale));
+        const elementsToScale = document.querySelectorAll('.slide p');
+        elementsToScale.forEach((el) => {
+            el.style.transform = `scale(${scale})`;
+        });
+    }
+});
+</script>
    
 
 
@@ -399,10 +506,9 @@ window.addEventListener('resize', adjustSlideHeight);
 
 
 
-<video class="background-video" autoplay muted loop>
-        <source src="BackgroundVideo.mp4" type="video/mp4">
-        
-    </video>
+
+
+
 
 
    <style>
@@ -448,7 +554,7 @@ window.addEventListener('resize', adjustSlideHeight);
 
 .social-icon {
     display: inline-block;
-    padding: 10px 20px; /* Adjust padding for better spacing */
+    padding: 10px 15px; /* Adjust padding for better spacing */
     color: beige; /* Default text color */
     font-size: 16px; /* Font size */
     text-decoration: none; /* Remove underline */
@@ -456,7 +562,23 @@ window.addEventListener('resize', adjustSlideHeight);
     position: relative; /* Position for pseudo-element */
     overflow: hidden; /* Prevent overflow of the text */
     clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%); /* Create parallelogram shape */
+    white-space: nowrap; /* Prevent text wrapping */
 }
+
+/* Media query for smaller screens */
+@media (max-width: 480px) {
+    .social-icon {
+        font-size: 15px; /* Set font size to 15px for smaller screens */
+    }
+}
+
+.social-icon h4 {
+    margin: 0; /* Remove default margin */
+    font-size: inherit; /* Inherit font size from .social-icon */
+    line-height: 1; /* Adjust line height */
+}
+
+
 
 .info-icon {
     position: fixed; /* Fixed positioning */
@@ -496,30 +618,11 @@ window.addEventListener('resize', adjustSlideHeight);
 <div class="connect">
     <p>connect with us through:</p>
     <div class="social-icons">
-        <a href="https://www.facebook.com/profile.php?id=61566460534685&mibextid=ZbWKwL" target="_blank" class="social-icon facebook">Facebook</a>
-        <a href="https://www.instagram.com/jbpaladinclocks/profilecard/?igsh=Z2ViaGZ5aDl5YXlj" target="_blank" class="social-icon instagram">Instagram</a>
-        <a href="https://youtube.com/@jbpaladin?si=Dlgiqc0I8gWH9RIz" target="_blank" class="social-icon youtube">Youtube</a>
+        <a href="https://www.facebook.com/profile.php?id=61566460534685&mibextid=ZbWKwL" target="_blank" class="social-icon facebook"><p>Facebook</p></a>
+        <a href="https://www.instagram.com/jbpaladinclocks/profilecard/?igsh=Z2ViaGZ5aDl5YXlj" target="_blank" class="social-icon instagram"><p>Instagram</p></a>
+        <a href="https://youtube.com/@jbpaladin?si=Dlgiqc0I8gWH9RIz" target="_blank" class="social-icon youtube"><p>Youtube</p></a>
     </div>
 </div>
-<script>
-    // Function to handle link clicks
-    function handleLinkClick(event) {
-        if (!navigator.onLine) {
-            event.preventDefault(); // Prevent the default link behavior
-            alert('Hello, Please make sure you are connected to the internet to access the links.'); // Show alert message
-        }
-    }
-
-    // Wait for the DOM to be fully loaded before running the script
-    document.addEventListener('DOMContentLoaded', (event) => {
-        // Add click event listeners to social links
-        const socialLinks = document.querySelectorAll('.social-icons a');
-        socialLinks.forEach(link => {
-            link.addEventListener('click', handleLinkClick);
-        });
-    });
-</script>
-
 
 
 <style>
@@ -822,7 +925,8 @@ th {
 }
 
 .note {
-    text-align: center; /* Center text horizontally */
+    
+    text-align: center;
     color: black; /* Set font color to black */
     margin: 20px 0; /* Space around the note */
     font-size: 16px; /* Font size for the note (adjust as needed) */
@@ -908,6 +1012,13 @@ th {
 
 
     </style>
+
+
+
+
+
+
+
 </head>
 <body>
     <div class="circle" id="tooltip-icon">
@@ -917,6 +1028,11 @@ th {
         </div>
         <div class="tooltip" id="tooltip">Clock Designer : Mr. Jeff Birge <br> Programmer : Ehllen Quezada </div>
     </div>
+
+
+
+
+
 
     <script>
         // Function to initialize the tooltip behavior
@@ -1038,7 +1154,12 @@ th {
 <div class="note">
         <div class="exit-icon" id="exitIcon2"></div> <!-- Added exit icon -->
          <p><span style="color: red;"><b>NOTE:</b></span> All app icons are click-based. Users need to click each icon to display and hide the content.</p>
-        <p><span style="color: red;"><b>LINKS REQUIRES INTERNET:</b></span> Just click the link to go to our facebook, instagram and youtube account.</p>
+
+ <p><span style="color: red;"><b>ZOOM FEATURE:</b></span> Touch the screen to zoom the clock and move up/down or left/right position.
+Users can also zoom the paragraph text on (2nd page).  </p>
+        <p><span style="color: red;"><b>LINKS REQUIRES INTERNET:</b></span> Just click the links to go to our facebook, instagram and youtube account.</p>
+<p> Click this link to read our privacy policy: <a href="https://artsycraftsygirl.github.io/PrivacyPolicy/" target="_blank">privacy policy</a>.</p>
+
     </div>
 
 
@@ -1067,6 +1188,13 @@ th {
         table.style.display = 'none'; // Hide the info table
     });
 </script>
+
+
+
+
+
+
+
 
 
 
