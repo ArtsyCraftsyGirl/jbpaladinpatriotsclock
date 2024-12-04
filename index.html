@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=3.0">
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- This analog clock program was created by Ehllen Quezada a.k.a ELLIE... made with ❤ -->
 <style>
 
- body {
-           overflow-x: hidden; /* prevent horizontal scrolling */
-    }
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    touch-action: pan-x; /* Prevent horizontal panning */
+}
 
 #video-background {
-      transition: opacity 0.5s ease;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        object-fit: cover;
-        z-index: -1; /* Send the video to the background *
-        min-width: 100%;
-        min-height: 100%;
-   opacity: 0; /* Initially hidden */
-        display: none; /* Initially hidden */
-          }
+    transition: opacity 0.5s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Send the video to the background */
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0; /* Initially hidden */
+    display: none; /* Initially hidden */
+}
+
+
+
 </style>
+
+
+
 
 <video autoplay muted loop id="video-background">
     <source src="BackgroundVideo.mp4" type="video/mp4">
@@ -55,6 +62,8 @@
     });
 
 </script>
+
+
 
 
 
@@ -179,7 +188,7 @@ h3 span {
 /* Media query for smaller screens or mobiles */
 @media only screen and (max-width: 767px) {
   h3 {
-    font-size: 1.13rem; /* Decrease font size for smaller screens or mobiles */
+    font-size: 1.14rem; /* Decrease font size for smaller screens or mobiles */
   }
 }
 
@@ -193,6 +202,7 @@ h3 span {
   <h3><span>JB PALADIN PATRIOTS CLOCK</span></h3>
  </header>
 </body>
+
 
 
 <div class="menu-container">
@@ -239,9 +249,10 @@ h3 span {
     display: flex;
     flex-direction: column; /* Stack bars vertically */
     justify-content: space-between; /* Space between bars */
-    margin: 30px; /* Margin around the hamburger */
-margin-left: 15px; /* Adjust the value to move it left */
-
+    position: fixed; /* Fix the position of the hamburger icon */
+    top: 100px; /* Distance from the top of the viewport */
+    left: 15px; /* Distance from the left of the viewport */
+    z-index: 100; /* Ensure it is above other elements */
 }
 
 .bar {
@@ -251,13 +262,15 @@ margin-left: 15px; /* Adjust the value to move it left */
     border: 1px solid black;
 }
 
+
 .color-menu {
     display: none; /* Initially hidden */
-    position: absolute; /* Position absolutely */
+    position: fixed; /* Change to fixed to position it relative to the viewport */
     background-color: beige; /* Background color for the menu */
     border: 1px solid black; /* Border for the menu */
     z-index: 1000; /* Ensure it appears above other elements */
-    margin-top: 5px; /* Space between hamburger and menu */
+    top: 170px; /* Set this to be below the hamburger icon (100px + height of hamburger + margin) */
+    left: 15px; /* Align with the hamburger icon */
     border-radius: 5px; /* Rounded corners */
     max-height: 200px; /* Set a maximum height */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
@@ -267,8 +280,9 @@ margin-left: 15px; /* Adjust the value to move it left */
     display: flex; /* Use flexbox to arrange options */
     flex-wrap: wrap; /* Allow options to wrap to the next line */
     padding: 5px; /* Add padding around the menu */
-    width: 260px; /* Adjust width to fit 8 icons per line */
+    width: 200px; /* Adjust width to fit 8 icons per line */
 }
+
 
 /* Ensure color options are displayed in two lines */
 .color-option {
@@ -375,144 +389,79 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <div id="dropdown-container" style="text-align: center;">
-  <select id="dropdown" class="canvas-select" style="font-size: 13px; font-weight: bold; font-family: open sans;">
-    <option value="">Select an option</option>
-    <option value="4-stripes-normal">(FEATURED DESIGN)    - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Featured colors)  </option>
-    <option value="4-stripes-normal-swiss">(FEATURED DESIGN)   - 4 Stripes Clock &#9679; Swiss Seconds & color changes &#9679; (Featured colors) &nbsp; </option>
-    <option value="5-stripes-normal"> (FEATURED DESIGN)   - 5 Stripes Clock &#9679; Sweeping Seconds &#9679; (Featured colors) </option>
-    <option value="5-stripes-normal-swiss"> (FEATURED DESIGN)   - 5 Stripes Clock &#9679; Swiss Seconds & color changes &#9679; (Featured colors) </option>
-    <option value="design2"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679;  (Vivid Blue Color)</option>
-    <option value="design3"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Pink Color)</option>
-    <option value="design4"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Black Color)</option>
-    <option value="design5"> (OTHER DESIGN)  - 4 Stripes Clock &#9679; Sweeping Seconds &#9679; (Red Color)</option>
-  </select>
+  <button id="dropdown-button" class="canvas-button" style="font-size: 13px; font-weight: bold; font-family: open sans;">Select an option</button>
+  <div id="options-list" class="options-list" style="display: none;">
+    <div class="option" data-value="remove-clock">Hide the clock </div> <!-- New Option -->
+    <div class="option" data-value="4-stripes-normal">&#9733; 4 Stripes Clock Sweeping</div>
+    <div class="option" data-value="4-stripes-normal-swiss">&#9733; 4 Stripes Clock Swiss & Color Changes</div>
+    <div class="option" data-value="5-stripes-normal">&#9733; 5 Stripes Clock Sweeping</div>
+    <div class="option" data-value="5-stripes-normal-swiss">&#9733; 5 Stripes Clock Swiss & Color Changes</div>
+    <div class="option" data-value="design2">&#9733; Blue Clock (optional)</div>
+    <div class="option" data-value="design3">&#9733; Pink Clock (optional)</div>
+    <div class="option" data-value="design4">&#9733; Black Clock (optional)</div>
+    <div class="option" data-value="design5">&#9733; Red Clock (optional)</div>
+  </div>
 </div>
 
 <style>
-/* Your existing CSS styles here */
 
 
-.canvas-select {
-  font-family: open sans;
-  font-size: 15px;
-  width: 145px; /* Set width for the canvas options dropdown */
-  height: 50px; /* Set height of the dropdown */
- transform: translateY(-45px); /* Adjust this value to control how much to move up */
-
-}
-
-#dropdown {
-    font-family: open sans;
-    padding: 5px;
-    background-color: Beige;
-    color: black;
-    border: 4px solid black; /* Change border style */
-    border-radius: 5px; /* Rounded corners for a softer look */
-    position: relative; /* Ensure dropdown is positioned correctly */
-    z-index: 20; /* Ensure it is above other elements */
+.canvas-button {
+  background-color: beige;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; /* Adjusted font size to match your inline style */
+  width: 145px; /* Set width for the button */
+  height: 50px; /* Set height of the button */
+  border: 4px solid black; /* Change border style */
+  border-radius: 5px; /* Rounded corners for a softer look */
+  position: absolute; /* Change to absolute positioning */
+  top: 100px; /* Adjust this value to set the distance from the top */
+  left: 50%; /* Center the button horizontally */
+  transform: translateX(-50%); /* Adjust position to be centered */
+  z-index: 20; /* Ensure it is above other elements */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 
 
-#dropdown:hover {
-  background-color: beige; /* Change background on hover */
-  color: black; /* Change text color on hover */
-  }
+.options-list {
+  display: none;
+  position: absolute;
+  background-color: beige;
+  border-radius: 5px;
+  width: 315px; /* Match the button width */
+  height: 280px; /* Adjust height to be half of the original */
+  z-index: 19; /* Ensure it is below the button */
+  left: 50%; /* Center the options list */
+  transform: translateX(-50%); /* Adjust position to be centered */
+  overflow: hidden; /* Hide overflow */
+  top: 205px;
+}
 
-#dropdown option {
-  font-size: 12px;
+.option {
+  padding: 5px 10px; /* Adjust padding for a better fit */
+  cursor: pointer;
+  font-size: 14px;
   font-weight: bold;
-  font-family: open sans;
-  padding: 9px; /* Add padding for options */
-}
-/* Media query for small screens (e.g., smartphones) */
-@media only screen and (max-width: 375px) {
-  #dropdown {
-    padding: 1px;
-    font-size: 2px;
-    width: 150px; /* Adjust the width to 150px */
-  }
-  #dropdown option {
-    font-size: 2px;
-  }
+  font-family: 'Open Sans', sans-serif;
+  white-space: nowrap; 
+  text-align: justify;
 }
 
-/* Media query for small screens (e.g., smartphones) */
-@media only screen and (max-width: 390px) {
-  #dropdown {
-    padding: 1px;
-    font-size: 2px;
-    width: 150px; /* Adjust the width to 150px */
-  }
-  #dropdown option {
-    font-size: 2px;
-  }
+
+
+
+.option:hover {
+  background-color: lightgray; /* Change background on hover */
 }
 
-/* Media query for small screens (e.g., smartphones) */
-@media only screen and (max-width: 414px) {
-  #dropdown {
-    padding: 1px;
-    font-size: 2px;
-    width: 150px; /* Adjust the width to 150px */
-  }
-  #dropdown option {
-    font-size: 2px;
-  }
-}
 
-/* Media query for small screens (e.g., smartphones) */
-@media only screen and (max-width: 420px) {
-  #dropdown {
-    padding: 5px;
-    font-size: 6px;
-  }
-  #dropdown option {
-    font-size: 4px;
-    width: 50px; /* Adjust the width to 150px */
 
-  }
-}
 
-/* Media query for medium screens (e.g., tablets) */
-@media only screen and (max-width: 768px) {
-  #dropdown {
-    padding: 7px;
-    font-size: 8px;
-  }
-  #dropdown option {
-    font-size: 8px;
-    width: 110px; /* Adjust the width to 150px */
-
-  }
-}
-
-/* Media query for large screens (e.g., desktops) */
-@media only screen and (max-width: 1200px) {
-  #dropdown {
-    padding: 10px;
-    font-size: 12px;
-  }
-  #dropdown option {
-    font-size: 12px;
-    width: 150px; /* Adjust the width to 150px */
-
-  }
-}
 </style>
-
 
 <canvas id="canvas" class="canvas" style="display: none;"></canvas>
 <canvas id="canvas5" class="canvas" style="display: none;"></canvas>
@@ -525,40 +474,64 @@ document.addEventListener("DOMContentLoaded", initializeDefaultBackground);
 
 
 
-<script>
-const dropdown = document.getElementById('dropdown');
 
-dropdown.addEventListener('change', () => {
-  hideAllCanvases();
-  switch (dropdown.value) {
-    case '4-stripes-normal':
-      document.getElementById('canvas').style.display = 'block';
-      break;
-    case '4-stripes-normal-swiss':
-      document.getElementById('canvas6').style.display = 'block';
-      break;
-    case '5-stripes-normal':
-      document.getElementById('canvas5').style.display = 'block';
-      break;
-    case '5-stripes-normal-swiss':
-      document.getElementById('canvas7').style.display = 'block';
-      break;
-    case 'design2':
-      document.getElementById('canvas8').style.display = 'block';
-      break;
-    case 'design3':
-      document.getElementById('canvas9').style.display = 'block';
-      break;
-    case 'design4':
-      document.getElementById('canvas10').style.display = 'block';
-      break;
-    case 'design5':
-      document.getElementById('canvas11').style.display = 'block';
-      break;
-    default:
-      // Optionally, you can handle the default case if needed
-      break;
-  }
+
+
+
+<script>
+
+const dropdownButton = document.getElementById('dropdown-button');
+const optionsList = document.getElementById('options-list');
+
+dropdownButton.addEventListener('click', () => {
+  optionsList.style.display = optionsList.style.display === 'block' ? 'none' : 'block';
+});
+
+// Add click event listeners to each option
+const options = document.querySelectorAll('.option');
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    const value = option.getAttribute('data-value');
+    hideAllCanvases();
+
+    // Update button text based on selected option
+    dropdownButton.textContent = option.textContent; // Set button text to the selected option text
+
+    switch (value) {
+      case 'remove-clock':
+        hideAllCanvases(); // Hide all canvases
+        dropdownButton.textContent = 'Select an option'; // Reset button text
+        break;
+      case '4-stripes-normal':
+        document.getElementById('canvas').style.display = 'block';
+        break;
+      case '4-stripes-normal-swiss':
+        document.getElementById('canvas6').style.display = 'block';
+        break;
+      case '5-stripes-normal':
+        document.getElementById('canvas5').style.display = 'block';
+        break;
+      case '5-stripes-normal-swiss':
+        document.getElementById('canvas7').style.display = 'block';
+        break;
+      case 'design2':
+        document.getElementById('canvas8').style.display = 'block';
+        break;
+      case 'design3':
+        document.getElementById('canvas9').style.display = 'block';
+        break;
+      case 'design4':
+        document.getElementById('canvas10').style.display = 'block';
+        break;
+      case 'design5':
+        document.getElementById('canvas11').style.display = 'block';
+        break;
+      default:
+        // Optionally, you can handle the default case if needed
+        break;
+    }
+    optionsList.style.display = 'none'; // Hide the options list after selection
+  });
 });
 
 function hideAllCanvases() {
@@ -568,7 +541,111 @@ function hideAllCanvases() {
   }
 }
 
+// Optional: Hide the options list when clicking outside of it
+document.addEventListener('click', (event) => {
+  if (!dropdownButton.contains(event.target) && !optionsList.contains(event.target)) {
+    optionsList.style.display = 'none';
+  }
+});
 </script>
+
+
+
+
+
+
+
+
+
+
+<style>
+    .zoom {
+        transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+        touch-action: none; /* Prevent default touch actions like scrolling */
+    }
+
+    .zoom:hover {
+        transform: scale(1.1); /* Scale up the element to 110% on hover */
+    }
+</style>
+
+<script>
+    let scale = 1;
+    let initialDistance = null;
+    let currentCanvas = null;
+    let startX = 0; // Starting X position for panning
+    let startY = 0; // Starting Y position for panning
+    let translateX = 0; // Current translation on X
+    let translateY = 0; // Current translation on Y
+
+    // Initialize canvases with some example drawings
+    const canvases = document.querySelectorAll('.canvas');
+    canvases.forEach((canvas, index) => {
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = `hsl(${index * 40}, 100%, 50%)`; // Different colors for each canvas
+        ctx.fillRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+    });
+
+    function getDistance(touches) {
+        const [touch1, touch2] = touches;
+        const dx = touch2.pageX - touch1.pageX;
+        const dy = touch2.pageY - touch1.pageY;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function updateZoomAndPan() {
+        if (currentCanvas) {
+            currentCanvas.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+            currentCanvas.style.transformOrigin = 'center'; // Set the origin for scaling
+        }
+    }
+
+    canvases.forEach(canvas => {
+        canvas.addEventListener('touchstart', (event) => {
+            if (event.touches.length === 2) {
+                initialDistance = getDistance(event.touches);
+                currentCanvas = canvas; // Set the current canvas
+            } else if (event.touches.length === 1) {
+                currentCanvas = canvas; // Set the current canvas for single touch
+                startX = event.touches[0].pageX - translateX; // Capture start position for panning
+                startY = event.touches[0].pageY - translateY; // Capture start position for panning
+            }
+        });
+
+        canvas.addEventListener('touchmove', (event) => {
+            if (event.touches.length === 2 && initialDistance !== null) {
+                const currentDistance = getDistance(event.touches);
+                const scaleChange = currentDistance / initialDistance;
+                scale *= scaleChange;
+                initialDistance = currentDistance; // Update initial distance for next move
+                updateZoomAndPan();
+                event.preventDefault(); // Prevent scrolling
+            } else if (event.touches.length === 1 && currentCanvas) {
+                // Handle panning
+                const touch = event.touches[0];
+                translateX = touch.pageX - startX; // Update translateX
+                translateY = touch.pageY - startY; // Update translateY
+                updateZoomAndPan();
+                event.preventDefault(); // Prevent scrolling
+            }
+        });
+
+        canvas.addEventListener('touchend', () => {
+            initialDistance = null; // Reset on touch end
+            currentCanvas = null; // Clear the current canvas
+            // Do not reset scale, translateX, and translateY to keep the zoomed position
+            // scale = 1; // Reset scale after zooming (commented out)
+            // translateX = 0; // Reset translation on X (commented out)
+            // translateY = 0; // Reset translation on Y (commented out)
+            updateZoomAndPan(); // Update zoom effect
+        });
+    });
+</script>
+
+
+
+
+
 
 
 
@@ -594,8 +671,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 500px; /* Set the desired width for tablets */
+    height: 500px; /* Set the desired height for tablets */
   }
 }
 
@@ -613,8 +690,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas5 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 385px; /* Set the desired width for tablets */
+    height: 385px; /* Set the desired height for tablets */
   }
 }
 
@@ -630,8 +707,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas6 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 385px; /* Set the desired width for tablets */
+    height: 385px; /* Set the desired height for tablets */
   }
 }
 
@@ -646,8 +723,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas7 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 385px; /* Set the desired width for tablets */
+    height: 385px; /* Set the desired height for tablets */
   }
 }
 
@@ -661,8 +738,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas8 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 385px; /* Set the desired width for tablets */
+    height: 385px; /* Set the desired height for tablets */
   }
 }
 
@@ -676,8 +753,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas9 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 385px; /* Set the desired width for tablets */
+    height: 385px; /* Set the desired height for tablets */
   }
 }
 
@@ -691,8 +768,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas10 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 385px; /* Set the desired width for tablets */
+    height: 385px; /* Set the desired height for tablets */
   }
 }
 
@@ -706,8 +783,8 @@ function hideAllCanvases() {
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
   #canvas11 {
-    width: 315px; /* Set the desired width for tablets */
-    height: 315px; /* Set the desired height for tablets */
+    width: 385px; /* Set the desired width for tablets */
+    height: 385px; /* Set the desired height for tablets */
   }
 }
 </style>
@@ -716,13 +793,12 @@ function hideAllCanvases() {
 
 #canvas {
   position: relative;
- transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
-  margin: 0 auto; /* add this to center the canvas horizontally */
-  border-radius: 100%; /* add this to make the canvas a circle */
+  margin: 0 auto; /* Center the canvas horizontally */
+  border-radius: 100%; /* Make the canvas a circle */
   margin-bottom: 20px; 
   vertical-align: bottom;
-
 }
 
 
@@ -743,8 +819,8 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 // Set the canvas dimensions
-canvas.width = 370;
-canvas.height = 360;
+canvas.width = 385;
+canvas.height = 385;
 
 // Set the clock center and radius
 const centerX = canvas.width / 2;
@@ -941,7 +1017,7 @@ drawClock();
 <style>
 #canvas5 {
   position: relative;
-  transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -956,8 +1032,8 @@ const canvas5 = document.getElementById('canvas5');
 const ctx5 = canvas5.getContext('2d');
 
 // Set the canvas dimensions
-canvas5.width = 370;
-canvas5.height = 360;
+canvas5.width = 385;
+canvas5.height = 385;
 
 // Set the clock center and radius
 const centerX5 = canvas5.width / 2;
@@ -1112,7 +1188,7 @@ drawClock5();
  
   #canvas6 {
  position: relative;
- transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -1134,8 +1210,8 @@ const canvas6 = document.getElementById('canvas6');
 const ctx6 = canvas6.getContext('2d');
 
 // Set the canvas dimensions
-canvas6.width = 370;
-canvas6.height = 360;
+canvas6.width = 385;
+canvas6.height = 385;
 
 // Set the clock center and radius
 const centerX6 = canvas6.width / 2;
@@ -1269,7 +1345,7 @@ setInterval(drawClock6, 1000);
 <style>
 #canvas7 {
   position: relative;
- transform: translateY(-65px); /* Adjust this value to control how much to move up */
+   transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -1284,8 +1360,8 @@ const canvas7 = document.getElementById('canvas7');
 const ctx7 = canvas7.getContext('2d');
 
 // Set the canvas dimensions
-canvas7.width = 370;
-canvas7.height = 360;
+canvas7.width = 385;
+canvas7.height = 385;
 
 // Set the clock center and radius
 const centerX7 = canvas7.width / 2;
@@ -1423,7 +1499,7 @@ setInterval(drawClock7, 1000);
 
 #canvas8 {
   position: relative;
-  transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -1440,8 +1516,8 @@ const canvas8 = document.getElementById('canvas8');
 const ctx8 = canvas8.getContext('2d');
 
 // Set the canvas dimensions
-canvas8.width = 370;
-canvas8.height = 360;
+canvas8.width = 385;
+canvas8.height = 385;
 
 // Set the clock center and radius
 const centerX8 = canvas8.width / 2;
@@ -1595,7 +1671,7 @@ drawClock8();
 
 #canvas9 {
   position: relative;
-  transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -1612,8 +1688,8 @@ const canvas9 = document.getElementById('canvas9');
 const ctx9 = canvas9.getContext('2d');
 
 // Set the canvas dimensions
-canvas9.width = 370;
-canvas9.height = 360;
+canvas9.width = 385;
+canvas9.height = 385;
 
 // Set the clock center and radius
 const centerX9 = canvas9.width / 2;
@@ -1766,7 +1842,7 @@ drawClock9();
 
 #canvas10 {
   position: relative;
-  transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -1783,8 +1859,8 @@ const canvas10 = document.getElementById('canvas10');
 const ctx10 = canvas10.getContext('2d');
 
 // Set the canvas dimensions
-canvas10.width = 370;
-canvas10.height = 360;
+canvas10.width = 385;
+canvas10.height = 385;
 
 // Set the clock center and radius
 const centerX10 = canvas10.width / 2;
@@ -1937,7 +2013,7 @@ drawClock10();
 
 #canvas11 {
   position: relative;
-  transform: translateY(-65px); /* Adjust this value to control how much to move up */
+  transform: translateY(85px); /* Adjust this value to move the canvas down */
   display: block;
   margin: 0 auto; /* add this to center the canvas horizontally */
   border-radius: 100%; /* add this to make the canvas a circle */
@@ -1954,8 +2030,8 @@ const canvas11 = document.getElementById('canvas11');
 const ctx11 = canvas11.getContext('2d');
 
 // Set the canvas dimensions
-canvas11.width = 370;
-canvas11.height = 360;
+canvas11.width = 385;
+canvas11.height = 385;
 
 // Set the clock center and radius
 const centerX11 = canvas11.width / 2;
@@ -2115,8 +2191,8 @@ footer {
   background-color: #000;
   width: 100%;
   position: relative; /* Keep it relative for normal flow */
-  margin-top: -20px; /* Move it up by adjusting the margin */
-  padding: 10px 0 5px 0; /* Increase top padding to move text down */
+  margin-top: -28px; /* Move it up by adjusting the margin */
+  padding: 7px 0 5px 0; /* Increase top padding to move text down */
   height: 20px; /* Set the height to 50px */
 }
 
@@ -2181,102 +2257,91 @@ footer {
 
 
 <style>
-    #next-page-button {
-    position: fixed; /* Fixed position */
-    bottom: 40px; /* Adjust this value to position it above the footer */
-    right: 3px; 
-    color: black; /* Text color */
-    padding: 8px 8px; /* Padding for the button */
-    font-size: 14px; /* Font size */
-    font-family: open sans;
-    z-index: 1000; /* Ensure it is above other elements */
-    border-radius: 5px; /* Rounded corners */
-    text-decoration: none; /* Remove underline */
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Center items vertically */
-    margin-left: 20px; /* Adjust the value to move it right */
-}
+   
 
-.arrow {
-    width: 0; 
-    height: 0; 
-    border-top: 12px solid transparent; 
-    border-bottom: 12px solid transparent; 
-    border-left: 20px solid beige; 
-    padding-left: 5px; 
-    transform: translateY(-3px); /* Move the arrow up */
-}
-</style>
-
-<a id="next-page-button" href="about-this-clock.html">
-  <span class="arrow"></span> <!-- Arrow element -->
-</a>
-
-
-<style>
-  #dateDisplay {
-            position: fixed; 
-            bottom: 75px; /* Position above the date icon */
-            left: 5px; 
-            z-index: 1000; 
-            font-family: 'Open Sans', sans-serif; /* Correct font-family syntax */
-            font-size: 16px;
-            font-weight: bold;
-            color: white; 
-            background-color: black; /* Set background color to beige */
-            padding: 8px; /* Add some padding for better appearance */
-            border: 4px solid black; /* Add a solid black border */
-            border-radius: 5px;
-            width: 85px; /* Set a fixed width */
-            display: none; /* Initially hidden */
-            text-align: center; /* Center text */
+body {
+            transition: opacity 0.5s ease; /* Smooth transition for the body */
         }
 
-        #dateIcon {
-            position: fixed; 
-            bottom: 43px; /* Position above the date button */
-            left: 10px; 
-            z-index: 1000; 
-            font-family: 'Open Sans', sans-serif;
-            font-size: 30px; /* Adjust icon size */
-            cursor: pointer; /* Change cursor to pointer */
+        #next-page-button {
+            position: fixed; /* Fixed position */
+            bottom: 45px; /* Adjust this value to position it above the footer */
+            right: 3px; 
+            color: black; /* Text color */
+            padding: 8px 8px; /* Padding for the button */
+            font-size: 14px; /* Font size */
+            font-family: 'Open Sans', sans-serif; /* Ensure font is properly loaded */
+            z-index: 1000; /* Ensure it is above other elements */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            margin-left: 20px; /* Adjust the value to move it right */
+        }
+
+        .arrow {
+            width: 0; 
+            height: 0; 
+            border-top: 12px solid transparent; 
+            border-bottom: 12px solid transparent; 
+            border-left: 20px solid beige; 
+            padding-left: 5px; 
+            transform: translateY(-3px); /* Move the arrow up */
         }
     </style>
 </head>
 <body>
 
-    <div id="dateIcon">📆</div> <!-- Calendar icon -->
-    <div id="dateDisplay"></div> 
+<a id="next-page-button" href="about-this-clock.html">
+    <span class="arrow"></span> <!-- Arrow element -->
+</a>
 
-    <script>
-        // Automatically display the current day and date based on the user's local time
-        const now = new Date();
+<script>
+    document.getElementById('next-page-button').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        const targetUrl = this.href; // Get the target URL
+
+        // Fade out the body
+        document.body.style.opacity = '0';
+
+        // Wait for the fade-out transition to complete before navigating
+        setTimeout(function() {
+            window.location.href = targetUrl; // Navigate to the new page
+        }, 500); // Match this duration to the CSS transition duration
+    });
+</script>
+
+
+
+ 
+<div id="date-icon" style="position: fixed; bottom: 50px; left: 15px; cursor: pointer; font-size: 28px; color: black;">
+    📆 <!-- Unicode date icon -->
+</div>
+<div id="date-display" style="display: none; position: fixed; bottom: 95px; left: 10px; background-color: black; padding: 10px; border-radius: 5px; font-family: 'Open Sans', sans-serif; color: white; width: 100px; height: 80px; line-height: 1.5; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+    <div id="day" style="font-weight: bold;"></div>
+    <div id="date" style="font-weight: bold;"></div>
+</div>
+
+<script>
+    document.getElementById('date-icon').addEventListener('click', function() {
+        const dateDisplay = document.getElementById('date-display');
+        const optionsDay = { weekday: 'long' };
+        const optionsDate = { year: 'numeric', month: 'long', day: 'numeric' };
+        const currentDay = new Date().toLocaleDateString(undefined, optionsDay);
+        const currentDate = new Date().toLocaleDateString(undefined, optionsDate);
         
-        // Options for formatting the date
-        const options = { 
-            weekday: 'long', // Full name of the day
-            year: 'numeric', 
-            month: 'long', // Full name of the month
-            day: 'numeric' 
-        };
+        // Check if the date display is currently visible
+        if (dateDisplay.style.display === 'block') {
+            dateDisplay.style.display = 'none'; // Hide the date display
+        } else {
+            // Set the day and date text separately
+            document.getElementById('day').textContent = currentDay; // Set the day
+            document.getElementById('date').textContent = currentDate; // Set the date
+            dateDisplay.style.display = 'block'; // Show the date display
+        }
+    });
+</script>
 
-        // Get the formatted date string
-        const formattedDate = `${now.toLocaleDateString(undefined, options)}`; // Format as "Today is Tuesday, November 12, 2024"
-
-        // Set the formatted date in the dateDisplay div
-        document.getElementById('dateDisplay').innerText = formattedDate;
-
-        // Add click event to the date icon
-        document.getElementById('dateIcon').addEventListener('click', function() {
-            const dateDisplay = document.getElementById('dateDisplay');
-            // Toggle visibility
-            if (dateDisplay.style.display === 'none' || dateDisplay.style.display === '') {
-                dateDisplay.style.display = 'block'; // Show the date
-            } else {
-                dateDisplay.style.display = 'none'; // Hide the date
-            }
-        });
-    </script>
 
 
 
